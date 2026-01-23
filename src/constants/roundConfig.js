@@ -20,7 +20,7 @@ export const ROUND_CONFIGS = {
     flow: ["banner", "rules", "select", "question"],
     timers: [45, 30, 15],
     rules: ["Multiple choice questions", "Wrong answer triggers next timer"],
-    totalQuestions: 8,
+    totalQuestions: 24,
   },
 
   quickResponse: {

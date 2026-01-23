@@ -13,7 +13,7 @@ import { AVQuestion } from "../specific/AVQuestion";
 import { AbbreviationQuestion } from "../specific/AbbreviationQuestion";
 import { OpenQuestion } from "../specific/OpenQuestion";
 import { EstimationQuestion } from "../specific/EstimationQuestion";
-import { LucideArrowLeft, LucideArrowRight } from "lucide-react";
+import { AppWindow, LucideArrowLeft, LucideArrowRight } from "lucide-react";
 
 // Main Round Container
 export const RoundLayout = () => {
@@ -48,33 +48,32 @@ export const RoundLayout = () => {
 };
 
 export const RoundContainer = () => {
-  const { goToMenu, previousInRound, nextInRound } = useNavigationStore();
+  const { goToMenu,  nextInRound,getCurrentStep } = useNavigationStore();
+  const currentStep=getCurrentStep()
 
   return (
-    <>
+    <section className="max-h-screen overflow-hidden">
       <RoundLayout />
-      <div className="absolute bottom-0 right-0 p-2">
+      <div className="absolute top-0 right-0 p-2">
         <button
           onClick={goToMenu}
           className="bg-rose-500 p-2 rounded text-white"
-        >
-          Main menu
+          >
+          <AppWindow />
         </button>
       </div>
-      <div className="absolute top-1/2 right-0 p-2 flex justify-between w-full">
-        <button
-          onClick={previousInRound}
-          className="bg-white rounded-full p-2  text-rose-500"
-        >
-          <LucideArrowLeft />
-        </button>
+      {currentStep !="select" && (
+        
+        <div className="absolute top-1/2 right-0 p-2 flex justify-end w-full">
         <button
           onClick={nextInRound}
           className="bg-white p-2 rounded-full text-rose-500"
-        >
+          >
           <LucideArrowRight />
         </button>
       </div>
-    </>
+          )
+        }
+  </section>
   );
 };

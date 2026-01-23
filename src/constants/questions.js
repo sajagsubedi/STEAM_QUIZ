@@ -50,12 +50,98 @@ export const QUESTIONS = {
       answer: "𝛑/𝟒 RADIAN",
     },
     {
-      id: 8,
+      id: 9,
       text: "Two ships are 80 km apart on North–South vertical at an instant  The one farther North is streaming south at 40 km/hour and the other is streaming East at 30 km/hr. What is their distance of closest approach?  ",
       answer: "48 km",
     },
+    {
+      id: 10,
+      text: "If x2 + y2 = r  and x2 + y2 = kr such that 3k-2> 1 form an annulus having area equal to the smaller circle, find the area of the triangle formed by line 2x + 3y=k with the axes.",
+      answer: "𝟏/𝟔 units",
+    },
+    {
+      id: 11,
+      text: "A circle of radius 1 is surrounded by 4 circles of radius r as shown. What is r?",
+      answer: "1 +√𝟐",
+      media:{
+        type:"image",
+        src:"/questions/gq11.png"
+      }
+    },
+    {
+      id: 12,
+      media:{
+        type:"image",
+        src:"/questions/gq12.png"
+      },
+      answer: "107",
+    },
+    {
+      id: 13,
+      text: "The least common multiple of a positive integer n and 18 is 180, and the greatest common divisor of n and 45 is 15. What is the sum of the digits of n?",
+      answer: "6",
+    },
+    {
+      id: 14,
+      text: "TThe acute angles of a right triangle are a and b, where a>b and both a and b are prime numbers. What is the least possible value of b?",
+      answer: "7",
+    },
+    {
+      id: 15,
+      text: "A convex polygon is any shape that has all interior angles that measure less than    radians. The degree measures of the angles in a  18-sided convex polygon form an increasing arithmetic sequence with integer values. Find the degree measure of the smallest angle. ",
+      answer: "143",
+    },
+    {
+      id: 16,
+      media:{
+        type:"image",
+        src:"/questions/gq16.png"
+      },
+      answer: "3",
+    },
+    {
+      id: 17,
+      text: "Consider two vectors having magnitude v separated by an angle x. Then, a = magnitude of sum of the vectors while b= magnitude of difference of the vectors, then express x in terms of a and b.",
+      answer: "2 cot-1 (a/b) or 2 tan-1(b/a)",
+    },
+    {
+      id: 18,
+      text: "A charge Q is placed at each of the two opposite corners of a square. A charge q is placed at each of the other two comers. If the net electric force on Q is zero, then Q/q equals",
+      answer: "-2√𝟐",
+    },
+    {
+      id: 19,
+      text: "If a copper wire is stretched to make its radius decrease by 0.1%, the percentage increase or decrease in its resistance is approximately? ",
+      answer: "Increased by 0.4%",
+    },
+    {
+      id: 20,
+      text: "What is the molecular formula of cryolite?",
+      answer: "Na3AlF6",
+    },
+    {
+      id: 21,
+      text: "IUPAC Names of the reference compounds with octane rating 100 and cetane rating 100 are ............. respectively.",
+      answer: "2,4-Trimethylpentane and Hexadecane",
+    },
+    {
+      id: 22,
+      text: "3 alkali metals A,B,C give violet, yellow and red colored flame while burning. Identify A,B,C. ",
+      answer: "A=potassium     B=sodium    C=lithium",
+    },
+    {
+      id: 23,
+      text: "Two objects moving along the same straight line are leaving point A with an acceleration a, 2a & velocity 2 u, u respectively at time t = 0. The distance moved by the object with respect to point A when one object overtakes the other is bu2/a. Here b is an integer. Find b.   ",
+      answer: "b= 6",
+    },
+    {
+      id: 24,
+      text: "2 liters water at 27°C is heated by a 1 kW heater in an open container. On an average heat is lost to surroundings at the rate 160 J/s. The time required for the temperature to reach 77°C is t2  second, find the value of t.  ",
+      answer: "√500 or 10√5 or 22.36",
+    },
   ],
 
+  
   /* ───────────── ALTERNATIVE ROUND (8) ───────────── */
   alternative: [
     {

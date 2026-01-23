@@ -27,7 +27,7 @@ export function GeneralQuestion() {
           </div>
         </div>
         <button
-          className="self-start bg-green-500 p-2 text-xl rounded text-white"
+          className="self-start bg-sky-400 p-2 text-xl rounded text-white"
           onClick={() => setShowQuestion(true)}
         >
           Question
@@ -71,12 +71,12 @@ export function GeneralQuestion() {
       <div className="h-[20vh] w-full flex self-end justify-end">
         <div className="flex gap-5">
           {showAnswer && (
-            <div className="bg-green-200 rounded h-max p-4 ">
+            <div className="bg-blue-700 rounded h-max p-4 text-white h-10 px-10">
               {currentQuestion.answer}
             </div>
           )}
           <button
-            className="self-start bg-green-500 p-2 text-xl rounded text-white"
+            className="self-start bg-pink-400 p-2 text-xl rounded text-white"
             onClick={() => setShowAnswer(true)}
           >
             Answer
