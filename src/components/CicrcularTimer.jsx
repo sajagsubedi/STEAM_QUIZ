@@ -17,6 +17,8 @@ export default function CircularMultiTimer({ timers = [] ,nextFunction}) {
   /* ---------------- Start Next Timer ---------------- */
   const handleNextTimer = () => {
     const nextIndex = currentIndex + 1;
+    console.log(nextIndex)
+    console.log(timers[nextIndex])
     if (!timers[nextIndex] ) {
       console.log(nextFunction)
       if(!nextFunction){
@@ -110,7 +112,7 @@ export default function CircularMultiTimer({ timers = [] ,nextFunction}) {
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke="#4f46e5"
+              stroke="#00a6f4"
               strokeWidth={strokeWidth}
               fill="transparent"
               strokeLinecap="round"

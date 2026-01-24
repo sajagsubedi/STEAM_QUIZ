@@ -1,5 +1,5 @@
 export const QUESTIONS = {
-  /* ───────────── GENERAL ROUND (8) ───────────── */
+  /* ───────────── GENERAL ROUND (24) ───────────── */
   general: [
     {
       id: 1,
@@ -63,16 +63,16 @@ export const QUESTIONS = {
       id: 11,
       text: "A circle of radius 1 is surrounded by 4 circles of radius r as shown. What is r?",
       answer: "1 +√𝟐",
-      media:{
-        type:"image",
-        src:"/questions/gq11.png"
+      media: {
+        type: "image",
+        src: "/questions/gq11.png"
       }
     },
     {
       id: 12,
-      media:{
-        type:"image",
-        src:"/questions/gq12.png"
+      media: {
+        type: "image",
+        src: "/questions/gq12.png"
       },
       answer: "107",
     },
@@ -93,9 +93,9 @@ export const QUESTIONS = {
     },
     {
       id: 16,
-      media:{
-        type:"image",
-        src:"/questions/gq16.png"
+      media: {
+        type: "image",
+        src: "/questions/gq16.png"
       },
       answer: "3",
     },
@@ -139,59 +139,178 @@ export const QUESTIONS = {
       text: "2 liters water at 27°C is heated by a 1 kW heater in an open container. On an average heat is lost to surroundings at the rate 160 J/s. The time required for the temperature to reach 77°C is t2  second, find the value of t.  ",
       answer: "√500 or 10√5 or 22.36",
     },
+    {
+      id: 25,
+      text: "2 liters water at 27°C is heated by a 1 kW heater in an open container. On an average heat is lost to surroundings at the rate 160 J/s. The time required for the temperature to reach 77°C is t2  second, find the value of t.  ",
+      answer: "√500 or 10√5 or 22.36",
+    },
   ],
 
-  
+
   /* ───────────── ALTERNATIVE ROUND (8) ───────────── */
   alternative: [
     {
       id: 1,
-      text: "Sun rises in?",
-      options: ["North", "South", "East", "West"],
-      answer: "East",
+      media: {
+        type: "image",
+        src: "/questions/alt1.png"
+      },
+      options: [
+        { text: "Meter" },
+        { text: " m/s" },
+        { text: "m/s2" },
+        { text: "s-1" }
+      ],
+      answer: 0,
     },
     {
       id: 2,
-      text: "5 × 6 = ?",
-      options: ["20", "25", "30", "35"],
-      answer: "30",
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
     },
     {
       id: 3,
-      text: "Water freezes at?",
-      options: ["0°C", "50°C", "100°C", "10°C"],
-      answer: "0°C",
+      text: "Four forces of magnitudes P, 2P, 3P and 4P act along the four sides of a square ABCD in cyclic order.  find the resultant force.",
+      options:[{text:"8P"},{text:"2√2P"},{text:"√2P"},{text:"3√2P"}],
+      answer: 1,
     },
     {
       id: 4,
-      text: "Currency of Japan?",
-      options: ["Won", "Dollar", "Yen", "Peso"],
-      answer: "Yen",
+      text: " Find the maximum area of the rectangle that can be inscribed in a circle of ",
+      options: [{text:"2√2R²"},{text:"2R²"},{text:"√2R²"},{text:"√2R²"}],
+      answer: 0,
     },
     {
       id: 5,
-      text: "Earth is ___ planet from Sun?",
-      options: ["2nd", "3rd", "4th", "5th"],
-      answer: "3rd",
+      text: " A small ball rolls of the top of a stairway horizontally with a velocity of 4.5 m s–1. Each step is 0.2 m high and 0.3 m wide. If g is 10 ms–2, then the ball will strike the nth step where n is equal to (assume ball strike at the edge of the step)",
+      options: [{text:"9"},{text:"10"},{text:"11"},{text:"12"}],
+      answer: 0,
     },
     {
       id: 6,
-      text: "HTML stands for?",
-      options: ["HighText", "HyperText Markup Language", "HyperTool", "None"],
-      answer: "HyperText Markup Language",
+      text: "A stone projected at an angle of 60º from the ground level strikes at an angle of 30º on the roof of a building of height ‘h’. Then the speed of projection of the stone is :",
+      media: {
+        type: "image",
+        src: "/questions/alt6.png"
+      },
+      options: [{text:"√𝟐𝒈𝒉"},{text:"√𝟔𝒈𝒉"},{text:"√𝟑𝒈𝒉"},{text:"√𝒈𝒉"}],
+      answer: 3,
     },
     {
       id: 7,
-      text: "Largest mammal?",
-      options: ["Elephant", "Blue Whale", "Shark", "Giraffe"],
-      answer: "Blue Whale",
+      text: "A particle moves along x-axis in positive direction. Its acceleration 'a' is given as a = cx + d, where x denotes the x-coordinate of particle, c and d are positive constants. For velocity-position graph of particle to be of type as shown in figure, find the value of speed (in m/s) of particle at x = 0. Take c = 1 s–2 and d = 3 ms–2",
+      options: [{text:"3"},{text:"4"},{text:"5"},{text:"6"}],
+      answer: 0,
     },
     {
       id: 8,
-      text: "CPU is part of?",
-      options: ["RAM", "Motherboard", "Processor", "Storage"],
-      answer: "Processor",
+      text: "A mass of 10 kg is suspended by a rope of length 4 m, from the ceiling. A force F is applied horizontally at the mid-point of the rope such that the top half of the rope makes an angle of 45° with the vertical. Then F equals : (Take g = 10 ms–2 and the rope to be massless)",
+      options: [{text:"100√2 N"},{text:"100 N"},{text:"100√3 N"},{text:"100√6 N"}],
+      answer: 1,
     },
+    {
+      id: 9,
+      text: "Two rods, one of aluminium and the other made of steel, having initial length l1 and ll2 are connected together to form a single rod of length l1 + l2. The coefficients of linear expansion for aluminium and steel are aa and 𝒂𝒔 respectively. If the length of each rod increases by the same amount when their temperature are raised by tºC, then find the ratio l1/(l1+l2)",
+      options: [{text:"as/aa"},{text:"aa/as"},{text:"as/(aa+as)"},{text:"aa/(aa+as)"}],
+      answer: 2,
+    },
+    {
+      id: 10,
+      text: " A copper ball of mass 100 gm is at a temperature T. It is dropped in a copper calorimeter of mass 100 gm, filled with 170 gm of water at room temperature. Subsequently, the temperature of the system is found to be 75º C. T is given by : (Given : room temperature = 30ºC, specific heat of copper = 0.1 cal/gmºC)",
+      options: [{text:"825 C"},{text:"750 C"},{text:"885 C"},{text:"675 C"}],
+      answer: 2,
+    },
+    {
+      id: 11,
+      text: " A biconvex lens of focal length 15 cm is in front of a plane mirror. The distance between the lens and the mirror is 10 cm. A small object is kept at a distance of 30 cm from the lens. The final image is ",
+      options: [
+        {text:"Virtual and at a distance of 16 cm from the mirror"},
+        {text:"Real and at a distance of 16 cm from the mirror"},
+        {text:"Virtual and at a distance of 20 cm from the mirror"},
+        {text:"Real and at a distance of 20 cm from the mirror"}],
+      answer: 1,
+    },
+    {
+      id: 12,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 13,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 14,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 15,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 16,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 17,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 18,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 19,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 20,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 21,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 22,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 23,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+    {
+      id: 24,
+      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      options: [{ image: "questions/alt2o1.png" }, { image: "questions/alt2o2.png" }, { image: "questions/alt2o3.png" }, { image: "questions/alt2o4.png" }],
+      answer: 2,
+    },
+
+
   ],
 
   /* ───────────── QUICK RESPONSE (4 SEQUENTIAL) ───────────── */
@@ -302,73 +421,129 @@ export const QUESTIONS = {
   ],
 
   /* ───────────── RAPID FIRE (8 SETS × 10) ───────────── */
-  rapidFire: [
+rapidFire : [
     {
       setId: 1,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "SI unit of force?", answer: "Newton" },
+        { id: 2, text: "Dimensional formula of velocity?", answer: "[LT⁻¹]" },
+        { id: 3, text: "What is 1 mole?", answer: "6.022×10²³ particles" },
+        { id: 4, text: "Slope of distance–time graph represents?", answer: "Speed" },
+        { id: 5, text: "Unit of momentum?", answer: "kg m s⁻¹" },
+        { id: 6, text: "Atomic number of hydrogen?", answer: "1" },
+        { id: 7, text: "Value of g on Earth?", answer: "9.8 m/s²" },
+        { id: 8, text: "SI unit of work?", answer: "Joule" },
+        { id: 9, text: "Gas constant R value?", answer: "8.314 J/mol K" },
+        { id: 10, text: "Who proposed laws of motion?", answer: "Newton" },
+      ],
     },
     {
       setId: 2,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "Unit of electric charge?", answer: "Coulomb" },
+        { id: 2, text: "Symbol of Avogadro number?", answer: "NA" },
+        { id: 3, text: "What is scalar quantity?", answer: "Has magnitude only" },
+        { id: 4, text: "pH of pure water?", answer: "7" },
+        { id: 5, text: "Unit of density?", answer: "kg/m³" },
+        { id: 6, text: "Number of significant figures in 0.005?", answer: "1" },
+        { id: 7, text: "Formula of acceleration?", answer: "a = (v − u)/t" },
+        { id: 8, text: "Gas with zero volume assumption?", answer: "Ideal gas" },
+        { id: 9, text: "What is isotopes?", answer: "Same Z, different A" },
+        { id: 10, text: "Unit of frequency?", answer: "Hertz" },
+      ],
     },
     {
       setId: 3,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "What is projectile motion?", answer: "2D motion under gravity" },
+        { id: 2, text: "Formula of force?", answer: "F = ma" },
+        { id: 3, text: "SI unit of pressure?", answer: "Pascal" },
+        { id: 4, text: "Atomic mass unit equals?", answer: "1/12 mass of C-12" },
+        { id: 5, text: "Unit of torque?", answer: "Nm" },
+        { id: 6, text: "Chemical formula of methane?", answer: "CH₄" },
+        { id: 7, text: "What is vector quantity?", answer: "Has magnitude and direction" },
+        { id: 8, text: "Who discovered electron?", answer: "J.J. Thomson" },
+        { id: 9, text: "Work done in circular motion?", answer: "Zero" },
+        { id: 10, text: "Unit of angular velocity?", answer: "rad/s" },
+      ],
     },
     {
       setId: 4,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "Equation of motion for velocity?", answer: "v = u + at" },
+        { id: 2, text: "Symbol of Planck’s constant?", answer: "h" },
+        { id: 3, text: "Unit of energy?", answer: "Joule" },
+        { id: 4, text: "Valency of oxygen?", answer: "2" },
+        { id: 5, text: "Speed of light in vacuum?", answer: "3×10⁸ m/s" },
+        { id: 6, text: "Chemical symbol of sodium?", answer: "Na" },
+        { id: 7, text: "What is inertia?", answer: "Resistance to change of state" },
+        { id: 8, text: "SI unit of power?", answer: "Watt" },
+        { id: 9, text: "Formula of density?", answer: "ρ = m/V" },
+        { id: 10, text: "What is mole fraction?", answer: "Ratio of moles" },
+      ],
     },
     {
       setId: 5,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "Angle between velocity and acceleration in circular motion?", answer: "90°" },
+        { id: 2, text: "Unit of impulse?", answer: "Ns" },
+        { id: 3, text: "pH of acidic solution?", answer: "< 7" },
+        { id: 4, text: "Chemical name of NaCl?", answer: "Sodium chloride" },
+        { id: 5, text: "What is centripetal force?", answer: "Force toward center" },
+        { id: 6, text: "Unit of molarity?", answer: "mol/L" },
+        { id: 7, text: "Formula of kinetic energy?", answer: "½mv²" },
+        { id: 8, text: "Who proposed atomic theory?", answer: "Dalton" },
+        { id: 9, text: "What is normal reaction?", answer: "Perpendicular contact force" },
+        { id: 10, text: "SI unit of time?", answer: "Second" },
+      ],
     },
     {
       setId: 6,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "What is terminal velocity?", answer: "Maximum constant velocity" },
+        { id: 2, text: "Unit of angular momentum?", answer: "kg m²/s" },
+        { id: 3, text: "Chemical symbol of potassium?", answer: "K" },
+        { id: 4, text: "Number of laws of motion?", answer: "Three" },
+        { id: 5, text: "Unit of temperature?", answer: "Kelvin" },
+        { id: 6, text: "What is oxidation?", answer: "Loss of electrons" },
+        { id: 7, text: "Equation for displacement?", answer: "s = ut + ½at²" },
+        { id: 8, text: "SI unit of mass?", answer: "Kilogram" },
+        { id: 9, text: "What is limiting reagent?", answer: "Consumed first" },
+        { id: 10, text: "Unit of force constant?", answer: "N/m" },
+      ],
     },
     {
       setId: 7,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "What is elastic collision?", answer: "KE conserved" },
+        { id: 2, text: "Unit of gravitational constant?", answer: "Nm²/kg²" },
+        { id: 3, text: "Symbol of entropy?", answer: "S" },
+        { id: 4, text: "Value of π (approx)?", answer: "3.14" },
+        { id: 5, text: "What is stoichiometry?", answer: "Quantitative chemistry" },
+        { id: 6, text: "Unit of magnetic field?", answer: "Tesla" },
+        { id: 7, text: "What is relative density?", answer: "Ratio of densities" },
+        { id: 8, text: "Chemical formula of water?", answer: "H₂O" },
+        { id: 9, text: "What is centripetal acceleration?", answer: "v²/r" },
+        { id: 10, text: "Number of dimensions of space?", answer: "Three" },
+      ],
     },
     {
       setId: 8,
-      questions: Array.from({ length: 10 }, (_, i) => ({
-        id: i + 1,
-        text: `Rapid Q${i + 1}`,
-        answer: "Sample Answer",
-      })),
+      questions: [
+        { id: 1, text: "What is uniform motion?", answer: "Constant velocity" },
+        { id: 2, text: "Unit of heat?", answer: "Joule" },
+        { id: 3, text: "What is reduction?", answer: "Gain of electrons" },
+        { id: 4, text: "Unit of spring constant?", answer: "N/m" },
+        { id: 5, text: "What is mole?", answer: "Amount of substance" },
+        { id: 6, text: "Chemical symbol of iron?", answer: "Fe" },
+        { id: 7, text: "Who discovered neutron?", answer: "James Chadwick" },
+        { id: 8, text: "Formula of power?", answer: "P = W/t" },
+        { id: 9, text: "What is equilibrium?", answer: "Net force zero" },
+        { id: 10, text: "SI unit of angle?", answer: "Radian" },
+      ],
     },
   ],
-
+  
   /* ───────────── OPEN ROUND (4 SEQUENTIAL) ───────────── */
   open: [
     { id: 1, text: "Open question 1", answer: "Open Answer 1" },

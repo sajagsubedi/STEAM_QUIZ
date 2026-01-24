@@ -10,7 +10,7 @@ export const ROUND_CONFIGS = {
       "Press Enter to reveal question",
       "Timer starts on next Enter",
     ],
-    totalQuestions: 24,
+    totalQuestions: 25,
   },
 
   alternative: {

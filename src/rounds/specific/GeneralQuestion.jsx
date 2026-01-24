@@ -27,7 +27,7 @@ export function GeneralQuestion() {
           </div>
         </div>
         <button
-          className="self-start bg-sky-400 p-2 text-xl rounded text-white"
+          className="self-start bg-sky-500 p-2 text-xl rounded text-white"
           onClick={() => setShowQuestion(true)}
         >
           Question
@@ -69,21 +69,19 @@ export function GeneralQuestion() {
 
 
       <div className="h-[20vh] w-full flex self-end justify-end">
-        <div className="flex gap-5">
-          {showAnswer && (
-            <div className="bg-blue-700 rounded h-max p-4 text-white h-10 px-10">
+        <div className="flex gap-5 items-center justify-center">
+            <div className={` ${showAnswer ? "visible":"invisible" }  bg-green-600 rounded-tl-full  rounded-br-full p-4 text-white text-x font-semibold h-max flex items-center px-10 py-10`}>
               {currentQuestion.answer}
             </div>
-          )}
           <button
-            className="self-start bg-pink-400 p-2 text-xl rounded text-white"
+            className=" bg-pink-500 p-2 px-5 text-xl rounded text-white"
             onClick={() => setShowAnswer(true)}
           >
             Answer
           </button>
         </div>
       </div>
-      <CircularTimer timers={config.timers} nextFunction={undefined}/>
+      <CircularTimer timers={config.timers} />
     </div>
   );
 }

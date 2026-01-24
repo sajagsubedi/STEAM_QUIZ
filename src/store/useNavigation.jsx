@@ -7,8 +7,6 @@ const initialRoundState = {
   currentFlowIndex: 0,
   selectedQuestion: null,
   answeredQuestions: [],
-  sequentialCount: 0,
-  rapidFireQuestionIndex: 0,
 };
 
 export const useNavigationStore = create((set, get) => ({
@@ -48,8 +46,6 @@ export const useNavigationStore = create((set, get) => ({
       currentFlowIndex: 0,
       selectedQuestion: null,
       answeredQuestions: [],
-      sequentialCount: 0,
-      rapidFireQuestionIndex: 0,
     });
   },
 
@@ -59,16 +55,17 @@ export const useNavigationStore = create((set, get) => ({
   nextInRound: () => {
     const state = get();
     const {
-      currentRound,
       currentRoundFlow,
       currentFlowIndex,
       selectedQuestion,
       answeredQuestions,
-      sequentialCount,
-      rapidFireQuestionIndex,
     } = state;
+    console.log(state);
 
-    if (!currentRoundFlow.length) return;
+    if (!currentRoundFlow.length) {
+      console.log("from here");
+      return;
+    }
 
     const step = currentRoundFlow[currentFlowIndex];
 
@@ -79,45 +76,8 @@ export const useNavigationStore = create((set, get) => ({
     // Question logic
     // --------------------
     if (step === "question") {
-      //  Rapid Fire
-      if (currentRound === "rapidFire") {
-        const QUESTIONS_PER_SET = 10;
-
-        if (rapidFireQuestionIndex < QUESTIONS_PER_SET - 1) {
-          set({ rapidFireQuestionIndex: rapidFireQuestionIndex + 1 });
-          return;
-        }
-
-        // End of set
-        set({
-          answeredQuestions: [...answeredQuestions, selectedQuestion],
-          selectedQuestion: null,
-          rapidFireQuestionIndex: 0,
-        });
-
-        const selectIndex = currentRoundFlow.indexOf("select");
-        if (selectIndex !== -1) {
-          set({ currentFlowIndex: selectIndex });
-        }
-        return;
-      }
-
-      // 🔁 Sequential rounds (no select step)
-      if (!currentRoundFlow.includes("select")) {
-        const total = ROUND_CONFIGS[currentRound]?.totalQuestions ?? 0;
-        const next = sequentialCount + 1;
-
-        if (next >= total) {
-          get().goToMenu();
-          return;
-        }
-
-        set({ sequentialCount: next });
-        return;
-      }
-
-      // ✅ Normal selectable rounds
       if (selectedQuestion) {
+        console.log(selectedQuestion)
         set({
           answeredQuestions: [...answeredQuestions, selectedQuestion],
           selectedQuestion: null,
@@ -137,13 +97,6 @@ export const useNavigationStore = create((set, get) => ({
       set({
         currentFlowIndex: selectIndex !== -1 ? selectIndex : questionIndex,
       });
-    }
-  },
-
-  previousInRound: () => {
-    const { currentFlowIndex } = get();
-    if (currentFlowIndex > 0) {
-      set({ currentFlowIndex: currentFlowIndex - 1 });
     }
   },
 

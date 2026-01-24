@@ -14,140 +14,188 @@ export const AlternativeQuestion = () => {
   const [hasCorrect, setHasCorrect] = useState(false);
   const [wrongOptions, setWrongOptions] = useState([]);
 
-  const question = QUESTIONS.alternative.find(
-    (q) => q.id === selectedQuestion
+  const data = QUESTIONS.alternative.find(
+    (item) => item.id === selectedQuestion,
   );
 
-  if (!question) return null;
+  if (!data) return null;
 
+  const { media, options, answer, text } = data;
   const config = ROUND_CONFIGS["alternative"];
 
-  const hasText = Boolean(question.text);
-  const hasImage = question.media?.type === "image";
+  const hasImage = media?.type === "image";
+  const hasText = Boolean(text);
 
-  const handleSelect = (opt) => {
+  const handleSelect = (index) => {
     if (hasCorrect) return;
 
-    if (opt === question.answer) {
+    if (index === answer) {
       setHasCorrect(true);
-    } else if (!wrongOptions.includes(opt)) {
-      setWrongOptions([...wrongOptions, opt]);
+    } else if (!wrongOptions.includes(index)) {
+      setWrongOptions([...wrongOptions, index]);
     }
   };
 
-  const getOptionClass = (opt) => {
+  const getOptionClass = (index) => {
     const base =
-      "rounded-xl px-6 py-6 text-xl font-semibold transition-all border-2 flex items-center gap-4";
+      "rounded-xl p-5 flex gap-4 items-center border-2 text-lg font-semibold transition-all";
 
-    if ((showAnswer || hasCorrect) && opt === question.answer) {
+    if ((showAnswer || hasCorrect) && index === answer) {
       return `${base} bg-green-100 border-green-500 text-green-700`;
     }
 
-    if (wrongOptions.includes(opt)) {
+    if (wrongOptions.includes(index)) {
       return `${base} bg-red-100 border-red-500 text-red-700`;
     }
 
-    return `${base} bg-white border-gray-300 hover:bg-indigo-50 cursor-pointer`;
+    return `${base} bg-white border-gray-300 hover:bg-indigo-50`;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col relative">
-
+    <div className="min-h-screen bg-linear-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col relative">
       {/* HEADER */}
-      <div className="flex flex-col gap-4">
-        <div className="flex justify-center w-full">
-          <div className="px-6 py-3 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase shadow">
-            Alternative Round
+      <div className="flex flex-col gap-4 mb-4">
+        <div className="flex justify-center">
+          <div className="px-6 py-3 bg-rose-400 rounded-full text-2xl font-bold text-white shadow">
+              Alternative Round
           </div>
         </div>
 
         <button
-          className="self-start bg-sky-400 px-4 py-2 text-xl rounded text-white"
+          className="self-start bg-sky-500 px-4 py-2 text-lg rounded text-white"
           onClick={() => setShowQuestion(true)}
         >
           Question
         </button>
       </div>
-
+    <div className="w-full h-[60vh] p-6">
       {/* CONTENT */}
-      <div className="w-full h-[60vh] p-6">
-        {showQuestion && (
-          <>
-            {/* TEXT (if exists) */}
-            {hasText && (
-              <h2 className="text-2xl font-semibold mb-6 text-gray-800">
-                {question.text}
-              </h2>
-            )}
+      {showQuestion && (
+        <div className="flex-1 flex flex-col justify-center">
+          {/* TEXT */}
+          {hasText && (
+            <h2 className="text-2xl font-semibold text-justify mb-6 text-gray-800">
+            {data.id}) {text}
+            </h2>
+          )}
 
-            {/* IMAGE ONLY */}
-            {!hasText && hasImage && (
-              <div className="w-full h-full flex items-center justify-center overflow-hidden">
+          {/* ONLY IMAGE (MAIN QUESTION) */}
+          {!hasText && hasImage && (
+            <>
+              <div className="w-full flex justify-center mb-10">
                 <img
-                  src={question.media.src}
+                  src={media.src}
                   alt="question"
-                  className="max-h-full w-auto object-contain"
+                  className="max-h-[55vh] object-contain rounded-xl shadow-lg"
                 />
               </div>
-            )}
 
-            {/* TEXT + IMAGE */}
-            {hasText && hasImage && (
-              <div className="grid grid-cols-5 gap-8 h-full">
-                {/* OPTIONS */}
-                <div className="col-span-3 flex flex-col gap-5 justify-center">
-                  {question.options.map((opt, index) => (
-                    <button
-                      key={opt}
-                      onClick={() => handleSelect(opt)}
-                      className={getOptionClass(opt)}
-                      disabled={wrongOptions.includes(opt) || hasCorrect}
-                    >
-                      <span className="font-bold text-gray-600">
-                        {OPTION_LABELS[index]}.
-                      </span>
-                      <span>{opt}</span>
-                    </button>
-                  ))}
-                </div>
-
-                {/* IMAGE */}
-                <div className="col-span-2 flex items-center justify-center overflow-hidden">
-                  <img
-                    src={question.media.src}
-                    alt="question"
-                    className="max-h-full w-auto object-contain"
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* TEXT ONLY */}
-            {hasText && !hasImage && (
+              {/* OPTIONS BELOW IMAGE */}
               <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto">
-                {question.options.map((opt, index) => (
+                {options.map((opt, index) => (
                   <button
-                    key={opt}
-                    onClick={() => handleSelect(opt)}
-                    className={getOptionClass(opt)}
-                    disabled={wrongOptions.includes(opt) || hasCorrect}
+                    key={index}
+                    onClick={() => handleSelect(index)}
+                    disabled={hasCorrect || wrongOptions.includes(index)}
+                    className={getOptionClass(index)}
                   >
-                    <span className="font-bold text-gray-600">
-                      {OPTION_LABELS[index]}.
-                    </span>
-                    <span>{opt}</span>
+                    <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold">
+                      {OPTION_LABELS[index]}
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {opt.text && <span>{opt.text}</span>}
+                      {opt.image && (
+                        <img
+                          src={opt.image}
+                          alt="option"
+                          className="max-h-24 object-contain rounded"
+                        />
+                      )}
+                    </div>
                   </button>
                 ))}
               </div>
-            )}
-          </>
-        )}
+            </>
+          )}
+
+          {/* TEXT + IMAGE */}
+          {hasText && hasImage && (
+            <div className="flex gap-8 items-center">
+              {/* OPTIONS */}
+              <div className="w-[60%] flex flex-col gap-6">
+                {options.map((opt, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSelect(index)}
+                    disabled={hasCorrect || wrongOptions.includes(index)}
+                    className={getOptionClass(index)}
+                  >
+                    <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold">
+                      {OPTION_LABELS[index]}
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      {opt.text && <span>{opt.text}</span>}
+                      {opt.image && (
+                        <img
+                          src={opt.image}
+                          alt="option"
+                          className="max-h-24 object-contain rounded"
+                        />
+                      )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* IMAGE */}
+              <div className="w-[40%] flex justify-center">
+                <img
+                  src={media.src}
+                  alt="question"
+                  className="max-h-[50vh] object-contain rounded-xl shadow-lg"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* ONLY TEXT */}
+          {hasText && !hasImage && (
+            <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto">
+              {options.map((opt, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSelect(index)}
+                  disabled={hasCorrect || wrongOptions.includes(index)}
+                  className={getOptionClass(index)}
+                >
+                  <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold">
+                    {OPTION_LABELS[index]}
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    {opt.text && <span>{opt.text}</span>}
+                    {opt.image && (
+                      <img
+                        src={opt.image}
+                        alt="option"
+                        className="max-h-24 object-contain rounded"
+                      />
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
       </div>
 
       {/* ANSWER BUTTON */}
-      <div className="h-[20vh] w-full flex justify-end items-center">
+      <div className="h-[15vh] flex justify-end items-center">
         <button
-          className="bg-pink-400 px-6 py-3 text-xl rounded text-white"
+          className="bg-pink-500 px-6 py-3 text-xl rounded text-white"
           onClick={() => setShowAnswer(true)}
         >
           Answer

@@ -50,9 +50,13 @@ export const RoundLayout = () => {
 export const RoundContainer = () => {
   const { goToMenu,  nextInRound,getCurrentStep } = useNavigationStore();
   const currentStep=getCurrentStep()
+  const goNext=()=>{
+    console.log("Go next")
+    nextInRound()
+  }
 
   return (
-    <section className="max-h-screen overflow-hidden">
+    <section className="max-h-screen ">
       <RoundLayout />
       <div className="absolute top-0 right-0 p-2">
         <button
@@ -66,8 +70,8 @@ export const RoundContainer = () => {
         
         <div className="absolute top-1/2 right-0 p-2 flex justify-end w-full">
         <button
-          onClick={nextInRound}
-          className="bg-white p-2 rounded-full text-rose-500"
+          onClick={goNext}
+          className="bg-white p-2 rounded-full text-rose-500 cursor-pointer"
           >
           <LucideArrowRight />
         </button>
