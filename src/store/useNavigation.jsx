@@ -6,6 +6,7 @@ const initialRoundState = {
   currentRoundFlow: [],
   currentFlowIndex: 0,
   selectedQuestion: null,
+  sequentialCount: 1,
   answeredQuestions: [],
 };
 
@@ -17,9 +18,6 @@ export const useNavigationStore = create((set, get) => ({
 
   ...initialRoundState,
 
-  // --------------------
-  // Page navigation
-  // --------------------
   goToPage: (page) => set({ currentPage: page }),
 
   goToIntro: () => set({ currentPage: "intro" }),
@@ -44,6 +42,7 @@ export const useNavigationStore = create((set, get) => ({
       currentRound: roundKey,
       currentRoundFlow: config.flow,
       currentFlowIndex: 0,
+      sequentialCount: 1,
       selectedQuestion: null,
       answeredQuestions: [],
     });
@@ -56,14 +55,15 @@ export const useNavigationStore = create((set, get) => ({
     const state = get();
     const {
       currentRoundFlow,
+      currentRound,
       currentFlowIndex,
       selectedQuestion,
       answeredQuestions,
+      sequentialCount,
+      goToMenu
     } = state;
-    console.log(state);
 
     if (!currentRoundFlow.length) {
-      console.log("from here");
       return;
     }
 
@@ -72,18 +72,30 @@ export const useNavigationStore = create((set, get) => ({
     // Block question screen without selection
     if (step === "select" && !selectedQuestion) return;
 
+
+    if (currentRound == "quickResponse" && step == "question") {
+      if (sequentialCount <= ROUND_CONFIGS["quickResponse"].totalQuestions) {
+        set({ sequentialCount: sequentialCount + 1 })
+      }
+      else {
+        goToMenu()
+      }
+
+    }
+
+
     // --------------------
     // Question logic
     // --------------------
     if (step === "question") {
       if (selectedQuestion) {
-        console.log(selectedQuestion)
         set({
           answeredQuestions: [...answeredQuestions, selectedQuestion],
           selectedQuestion: null,
-        });
+        })
       }
     }
+
 
     // --------------------
     // Flow navigation

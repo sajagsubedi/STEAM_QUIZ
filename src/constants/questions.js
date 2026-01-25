@@ -315,10 +315,34 @@ export const QUESTIONS = {
 
   /* ───────────── QUICK RESPONSE (4 SEQUENTIAL) ───────────── */
   quickResponse: [
-    { id: 1, text: "2 + 2?", answer: "4" },
-    { id: 2, text: "Capital of India?", answer: "New Delhi" },
-    { id: 3, text: "How many continents?", answer: "7" },
-    { id: 4, text: "Square root of 16?", answer: "4" },
+{
+      id: 1,
+      text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
+      media: {
+        type: "image",
+        src: "/questions/gq1.png",
+      },
+      answer: "4000mm",
+    },
+    {
+      id: 2,
+      text: "Express in percentage how full is the bottle. The second figure is a representation when bottle in the first figure is inverted.",
+      media: {
+        type: "image",
+        src: "/questions/gq2.png",
+      },
+      answer: "66.667m",
+    },
+    {
+      id: 3,
+      text: "An alloy of metals A and B contains atoms in the ratio of 2 : 5 and weighs 36 g. The percentage of metal A in the sample is 22.22% (by mass). If atomic mass of A is 40, the atomic mass of metal B is ?  ",
+      answer: "56 amu",
+    },
+    {
+      id: 4,
+      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
+      answer: "C2H4",
+    }
   ],
 
   /* ───────────── A / V ROUND (8) ───────────── */

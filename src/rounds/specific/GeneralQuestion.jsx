@@ -19,7 +19,7 @@ export function GeneralQuestion() {
   console.log(selectedRound)
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col relative">
+    <div className="min-h-screen bg-linear-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col relative">
       <div>
         <div className="flex justify-center w-full">
           <div className="p-4 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase">
@@ -34,45 +34,45 @@ export function GeneralQuestion() {
         </button>
       </div>
       <div className="w-full h-[60vh] p-6">
-  {showQuestion && (
-    currentQuestion.text ? (
-      <div className="flex flex-col h-full gap-4">
-        <h2 className="text-xl font-semibold">
-          {currentQuestion.text}
-        </h2>
-          {currentQuestion.media?.type === "image" && (
-            <div className="col-span-5 h-full flex justify-end items-start overflow-hidden">
-              <img
-                src={currentQuestion.media.src}
-                alt="question"
-                className="max-h-full w-auto object-contain"
-              />
+        {showQuestion && (
+          currentQuestion.text ? (
+            <div className="flex flex-col h-full gap-4">
+              <h2 className="text-xl font-semibold">
+                {currentQuestion.text}
+              </h2>
+              {currentQuestion.media?.type === "image" && (
+                <div className="col-span-5 h-full flex justify-end items-start overflow-hidden">
+                  <img
+                    src={currentQuestion.media.src}
+                    alt="question"
+                    className="max-h-full w-auto object-contain"
+                  />
+                </div>
+              )}
             </div>
-          )}
-        </div>
 
-    ) : (
-      // Only image case
-      currentQuestion.media?.type === "image" && (
-        <div className="w-full h-full flex items-center justify-center overflow-hidden">
-          <img
-            src={currentQuestion.media.src}
-            alt="question"
-            className="max-h-full w-auto object-contain"
-          />
-        </div>
-      )
-    )
-  )}
-</div>
+          ) : (
+            // Only image case
+            currentQuestion.media?.type === "image" && (
+              <div className="w-full h-full flex items-start justify-center overflow-hidden">
+                <img
+                  src={currentQuestion.media.src}
+                  alt="question"
+                  className="max-h-full h-auto w-full object-contain"
+                />
+              </div>
+            )
+          )
+        )}
+      </div>
 
 
 
       <div className="h-[20vh] w-full flex self-end justify-end">
         <div className="flex gap-5 items-center justify-center">
-            <div className={` ${showAnswer ? "visible":"invisible" }  bg-green-600 rounded-tl-full  rounded-br-full p-4 text-white text-x font-semibold h-max flex items-center px-10 py-10`}>
-              {currentQuestion.answer}
-            </div>
+          <div className={` ${showAnswer ? "visible" : "invisible"}  bg-green-600 rounded-tl-full  rounded-br-full p-4 text-white text-x font-semibold h-max flex items-center px-10 py-10`}>
+            {currentQuestion.answer}
+          </div>
           <button
             className=" bg-pink-500 p-2 px-5 text-xl rounded text-white"
             onClick={() => setShowAnswer(true)}
