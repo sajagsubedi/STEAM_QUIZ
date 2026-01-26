@@ -4,7 +4,7 @@ import { GeneralQuestion } from "../specific/GeneralQuestion";
 import { RoundBanner } from "./RoundBanner";
 import { RoundRules } from "./RoundRules";
 import { QuestionSelection } from "./QuestionSelection";
-import { SequentialQuestion } from "../specific/SequentialQuestion";
+import { ContemporyQuestion } from "../specific/ContemporyQuestion";
 import { AlternativeQuestion } from "../specific/AlternativeQuestion";
 import { RapidFireQuestion } from "../specific/RapidFireQuestion";
 import { QRQuestion } from "../specific/QRQuestion";
@@ -39,7 +39,7 @@ export const RoundLayout = () => {
       if (currentRound === "abbreviation") return <AbbreviationQuestion />;
       if (currentRound === "rapidFire") return <RapidFireQuestion />;
       if (currentRound === "estimation") return <EstimationQuestion />;
-      if (currentRound === "sequential") return <SequentialQuestion />;
+      if (currentRound === "contempory") return <ContemporyQuestion />;
       if (currentRound === "open") return <OpenQuestion />;
       break;
     default:
@@ -48,9 +48,9 @@ export const RoundLayout = () => {
 };
 
 export const RoundContainer = () => {
-  const { goToMenu,  nextInRound,getCurrentStep } = useNavigationStore();
-  const currentStep=getCurrentStep()
-  const goNext=()=>{
+  const { goToMenu, nextInRound, getCurrentStep } = useNavigationStore();
+  const currentStep = getCurrentStep()
+  const goNext = () => {
     console.log("Go next")
     nextInRound()
   }
@@ -62,22 +62,22 @@ export const RoundContainer = () => {
         <button
           onClick={goToMenu}
           className="bg-rose-500 p-2 rounded text-white"
-          >
+        >
           <AppWindow />
         </button>
       </div>
-      {currentStep !="select" && (
-        
+      {currentStep != "select" && (
+
         <div className="absolute top-1/2 right-0 p-2 flex justify-end w-full">
-        <button
-          onClick={goNext}
-          className="bg-white p-2 rounded-full text-rose-500 cursor-pointer"
+          <button
+            onClick={goNext}
+            className="bg-white p-2 rounded-full text-rose-500 cursor-pointer"
           >
-          <LucideArrowRight />
-        </button>
-      </div>
-          )
-        }
-  </section>
+            <LucideArrowRight />
+          </button>
+        </div>
+      )
+      }
+    </section>
   );
 };

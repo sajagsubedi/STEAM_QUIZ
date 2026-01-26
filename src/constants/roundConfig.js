@@ -43,7 +43,7 @@ export const ROUND_CONFIGS = {
       "Audio or video based questions",
       "Observe carefully before answering",
     ],
-    totalQuestions: 8,
+    totalQuestions: 6,
   },
 
   gambling: {
@@ -86,15 +86,15 @@ export const ROUND_CONFIGS = {
     totalQuestions: 2,
   },
 
-  sequential: {
-    key: "sequential",
-    title: "Sequential",
+  contempory: {
+    key: "contempory",
+    title: "Contempory",
     logo: "/logos/seq.png",
-    flow: ["banner", "rules", "question"],
-    timers: [60],
+    flow: ["banner", "rules", "select", "question"],
+    timers: [60, 30, 20, 20],
     rules: ["Questions appear one after another"],
 
-    totalQuestions: 4,
+    totalQuestions: 8,
   },
 
   open: {

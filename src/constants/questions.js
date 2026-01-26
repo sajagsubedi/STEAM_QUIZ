@@ -172,19 +172,19 @@ export const QUESTIONS = {
     {
       id: 3,
       text: "Four forces of magnitudes P, 2P, 3P and 4P act along the four sides of a square ABCD in cyclic order.  find the resultant force.",
-      options:[{text:"8P"},{text:"2√2P"},{text:"√2P"},{text:"3√2P"}],
+      options: [{ text: "8P" }, { text: "2√2P" }, { text: "√2P" }, { text: "3√2P" }],
       answer: 1,
     },
     {
       id: 4,
       text: " Find the maximum area of the rectangle that can be inscribed in a circle of ",
-      options: [{text:"2√2R²"},{text:"2R²"},{text:"√2R²"},{text:"√2R²"}],
+      options: [{ text: "2√2R²" }, { text: "2R²" }, { text: "√2R²" }, { text: "√2R²" }],
       answer: 0,
     },
     {
       id: 5,
       text: " A small ball rolls of the top of a stairway horizontally with a velocity of 4.5 m s–1. Each step is 0.2 m high and 0.3 m wide. If g is 10 ms–2, then the ball will strike the nth step where n is equal to (assume ball strike at the edge of the step)",
-      options: [{text:"9"},{text:"10"},{text:"11"},{text:"12"}],
+      options: [{ text: "9" }, { text: "10" }, { text: "11" }, { text: "12" }],
       answer: 0,
     },
     {
@@ -194,41 +194,41 @@ export const QUESTIONS = {
         type: "image",
         src: "/questions/alt6.png"
       },
-      options: [{text:"√𝟐𝒈𝒉"},{text:"√𝟔𝒈𝒉"},{text:"√𝟑𝒈𝒉"},{text:"√𝒈𝒉"}],
+      options: [{ text: "√𝟐𝒈𝒉" }, { text: "√𝟔𝒈𝒉" }, { text: "√𝟑𝒈𝒉" }, { text: "√𝒈𝒉" }],
       answer: 3,
     },
     {
       id: 7,
       text: "A particle moves along x-axis in positive direction. Its acceleration 'a' is given as a = cx + d, where x denotes the x-coordinate of particle, c and d are positive constants. For velocity-position graph of particle to be of type as shown in figure, find the value of speed (in m/s) of particle at x = 0. Take c = 1 s–2 and d = 3 ms–2",
-      options: [{text:"3"},{text:"4"},{text:"5"},{text:"6"}],
+      options: [{ text: "3" }, { text: "4" }, { text: "5" }, { text: "6" }],
       answer: 0,
     },
     {
       id: 8,
       text: "A mass of 10 kg is suspended by a rope of length 4 m, from the ceiling. A force F is applied horizontally at the mid-point of the rope such that the top half of the rope makes an angle of 45° with the vertical. Then F equals : (Take g = 10 ms–2 and the rope to be massless)",
-      options: [{text:"100√2 N"},{text:"100 N"},{text:"100√3 N"},{text:"100√6 N"}],
+      options: [{ text: "100√2 N" }, { text: "100 N" }, { text: "100√3 N" }, { text: "100√6 N" }],
       answer: 1,
     },
     {
       id: 9,
       text: "Two rods, one of aluminium and the other made of steel, having initial length l1 and ll2 are connected together to form a single rod of length l1 + l2. The coefficients of linear expansion for aluminium and steel are aa and 𝒂𝒔 respectively. If the length of each rod increases by the same amount when their temperature are raised by tºC, then find the ratio l1/(l1+l2)",
-      options: [{text:"as/aa"},{text:"aa/as"},{text:"as/(aa+as)"},{text:"aa/(aa+as)"}],
+      options: [{ text: "as/aa" }, { text: "aa/as" }, { text: "as/(aa+as)" }, { text: "aa/(aa+as)" }],
       answer: 2,
     },
     {
       id: 10,
       text: " A copper ball of mass 100 gm is at a temperature T. It is dropped in a copper calorimeter of mass 100 gm, filled with 170 gm of water at room temperature. Subsequently, the temperature of the system is found to be 75º C. T is given by : (Given : room temperature = 30ºC, specific heat of copper = 0.1 cal/gmºC)",
-      options: [{text:"825 C"},{text:"750 C"},{text:"885 C"},{text:"675 C"}],
+      options: [{ text: "825 C" }, { text: "750 C" }, { text: "885 C" }, { text: "675 C" }],
       answer: 2,
     },
     {
       id: 11,
       text: " A biconvex lens of focal length 15 cm is in front of a plane mirror. The distance between the lens and the mirror is 10 cm. A small object is kept at a distance of 30 cm from the lens. The final image is ",
       options: [
-        {text:"Virtual and at a distance of 16 cm from the mirror"},
-        {text:"Real and at a distance of 16 cm from the mirror"},
-        {text:"Virtual and at a distance of 20 cm from the mirror"},
-        {text:"Real and at a distance of 20 cm from the mirror"}],
+        { text: "Virtual and at a distance of 16 cm from the mirror" },
+        { text: "Real and at a distance of 16 cm from the mirror" },
+        { text: "Virtual and at a distance of 20 cm from the mirror" },
+        { text: "Real and at a distance of 20 cm from the mirror" }],
       answer: 1,
     },
     {
@@ -315,7 +315,7 @@ export const QUESTIONS = {
 
   /* ───────────── QUICK RESPONSE (4 SEQUENTIAL) ───────────── */
   quickResponse: [
-{
+    {
       id: 1,
       text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
       media: {
@@ -349,51 +349,50 @@ export const QUESTIONS = {
   av: [
     {
       id: 1,
-      text: "Identify the monument.",
-      media: { type: "image", src: "/av/tajmahal.jpg" },
-      answer: "Taj Mahal",
+      text: "Name the scientist.",
+      media: { type: "image", src: "/questions/av/avq1.jpeg" },
+      answer: "John joseph thompson",
+      msg: "Observe the picture"
     },
     {
       id: 2,
-      text: "Identify the sound.",
-      media: { type: "audio", src: "/av/lion-roar.mp3" },
-      answer: "Lion",
+      text: "Name the phenomenon occuring in this video.",
+      media: { type: "video", src: "/questions/av/avq2.mp4" },
+      answer: "Motor Effect",
+      msg: "Observe the clip"
+
     },
     {
       id: 3,
-      text: "Identify the instrument.",
-      media: { type: "image", src: "/av/guitar.jpg" },
-      answer: "Guitar",
+      text: "Who is the speaker is this audio?.",
+      media: { type: "audio", src: "/questions/av/avq3.mp3" },
+      answer: "Albert Einstein",
+      msg: "Listen the audio"
+
     },
     {
       id: 4,
       text: "Identify the logo.",
       media: { type: "image", src: "/av/nike.png" },
       answer: "Nike",
+      msg: "Observe the picture"
+
     },
     {
       id: 5,
       text: "Identify the animal.",
       media: { type: "video", src: "/av/cheetah.mp4" },
       answer: "Cheetah",
+      msg: "Observe the picture"
+
     },
     {
       id: 6,
       text: "Identify the place.",
       media: { type: "image", src: "/av/eiffel.jpg" },
       answer: "Eiffel Tower",
-    },
-    {
-      id: 7,
-      text: "Identify the voice.",
-      media: { type: "audio", src: "/av/morgan-freeman.mp3" },
-      answer: "Morgan Freeman",
-    },
-    {
-      id: 8,
-      text: "Identify the personality.",
-      media: { type: "image", src: "/av/einstein.jpg" },
-      answer: "Albert Einstein",
+      msg: "Observe the picture"
+
     },
   ],
 
@@ -430,12 +429,57 @@ export const QUESTIONS = {
     { id: 8, text: "WHO", answer: "World Health Organization" },
   ],
 
-  /* ───────────── SEQUENTIAL ROUND (4) ───────────── */
-  sequential: [
-    { id: 1, text: "First letter of alphabet?", answer: "A" },
-    { id: 2, text: "Second letter?", answer: "B" },
-    { id: 3, text: "Third letter?", answer: "C" },
-    { id: 4, text: "Fourth letter?", answer: "D" },
+  /* ───────────── CONTEMPORY ROUND (4) ───────────── */
+  contempory: [
+    {
+      id: 1,
+      text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
+      media: {
+        type: "image",
+        src: "/questions/gq1.png",
+      },
+      answer: "4000mm",
+    },
+    {
+      id: 2,
+      text: "Express in percentage how full is the bottle. The second figure is a representation when bottle in the first figure is inverted.",
+      media: {
+        type: "image",
+        src: "/questions/gq2.png",
+      },
+      answer: "66.667m",
+    },
+    {
+      id: 3,
+      text: "An alloy of metals A and B contains atoms in the ratio of 2 : 5 and weighs 36 g. The percentage of metal A in the sample is 22.22% (by mass). If atomic mass of A is 40, the atomic mass of metal B is ?  ",
+      answer: "56 amu",
+    },
+    {
+      id: 4,
+      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
+      answer: "C2H4",
+    },
+    {
+      id: 5,
+      text: "If the line 2x+y = k passes through the point which divides the line segment joining the points (1, 1) and (2, 4) in the ratio 3 : 2, then k equals? ",
+      answer: "6",
+    },
+    {
+      id: 6,
+      text: "What is the dimensional formula of resistivity? ",
+      answer: "M¹L³T⁻³A⁻²",
+    },
+    {
+      id: 7,
+      text: "The empirical formula of sucrose is",
+      answer: "C₁₂H₂₂O₁₁",
+    },
+    {
+      id: 8,
+      text: "What is the angle(in circular measure) between the hour hand and the minute hand of a clock when the time is half past 4 ? ",
+      answer: "𝛑/𝟒 RADIAN",
+    },
+
   ],
 
   /* ───────────── ESTIMATION (2) ───────────── */
@@ -445,7 +489,7 @@ export const QUESTIONS = {
   ],
 
   /* ───────────── RAPID FIRE (8 SETS × 10) ───────────── */
-rapidFire : [
+  rapidFire: [
     {
       setId: 1,
       questions: [
@@ -567,12 +611,36 @@ rapidFire : [
       ],
     },
   ],
-  
+
   /* ───────────── OPEN ROUND (4 SEQUENTIAL) ───────────── */
   open: [
-    { id: 1, text: "Open question 1", answer: "Open Answer 1" },
-    { id: 2, text: "Open question 2", answer: "Open Answer 2" },
-    { id: 3, text: "Open question 3", answer: "Open Answer 3" },
-    { id: 4, text: "Open question 4", answer: "Open Answer 4" },
-  ],
+    {
+      id: 1,
+      text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
+      media: {
+        type: "image",
+        src: "/questions/gq1.png",
+      },
+      answer: "4000mm",
+    },
+    {
+      id: 2,
+      text: "Express in percentage how full is the bottle. The second figure is a representation when bottle in the first figure is inverted.",
+      media: {
+        type: "image",
+        src: "/questions/gq2.png",
+      },
+      answer: "66.667m",
+    },
+    {
+      id: 3,
+      text: "An alloy of metals A and B contains atoms in the ratio of 2 : 5 and weighs 36 g. The percentage of metal A in the sample is 22.22% (by mass). If atomic mass of A is 40, the atomic mass of metal B is ?  ",
+      answer: "56 amu",
+    },
+    {
+      id: 4,
+      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
+      answer: "C2H4",
+    }
+  ]
 };

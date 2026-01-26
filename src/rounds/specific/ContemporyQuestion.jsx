@@ -4,16 +4,17 @@ import { useNavigationStore } from "../../store/useNavigation";
 import { QUESTIONS } from "../../constants/questions";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
 
-export function OpenQuestionPage() {
-  const { sequentialCount, selectedRound } = useNavigationStore();
+export function ContemporyQuestion() {
+  const { selectedQuestion, selectedRound } = useNavigationStore();
   const [showQuestion, setShowQuestion] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const currentQuestion = QUESTIONS.open.find(
-    (q) => q.id === sequentialCount
+  const currentQuestion = QUESTIONS.contempory.find(
+    (q) => q.id === selectedQuestion
   );
+
   if (!currentQuestion) return null;
-  const config = ROUND_CONFIGS["open"];
+  const config = ROUND_CONFIGS["contempory"];
   console.log(selectedRound)
 
   return (
@@ -21,7 +22,7 @@ export function OpenQuestionPage() {
       <div>
         <div className="flex justify-center w-full">
           <div className="p-4 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase">
-            Open Round
+            Contempory Round
           </div>
         </div>
         <button
@@ -36,7 +37,7 @@ export function OpenQuestionPage() {
           currentQuestion.text ? (
             <div className="flex flex-col h-full gap-4">
               <h2 className="text-xl font-semibold">
-                {sequentialCount}) {currentQuestion.text}
+                {currentQuestion.text}
               </h2>
               {currentQuestion.media?.type === "image" && (
                 <div className="col-span-5 h-full flex justify-end items-start overflow-hidden">
@@ -82,9 +83,4 @@ export function OpenQuestionPage() {
       <CircularTimer timers={config.timers} />
     </div>
   );
-}
-
-export function OpenQuestion() {
-  const { sequentialCount } = useNavigationStore();
-  return <OpenQuestionPage key={sequentialCount} />;
 }

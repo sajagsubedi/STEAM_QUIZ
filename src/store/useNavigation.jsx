@@ -82,6 +82,15 @@ export const useNavigationStore = create((set, get) => ({
       }
 
     }
+    if (currentRound == "open" && step == "question") {
+      if (sequentialCount <= ROUND_CONFIGS["open"].totalQuestions) {
+        set({ sequentialCount: sequentialCount + 1 })
+      }
+      else {
+        goToMenu()
+      }
+
+    }
 
 
     // --------------------
