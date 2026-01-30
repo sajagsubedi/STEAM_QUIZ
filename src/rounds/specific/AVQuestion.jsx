@@ -30,7 +30,7 @@ export const AVQuestion = () => {
       <div className="flex flex-col gap-4">
         <div className="flex justify-center w-full">
           <div className="px-8 py-3 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase shadow">
-            Audio / Visual Round
+            {config.title}
           </div>
         </div>
 

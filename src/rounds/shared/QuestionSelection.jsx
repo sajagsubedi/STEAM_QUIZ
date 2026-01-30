@@ -1,3 +1,5 @@
+import { LucideArrowLeft, LucideArrowRight } from "lucide-react"
+import { ROUND_CONFIGS } from "../../constants/roundConfig"
 import { useNavigationStore } from "../../store/useNavigation"
 
 const getGridConfig = (total) => {
@@ -17,22 +19,49 @@ export const QuestionSelection = ({ roundConfig }) => {
     answeredQuestions,
     selectQuestion,
     nextInRound,
+    currentSubjectId,
+    goToSubSelection
   } = useNavigationStore()
+
+  let currentAnsweredQuestions;
+  if (currentRound == "elimination1" || currentRound == "elimination2") {
+    currentAnsweredQuestions = answeredQuestions[currentRound] ? answeredQuestions[currentRound] : {};
+    currentAnsweredQuestions = currentAnsweredQuestions[currentSubjectId] ? currentAnsweredQuestions[currentSubjectId] : [];
+  }
+  else {
+    currentAnsweredQuestions = answeredQuestions[currentRound] ? answeredQuestions[currentRound] : [];
+  }
 
   const totalItems =
     typeof roundConfig.sets === "number"
       ? roundConfig.sets
-      : roundConfig.totalQuestions
+      : typeof roundConfig.questionsPerSubject === "number"
+        ? roundConfig.questionsPerSubject : roundConfig.totalQuestions;
 
   const { cols, text, maxWidth } = getGridConfig(totalItems)
+  const config = ROUND_CONFIGS[currentRound]
+  const goBack = () => {
+    goToSubSelection()
+  }
 
   return (
-    <div className="min-h-screen max-h-screen bg-gradient-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col">
-      
+    <div className="min-h-screen max-h-screen bg-linear-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col">
+      {currentRound.startsWith("elimination") &&
+        <div className="absolute top-1/2 right-0 p-2 flex justify-start w-full ">
+          <button
+            onClick={goBack}
+            className="bg-white p-2 rounded-full text-rose-500 cursor-pointer"
+          >
+            <LucideArrowLeft />
+          </button>
+        </div>
+      }
+
+
       {/* HEADER */}
       <div className="flex flex-col items-center gap-4 mb-8">
         <div className="px-6 py-3 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase shadow-lg">
-          {currentRound?.replace(/([A-Z])/g, " $1")} Round
+          {config.title}
         </div>
 
         <h2 className="text-3xl font-bold text-gray-800">
@@ -40,9 +69,9 @@ export const QuestionSelection = ({ roundConfig }) => {
         </h2>
 
         <div className="text-lg font-medium text-gray-700">
-          Answered{" "}
+          Answered:&nbsp;
           <span className="font-bold">
-            {answeredQuestions.length}/{totalItems}
+            {currentAnsweredQuestions.length}/{totalItems}
           </span>
         </div>
       </div>
@@ -56,27 +85,23 @@ export const QuestionSelection = ({ roundConfig }) => {
         }}
       >
         {Array.from({ length: totalItems }, (_, i) => i + 1).map((num) => {
-          const isAnswered = answeredQuestions.includes(num)
+          const isAnswered = currentAnsweredQuestions.includes(num)
           const isSelected = selectedQuestion === num
 
           return (
             <button
               key={num}
-              disabled={isAnswered}
               onClick={() => {
-                if (!isAnswered) {
-                  selectQuestion(num)
-                  nextInRound()
-                }
+                selectQuestion(num)
+                nextInRound()
               }}
               className={`
                 aspect-square rounded-2xl font-bold flex items-center justify-center
                 transition-all duration-200 shadow-lg p-8
                 ${text}
-                ${
-                  isAnswered
-                    ? "bg-gray-400 text-gray-700 cursor-not-allowed opacity-70"
-                    : isSelected
+                ${isAnswered
+                  ? "bg-gray-400 text-gray-700  opacity-70"
+                  : isSelected
                     ? "bg-yellow-400 text-gray-900 scale-110 ring-4 ring-yellow-300"
                     : "bg-white text-pink-600 hover:scale-105 hover:bg-pink-100"
                 }

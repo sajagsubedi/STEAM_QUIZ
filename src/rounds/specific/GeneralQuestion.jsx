@@ -5,25 +5,22 @@ import { QUESTIONS } from "../../constants/questions";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
 
 export function GeneralQuestion() {
-  const { selectedQuestion, selectedRound } = useNavigationStore();
+  const { selectedQuestion } = useNavigationStore();
   const [showQuestion, setShowQuestion] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 
   const currentQuestion = QUESTIONS.general.find(
     (q) => q.id === selectedQuestion
   );
-  console.log(currentQuestion);
-
   if (!currentQuestion) return null;
   const config = ROUND_CONFIGS["general"];
-  console.log(selectedRound)
 
   return (
     <div className="min-h-screen bg-linear-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col relative">
       <div>
         <div className="flex justify-center w-full">
           <div className="p-4 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase">
-            General Round
+            {config.title}
           </div>
         </div>
         <button
@@ -38,7 +35,7 @@ export function GeneralQuestion() {
           currentQuestion.text ? (
             <div className="flex flex-col h-full gap-4">
               <h2 className="text-xl font-semibold">
-                {currentQuestion.text}
+                {currentQuestion.id}) {currentQuestion.text}
               </h2>
               {currentQuestion.media?.type === "image" && (
                 <div className="col-span-5 h-full flex justify-end items-start overflow-hidden">

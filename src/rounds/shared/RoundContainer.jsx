@@ -8,12 +8,13 @@ import { ContemporyQuestion } from "../specific/ContemporyQuestion";
 import { AlternativeQuestion } from "../specific/AlternativeQuestion";
 import { RapidFireQuestion } from "../specific/RapidFireQuestion";
 import { QRQuestion } from "../specific/QRQuestion";
-import { GamblingQuestion } from "../specific/GamblingQuestion";
 import { AVQuestion } from "../specific/AVQuestion";
-import { AbbreviationQuestion } from "../specific/AbbreviationQuestion";
 import { OpenQuestion } from "../specific/OpenQuestion";
-import { EstimationQuestion } from "../specific/EstimationQuestion";
-import { AppWindow, LucideArrowLeft, LucideArrowRight } from "lucide-react";
+import { AppWindow, LucideArrowRight } from "lucide-react";
+import { EliminationQuestion } from "../specific/EliminationQuestion";
+import { SubjectSelection } from "./SubjectSelection";
+import { GamblingQuestion } from "../specific/GamblingQuestion";
+
 
 // Main Round Container
 export const RoundLayout = () => {
@@ -28,17 +29,19 @@ export const RoundLayout = () => {
       return <RoundBanner roundConfig={roundConfig} />;
     case "rules":
       return <RoundRules roundConfig={roundConfig} />;
+    case "subselection":
+      return <SubjectSelection roundConfig={roundConfig} />;
     case "select":
       return <QuestionSelection roundConfig={roundConfig} />;
     case "question":
       if (currentRound === "general") return <GeneralQuestion />;
+      if (currentRound === "elimination1") return <EliminationQuestion />;
       if (currentRound === "alternative") return <AlternativeQuestion />;
+      if (currentRound === "elimination2") return <EliminationQuestion />;
       if (currentRound === "quickResponse") return <QRQuestion />;
       if (currentRound === "av") return <AVQuestion />;
       if (currentRound === "gambling") return <GamblingQuestion />;
-      if (currentRound === "abbreviation") return <AbbreviationQuestion />;
       if (currentRound === "rapidFire") return <RapidFireQuestion />;
-      if (currentRound === "estimation") return <EstimationQuestion />;
       if (currentRound === "contempory") return <ContemporyQuestion />;
       if (currentRound === "open") return <OpenQuestion />;
       break;
@@ -51,7 +54,6 @@ export const RoundContainer = () => {
   const { goToMenu, nextInRound, getCurrentStep } = useNavigationStore();
   const currentStep = getCurrentStep()
   const goNext = () => {
-    console.log("Go next")
     nextInRound()
   }
 
@@ -66,9 +68,9 @@ export const RoundContainer = () => {
           <AppWindow />
         </button>
       </div>
-      {currentStep != "select" && (
+      {currentStep != "select" && currentStep != "subselection" && (
 
-        <div className="absolute top-1/2 right-0 p-2 flex justify-end w-full">
+        <div className="absolute top-1/2 right-0 p-2 flex justify-end w-full ">
           <button
             onClick={goNext}
             className="bg-white p-2 rounded-full text-rose-500 cursor-pointer"

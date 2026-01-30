@@ -145,7 +145,98 @@ export const QUESTIONS = {
       answer: "√500 or 10√5 or 22.36",
     },
   ],
+  /* ───────────── ELIMINATION ROUND (6 SUBJECTS × 8 QUESTIONS) ───────────── */
+  elimination1: [
+    {
+      subjectId: 1,
+      subjectName: "Physics",
+      questions: [
+        { id: 1, text: "SI unit of force?", answer: "Newton" },
+        { id: 2, text: "Value of g?", answer: "9.8 m/s²" },
+        { id: 3, text: "Unit of pressure?", answer: "Pascal" },
+        { id: 4, text: "Formula of speed?", answer: "Distance / Time" },
+        { id: 5, text: "Who proposed laws of motion?", answer: "Newton" },
+        { id: 6, text: "Unit of work?", answer: "Joule" },
+        { id: 7, text: "Unit of power?", answer: "Watt" },
+        { id: 8, text: "Formula of density?", answer: "m/V" }
+      ]
+    },
 
+    {
+      subjectId: 2,
+      subjectName: "Chemistry",
+      questions: [
+        { id: 1, text: "Atomic number of H?", answer: "1" },
+        { id: 2, text: "Formula of water?", answer: "H₂O" },
+        { id: 3, text: "pH of neutral?", answer: "7" },
+        { id: 4, text: "Chemical symbol of Na?", answer: "Na" },
+        { id: 5, text: "Avogadro number?", answer: "6.022×10²³" },
+        { id: 6, text: "Unit of molarity?", answer: "mol/L" },
+        { id: 7, text: "Gas constant R?", answer: "8.314" },
+        { id: 8, text: "Valency of oxygen?", answer: "2" }
+      ]
+    },
+
+    {
+      subjectId: 3,
+      subjectName: "Mathematics",
+      questions: [
+        { id: 1, text: "Value of π?", answer: "3.14" },
+        { id: 2, text: "Derivative of x²?", answer: "2x" },
+        { id: 3, text: "Formula of area of circle?", answer: "πr²" },
+        { id: 4, text: "Square root of 64?", answer: "8" },
+        { id: 5, text: "Value of sin 90°?", answer: "1" },
+        { id: 6, text: "Value of cos 0°?", answer: "1" },
+        { id: 7, text: "2² + 2³ = ?", answer: "12" },
+        { id: 8, text: "Angle of straight line?", answer: "180°" }
+      ]
+    },
+
+    {
+      subjectId: 4,
+      subjectName: "Biology",
+      questions: [
+        { id: 1, text: "Powerhouse of cell?", answer: "Mitochondria" },
+        { id: 2, text: "Unit of life?", answer: "Cell" },
+        { id: 3, text: "Green pigment?", answer: "Chlorophyll" },
+        { id: 4, text: "Blood purification organ?", answer: "Kidney" },
+        { id: 5, text: "Human chromosome number?", answer: "46" },
+        { id: 6, text: "Largest organ?", answer: "Skin" },
+        { id: 7, text: "Plant food making process?", answer: "Photosynthesis" },
+        { id: 8, text: "Brain part for thinking?", answer: "Cerebrum" }
+      ]
+    },
+
+    {
+      subjectId: 5,
+      subjectName: "Computer",
+      questions: [
+        { id: 1, text: "Brain of computer?", answer: "CPU" },
+        { id: 2, text: "Full form of RAM?", answer: "Random Access Memory" },
+        { id: 3, text: "Binary of 2?", answer: "10" },
+        { id: 4, text: "HTML stands for?", answer: "HyperText Markup Language" },
+        { id: 5, text: "1 KB = ?", answer: "1024 Bytes" },
+        { id: 6, text: "OS example?", answer: "Windows" },
+        { id: 7, text: "Mouse is?", answer: "Input device" },
+        { id: 8, text: "Chrome is?", answer: "Browser" }
+      ]
+    },
+
+    {
+      subjectId: 6,
+      subjectName: "General Knowledge",
+      questions: [
+        { id: 1, text: "Capital of Nepal?", answer: "Kathmandu" },
+        { id: 2, text: "Highest mountain?", answer: "Everest" },
+        { id: 3, text: "Father of nation Nepal?", answer: "Prithvi Narayan Shah" },
+        { id: 4, text: "Currency of Nepal?", answer: "Rupee" },
+        { id: 5, text: "National bird?", answer: "Danphe" },
+        { id: 6, text: "National flower?", answer: "Rhododendron" },
+        { id: 7, text: "Democracy day?", answer: "Falgun 7" },
+        { id: 8, text: "Language of computer?", answer: "Binary" }
+      ]
+    }
+  ],
 
   /* ───────────── ALTERNATIVE ROUND (8) ───────────── */
   alternative: [
@@ -312,7 +403,97 @@ export const QUESTIONS = {
 
 
   ],
+  elimination2: [
+    {
+      subjectId: 1,
+      subjectName: "Physics",
+      questions: [
+        { id: 1, text: "SI unit of force?el2", answer: "Newton" },
+        { id: 2, text: "Value of g?", answer: "9.8 m/s²" },
+        { id: 3, text: "Unit of pressure?", answer: "Pascal" },
+        { id: 4, text: "Formula of speed?", answer: "Distance / Time" },
+        { id: 5, text: "Who proposed laws of motion?", answer: "Newton" },
+        { id: 6, text: "Unit of work?", answer: "Joule" },
+        { id: 7, text: "Unit of power?", answer: "Watt" },
+        { id: 8, text: "Formula of density?", answer: "m/V" }
+      ]
+    },
 
+    {
+      subjectId: 2,
+      subjectName: "Chemistry",
+      questions: [
+        { id: 1, text: "Atomic number of H?el2", answer: "1" },
+        { id: 2, text: "Formula of water?", answer: "H₂O" },
+        { id: 3, text: "pH of neutral?", answer: "7" },
+        { id: 4, text: "Chemical symbol of Na?", answer: "Na" },
+        { id: 5, text: "Avogadro number?", answer: "6.022×10²³" },
+        { id: 6, text: "Unit of molarity?", answer: "mol/L" },
+        { id: 7, text: "Gas constant R?", answer: "8.314" },
+        { id: 8, text: "Valency of oxygen?", answer: "2" }
+      ]
+    },
+
+    {
+      subjectId: 3,
+      subjectName: "Mathematics",
+      questions: [
+        { id: 1, text: "Value of π?el2", answer: "3.14" },
+        { id: 2, text: "Derivative of x²?", answer: "2x" },
+        { id: 3, text: "Formula of area of circle?", answer: "πr²" },
+        { id: 4, text: "Square root of 64?", answer: "8" },
+        { id: 5, text: "Value of sin 90°?", answer: "1" },
+        { id: 6, text: "Value of cos 0°?", answer: "1" },
+        { id: 7, text: "2² + 2³ = ?", answer: "12" },
+        { id: 8, text: "Angle of straight line?", answer: "180°" }
+      ]
+    },
+
+    {
+      subjectId: 4,
+      subjectName: "Biology",
+      questions: [
+        { id: 1, text: "Powerhouse of cell?el2", answer: "Mitochondria" },
+        { id: 2, text: "Unit of life?", answer: "Cell" },
+        { id: 3, text: "Green pigment?", answer: "Chlorophyll" },
+        { id: 4, text: "Blood purification organ?", answer: "Kidney" },
+        { id: 5, text: "Human chromosome number?", answer: "46" },
+        { id: 6, text: "Largest organ?", answer: "Skin" },
+        { id: 7, text: "Plant food making process?", answer: "Photosynthesis" },
+        { id: 8, text: "Brain part for thinking?", answer: "Cerebrum" }
+      ]
+    },
+
+    {
+      subjectId: 5,
+      subjectName: "Computer",
+      questions: [
+        { id: 1, text: "Brain of computer?el2", answer: "CPU" },
+        { id: 2, text: "Full form of RAM?", answer: "Random Access Memory" },
+        { id: 3, text: "Binary of 2?", answer: "10" },
+        { id: 4, text: "HTML stands for?", answer: "HyperText Markup Language" },
+        { id: 5, text: "1 KB = ?", answer: "1024 Bytes" },
+        { id: 6, text: "OS example?", answer: "Windows" },
+        { id: 7, text: "Mouse is?", answer: "Input device" },
+        { id: 8, text: "Chrome is?", answer: "Browser" }
+      ]
+    },
+
+    {
+      subjectId: 6,
+      subjectName: "General Knowledge",
+      questions: [
+        { id: 1, text: "Capital of Nepal?el2", answer: "Kathmandu" },
+        { id: 2, text: "Highest mountain?", answer: "Everest" },
+        { id: 3, text: "Father of nation Nepal?", answer: "Prithvi Narayan Shah" },
+        { id: 4, text: "Currency of Nepal?", answer: "Rupee" },
+        { id: 5, text: "National bird?", answer: "Danphe" },
+        { id: 6, text: "National flower?", answer: "Rhododendron" },
+        { id: 7, text: "Democracy day?", answer: "Falgun 7" },
+        { id: 8, text: "Language of computer?", answer: "Binary" }
+      ]
+    }
+  ],
   /* ───────────── QUICK RESPONSE (4 SEQUENTIAL) ───────────── */
   quickResponse: [
     {
@@ -396,39 +577,6 @@ export const QUESTIONS = {
     },
   ],
 
-  /* ───────────── GAMBLING ROUND (8) ───────────── */
-  gambling: [
-    { id: 1, text: "How many bones in human body?", answer: "206" },
-    { id: 2, text: "Value of π (approx)?", answer: "3.14" },
-    { id: 3, text: "Who invented telephone?", answer: "Alexander Graham Bell" },
-    { id: 4, text: "Largest desert?", answer: "Sahara" },
-    { id: 5, text: "Speed of light?", answer: "3 × 10⁸ m/s" },
-    { id: 6, text: "Founder of Microsoft?", answer: "Bill Gates" },
-    { id: 7, text: "First man on moon?", answer: "Neil Armstrong" },
-    { id: 8, text: "Most spoken language?", answer: "Mandarin Chinese" },
-  ],
-
-  /* ───────────── ABBREVIATION ROUND (8) ───────────── */
-  abbreviation: [
-    { id: 1, text: "CPU", answer: "Central Processing Unit" },
-    { id: 2, text: "RAM", answer: "Random Access Memory" },
-    { id: 3, text: "URL", answer: "Uniform Resource Locator" },
-    { id: 4, text: "HTTP", answer: "HyperText Transfer Protocol" },
-    { id: 5, text: "GDP", answer: "Gross Domestic Product" },
-    {
-      id: 6,
-      text: "UNESCO",
-      answer:
-        "United Nations Educational, Scientific and Cultural Organization",
-    },
-    {
-      id: 7,
-      text: "NASA",
-      answer: "National Aeronautics and Space Administration",
-    },
-    { id: 8, text: "WHO", answer: "World Health Organization" },
-  ],
-
   /* ───────────── CONTEMPORY ROUND (4) ───────────── */
   contempory: [
     {
@@ -480,12 +628,6 @@ export const QUESTIONS = {
       answer: "𝛑/𝟒 RADIAN",
     },
 
-  ],
-
-  /* ───────────── ESTIMATION (2) ───────────── */
-  estimation: [
-    { id: 1, text: "Estimate population of Nepal.", answer: "≈30 million" },
-    { id: 2, text: "Estimate height of Mount Everest (m).", answer: "≈8849 m" },
   ],
 
   /* ───────────── RAPID FIRE (8 SETS × 10) ───────────── */

@@ -7,7 +7,7 @@ const initialRoundState = {
   currentFlowIndex: 0,
   selectedQuestion: null,
   sequentialCount: 1,
-  answeredQuestions: [],
+  currentSubjectId: null
 };
 
 export const useNavigationStore = create((set, get) => ({
@@ -17,7 +17,7 @@ export const useNavigationStore = create((set, get) => ({
   currentPage: "welcome", // welcome | intro | poster | rules | menu | round
 
   ...initialRoundState,
-
+  answeredQuestions: {},
   goToPage: (page) => set({ currentPage: page }),
 
   goToIntro: () => set({ currentPage: "intro" }),
@@ -35,7 +35,6 @@ export const useNavigationStore = create((set, get) => ({
   // --------------------
   startRound: (roundKey) => {
     const config = ROUND_CONFIGS[roundKey];
-    if (!config) return;
 
     set({
       currentPage: "round",
@@ -44,7 +43,7 @@ export const useNavigationStore = create((set, get) => ({
       currentFlowIndex: 0,
       sequentialCount: 1,
       selectedQuestion: null,
-      answeredQuestions: [],
+      currentSubjectId: null,
     });
   },
 
@@ -52,71 +51,102 @@ export const useNavigationStore = create((set, get) => ({
   // Round navigation
   // --------------------
   nextInRound: () => {
+
     const state = get();
+
     const {
-      currentRoundFlow,
       currentRound,
+      currentRoundFlow,
       currentFlowIndex,
       selectedQuestion,
-      answeredQuestions,
       sequentialCount,
+      currentSubjectId,
+      answeredQuestions,
       goToMenu
     } = state;
 
-    if (!currentRoundFlow.length) {
-      return;
-    }
-
     const step = currentRoundFlow[currentFlowIndex];
 
-    // Block question screen without selection
+    // --------------------
+    // Guards
+    // --------------------
     if (step === "select" && !selectedQuestion) return;
-
-
-    if (currentRound == "quickResponse" && step == "question") {
-      if (sequentialCount <= ROUND_CONFIGS["quickResponse"].totalQuestions) {
-        set({ sequentialCount: sequentialCount + 1 })
-      }
-      else {
-        goToMenu()
-      }
-
-    }
-    if (currentRound == "open" && step == "question") {
-      if (sequentialCount <= ROUND_CONFIGS["open"].totalQuestions) {
-        set({ sequentialCount: sequentialCount + 1 })
-      }
-      else {
-        goToMenu()
-      }
-
-    }
-
+    if (step === "subselection" && !currentSubjectId) return;
 
     // --------------------
-    // Question logic
+    // Sequential rounds
     // --------------------
-    if (step === "question") {
-      if (selectedQuestion) {
+    if (
+      (currentRound === "quickResponse" || currentRound === "open") &&
+      step === "question"
+    ) {
+      if (sequentialCount < ROUND_CONFIGS[currentRound].totalQuestions) {
+        set({ sequentialCount: sequentialCount + 1 });
+      } else {
+        goToMenu();
+        return;
+      }
+    }
+
+    // --------------------
+    // Save Answered Question
+    // --------------------
+    if (step === "question" && selectedQuestion) {
+
+      // ---------- ELIMINATION ----------
+      if (currentRound === "elimination1" || currentRound == "elimination2") {
+
+        const subjectAnswers =
+          answeredQuestions[currentRound]?.[currentSubjectId] || [];
+
         set({
-          answeredQuestions: [...answeredQuestions, selectedQuestion],
-          selectedQuestion: null,
-        })
+          answeredQuestions: {
+            ...answeredQuestions,
+            [currentRound]: {
+              ...answeredQuestions[currentRound],
+              [currentSubjectId]: [...subjectAnswers, selectedQuestion],
+            }
+          },
+          selectedQuestion: null
+        });
+
+      }
+
+      // ---------- NORMAL ROUNDS ----------
+      else {
+
+        const roundAnswers = answeredQuestions[currentRound] || [];
+
+        set({
+          answeredQuestions: {
+            ...answeredQuestions,
+            [currentRound]: [...roundAnswers, selectedQuestion]
+          },
+          selectedQuestion: null
+        });
+
       }
     }
 
-
     // --------------------
-    // Flow navigation
+    // Flow Navigation
     // --------------------
     if (currentFlowIndex < currentRoundFlow.length - 1) {
       set({ currentFlowIndex: currentFlowIndex + 1 });
     } else {
+
+      if (currentRound.startsWith("elimination")) {
+        const subSelectIndex = currentRoundFlow.indexOf("subselection");
+        set({ currentFlowIndex: subSelectIndex, currentSubjectId: undefined });
+        return;
+      }
+
       const selectIndex = currentRoundFlow.indexOf("select");
       const questionIndex = currentRoundFlow.indexOf("question");
 
       set({
-        currentFlowIndex: selectIndex !== -1 ? selectIndex : questionIndex,
+        currentFlowIndex:
+          selectIndex !== -1 ? selectIndex : questionIndex,
       });
     }
   },
@@ -130,4 +160,14 @@ export const useNavigationStore = create((set, get) => ({
     const { currentRoundFlow, currentFlowIndex } = get();
     return currentRoundFlow[currentFlowIndex] ?? null;
   },
+  selectEliminationSubject: (subjectId) => {
+    set({ currentSubjectId: subjectId })
+  }
+  ,
+  goToSubSelection: () => {
+    const { currentRoundFlow
+    } = get()
+    const subSelectIndex = currentRoundFlow.indexOf("subselection");
+    set({ currentFlowIndex: subSelectIndex, currentSubjectId: undefined });
+  }
 }));

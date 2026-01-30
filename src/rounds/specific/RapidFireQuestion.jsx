@@ -17,7 +17,6 @@ export const RapidFireQuestion = () => {
   const questions = setData?.questions || [];
   const total = questions.length;
   const config = ROUND_CONFIGS.rapidFire;
-  console.log(config);
 
   const showQuestions = () => {
     // 2nd+ Enter → reveal questions one by one
@@ -43,7 +42,7 @@ export const RapidFireQuestion = () => {
       {/* HEADER */}
       <div className="flex justify-center mb-6">
         <div className="px-8 py-3 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase shadow">
-          Rapid Fire Round
+          {config.title}
         </div>
       </div>
 
@@ -74,13 +73,13 @@ export const RapidFireQuestion = () => {
         {showAnswers && (
           <div className="bg-black text-white p-4 rounded-lg max-h-[25%] w-4/5  mx-auto overflow-auto">
             <div className="text-xl font-bold mb-3">Answers</div>
-          <div className="text-lg flex  flex-wrap gap-5">
+            <div className="text-lg flex  flex-wrap gap-5">
 
-            {questions.map((item, index) => (
-              <span>
-                {index + 1}) {item.answer}
-              </span>
-            ))}
+              {questions.map((item, index) => (
+                <span>
+                  {index + 1}) {item.answer}
+                </span>
+              ))}
             </div>
           </div>
         )}

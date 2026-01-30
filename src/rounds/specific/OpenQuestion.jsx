@@ -5,7 +5,7 @@ import { QUESTIONS } from "../../constants/questions";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
 
 export function OpenQuestionPage() {
-  const { sequentialCount, selectedRound } = useNavigationStore();
+  const { sequentialCount } = useNavigationStore();
   const [showQuestion, setShowQuestion] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 
@@ -14,14 +14,13 @@ export function OpenQuestionPage() {
   );
   if (!currentQuestion) return null;
   const config = ROUND_CONFIGS["open"];
-  console.log(selectedRound)
 
   return (
     <div className="min-h-screen bg-linear-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col relative">
       <div>
         <div className="flex justify-center w-full">
           <div className="p-4 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase">
-            Open Round
+            {config.title}
           </div>
         </div>
         <button

@@ -57,7 +57,7 @@ export const AlternativeQuestion = () => {
       <div className="flex flex-col gap-4 mb-4">
         <div className="flex justify-center">
           <div className="px-6 py-3 bg-rose-400 rounded-full text-2xl font-bold text-white shadow">
-              Alternative Round
+            {config.title}
           </div>
         </div>
 
@@ -68,62 +68,101 @@ export const AlternativeQuestion = () => {
           Question
         </button>
       </div>
-    <div className="w-full h-[60vh] p-6">
-      {/* CONTENT */}
-      {showQuestion && (
-        <div className="flex-1 flex flex-col justify-center">
-          {/* TEXT */}
-          {hasText && (
-            <h2 className="text-2xl font-semibold text-justify mb-6 text-gray-800">
-            {data.id}) {text}
-            </h2>
-          )}
+      <div className="w-full h-[60vh] p-6">
+        {/* CONTENT */}
+        {showQuestion && (
+          <div className="flex-1 flex flex-col justify-center">
+            {/* TEXT */}
+            {hasText && (
+              <h2 className="text-2xl font-semibold text-justify mb-6 text-gray-800">
+                {data.id}) {text}
+              </h2>
+            )}
 
-          {/* ONLY IMAGE (MAIN QUESTION) */}
-          {!hasText && hasImage && (
-            <>
-              <div className="w-full flex justify-center mb-10">
-                <img
-                  src={media.src}
-                  alt="question"
-                  className="max-h-[55vh] object-contain rounded-xl shadow-lg"
-                />
+            {/* ONLY IMAGE (MAIN QUESTION) */}
+            {!hasText && hasImage && (
+              <>
+                <div className="w-full flex justify-center mb-10">
+                  <img
+                    src={media.src}
+                    alt="question"
+                    className="max-h-[55vh] object-contain rounded-xl shadow-lg"
+                  />
+                </div>
+
+                {/* OPTIONS BELOW IMAGE */}
+                <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto">
+                  {options.map((opt, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleSelect(index)}
+                      disabled={hasCorrect || wrongOptions.includes(index)}
+                      className={getOptionClass(index)}
+                    >
+                      <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold">
+                        {OPTION_LABELS[index]}
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        {opt.text && <span>{opt.text}</span>}
+                        {opt.image && (
+                          <img
+                            src={opt.image}
+                            alt="option"
+                            className="max-h-24 object-contain rounded"
+                          />
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* TEXT + IMAGE */}
+            {hasText && hasImage && (
+              <div className="flex gap-8 items-center">
+                {/* OPTIONS */}
+                <div className="w-[60%] flex flex-col gap-6">
+                  {options.map((opt, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleSelect(index)}
+                      disabled={hasCorrect || wrongOptions.includes(index)}
+                      className={getOptionClass(index)}
+                    >
+                      <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold">
+                        {OPTION_LABELS[index]}
+                      </div>
+
+                      <div className="flex flex-col gap-2">
+                        {opt.text && <span>{opt.text}</span>}
+                        {opt.image && (
+                          <img
+                            src={opt.image}
+                            alt="option"
+                            className="max-h-24 object-contain rounded"
+                          />
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                {/* IMAGE */}
+                <div className="w-[40%] flex justify-center">
+                  <img
+                    src={media.src}
+                    alt="question"
+                    className="max-h-[50vh] object-contain rounded-xl shadow-lg"
+                  />
+                </div>
               </div>
+            )}
 
-              {/* OPTIONS BELOW IMAGE */}
+            {/* ONLY TEXT */}
+            {hasText && !hasImage && (
               <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto">
-                {options.map((opt, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleSelect(index)}
-                    disabled={hasCorrect || wrongOptions.includes(index)}
-                    className={getOptionClass(index)}
-                  >
-                    <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold">
-                      {OPTION_LABELS[index]}
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      {opt.text && <span>{opt.text}</span>}
-                      {opt.image && (
-                        <img
-                          src={opt.image}
-                          alt="option"
-                          className="max-h-24 object-contain rounded"
-                        />
-                      )}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-
-          {/* TEXT + IMAGE */}
-          {hasText && hasImage && (
-            <div className="flex gap-8 items-center">
-              {/* OPTIONS */}
-              <div className="w-[60%] flex flex-col gap-6">
                 {options.map((opt, index) => (
                   <button
                     key={index}
@@ -148,48 +187,9 @@ export const AlternativeQuestion = () => {
                   </button>
                 ))}
               </div>
-
-              {/* IMAGE */}
-              <div className="w-[40%] flex justify-center">
-                <img
-                  src={media.src}
-                  alt="question"
-                  className="max-h-[50vh] object-contain rounded-xl shadow-lg"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* ONLY TEXT */}
-          {hasText && !hasImage && (
-            <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto">
-              {options.map((opt, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleSelect(index)}
-                  disabled={hasCorrect || wrongOptions.includes(index)}
-                  className={getOptionClass(index)}
-                >
-                  <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold">
-                    {OPTION_LABELS[index]}
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    {opt.text && <span>{opt.text}</span>}
-                    {opt.image && (
-                      <img
-                        src={opt.image}
-                        alt="option"
-                        className="max-h-24 object-contain rounded"
-                      />
-                    )}
-                  </div>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
       </div>
 
       {/* ANSWER BUTTON */}

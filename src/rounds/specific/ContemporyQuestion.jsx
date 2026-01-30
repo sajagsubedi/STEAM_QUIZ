@@ -22,7 +22,7 @@ export function ContemporyQuestion() {
       <div>
         <div className="flex justify-center w-full">
           <div className="p-4 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase">
-            Contempory Round
+            [config.title]
           </div>
         </div>
         <button
