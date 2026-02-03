@@ -11,12 +11,9 @@ export const PosterPage = () => {
           <h2 className="text-6xl font-bold mb-4">QUIZ NIGHT</h2>
           <p className="text-3xl">2024 Championship</p>
         </div>
-        <button
-          onClick={goToRules}
-          className="bg-white text-teal-600 px-8 py-4 rounded-lg text-xl font-semibold hover:bg-gray-100 transition"
-        >
-          Enter →
-        </button>
+        <div className="flex justify-center mt-6">
+          <CircularArrowButton onClick={goToRules} size={70} />
+        </div>
       </div>
     </div>
   );
