@@ -169,5 +169,17 @@ export const useNavigationStore = create((set, get) => ({
     } = get()
     const subSelectIndex = currentRoundFlow.indexOf("subselection");
     set({ currentFlowIndex: subSelectIndex, currentSubjectId: undefined });
+  },
+
+  backToSelection: () => {
+    const { currentRoundFlow, currentRound } = get();
+    const selectIndex = currentRoundFlow.indexOf("select");
+    if (selectIndex !== -1) {
+      set({ 
+        currentFlowIndex: selectIndex, 
+        selectedQuestion: null,
+        answeredQuestions: get().answeredQuestions // Preserve answered questions
+      });
+    }
   }
 }));
