@@ -1,221 +1,223 @@
 import React, { useState, useEffect, useRef } from "react";
-import CircularTimer from "../../components/CicrcularTimer";
+import CircularTimer from "../../components/CircularTimer";
 import { useNavigationStore } from "../../store/useNavigation";
 import { QUESTIONS } from "../../constants/questions";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
-import { ArrowLeft } from "lucide-react";
+import { CheckCircle2, XCircle, ChevronRight } from "lucide-react";
 
 export function GeneralQuestion() {
-  const { selectedQuestion, backToSelection } = useNavigationStore();
-  const [answered, setAnswered] = useState(false);
+  const { selectedQuestion, nextInRound } = useNavigationStore();
+  const [showDialog, setShowDialog] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const audioRef = useRef(new Audio());
 
   const currentQuestion = QUESTIONS.general.find(
-    (q) => q.id === selectedQuestion
+    (q) => q.id === selectedQuestion,
   );
-  if (!currentQuestion) return null;
   const config = ROUND_CONFIGS["general"];
 
-  // Function to play the correct answer sound
-  const playCorrectSound = () => {
-    try {
-      const audio = new Audio("/questions/av/kbc-right-answer.mp3");
-      audio.volume = 1;
-      audio.muted = false;
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => console.error("Play error:", error));
+  const stopAllAudio = () => {
+    [correctAudio, wrongAudio].forEach((ref) => {
+      if (ref.current) {
+        ref.current.pause();
+        ref.current.currentTime = 0;
       }
-    } catch (error) {
-      console.error("Error creating audio:", error);
+    });
+  };
+
+  // Refs for audio objects
+  const correctAudio = useRef(null);
+  const wrongAudio = useRef(null);
+
+  // Initialize and Pre-load Audio
+  useEffect(() => {
+    correctAudio.current = new Audio("/sounds/kbc-right-answer.mp3");
+    wrongAudio.current = new Audio("/sounds/kbc-wrong-answer.mp3");
+
+    // Preload settings
+    correctAudio.current.preload = "auto";
+    wrongAudio.current.preload = "auto";
+
+    return () => {
+      stopAllAudio();
+    };
+  }, []);
+
+  const handleValidation = (status) => {
+    if (showDialog) return;
+
+    stopAllAudio();
+    setIsCorrect(status);
+    setShowDialog(true);
+
+    const audio = status ? correctAudio.current : wrongAudio.current;
+
+    if (audio) {
+      // Ensure it starts from the beginning
+      // eslint-disable-next-line react-hooks/immutability
+      audio.currentTime = 0;
+      // Play with a catch to prevent browser console errors
+      audio.play().catch((err) => console.error("Audio play blocked:", err));
     }
   };
 
-  // Initialize audio once
-  useEffect(() => {
-    const audio = audioRef.current;
-    audio.src = "/questions/av/kbc-right-answer.mp3";
-    audio.volume = 1;
-    audio.preload = "auto";
-  }, []);
-
-  // Play sound immediately when correct answer is pressed
-  useEffect(() => {
-    if (answered && isCorrect) {
-      const audio = new Audio("/questions/av/kbc-right-answer.mp3");
-      audio.volume = 1;
-      audio.play().catch(err => console.error("Audio playback failed:", err));
-    }
-  }, [answered, isCorrect]);
-
-  // Keyboard shortcuts for marking answers
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (answered) return; // Don't process if already answered
-      
-      if (e.key.toLowerCase() === 'c') {
-        // Play sound immediately on key press
-        const audio = new Audio("/questions/av/kbc-right-answer.mp3");
-        audio.volume = 1;
-        audio.play().catch(err => console.error("Audio playback failed:", err));
-        setIsCorrect(true);
-        setAnswered(true);
-      } else if (e.key.toLowerCase() === 'x') {
-        setIsCorrect(false);
-        setAnswered(true);
-      }
+      if (showDialog) return;
+      const key = e.key.toLowerCase();
+      if (key === "c") handleValidation(true);
+      if (key === "x") handleValidation(false);
     };
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [showDialog]);
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [answered]);
-
-  if (answered) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col items-center justify-center p-6 relative overflow-hidden">
-        {/* Back Button - Fixed Position */}
-        <button
-          onClick={backToSelection}
-          className="fixed top-8 left-8 p-4 rounded-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-2xl transition-all transform hover:scale-120 active:scale-95 z-50 hover:shadow-red-500/50"
-          type="button"
-          title="Back to question selection"
-        >
-          <ArrowLeft size={32} strokeWidth={3} />
-        </button>
-
-        {/* Animated Background Circles */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-400 rounded-full opacity-10 blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-52 h-52 bg-purple-600 rounded-full opacity-10 blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-400 rounded-full opacity-5 blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        </div>
-
-        {/* Confetti particles background effect */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute animate-pulse"
-              style={{
-                width: Math.random() * 8 + 4 + "px",
-                height: Math.random() * 8 + 4 + "px",
-                left: Math.random() * 100 + "%",
-                top: Math.random() * 100 + "%",
-                backgroundColor: ["#ffbe0b", "#fb5607", "#ff006e", "#00f5ff"][
-                  Math.floor(Math.random() * 4)
-                ],
-                opacity: Math.random() * 0.6 + 0.4,
-                animation: `float ${Math.random() * 3 + 2}s ease-in-out infinite`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Answer Section */}
-        <div className="relative z-10 text-center max-w-3xl">
-          {/* Header Badge */}
-          <div className="mb-12 animate-bounce">
-            <div className="inline-block px-14 py-4 bg-gradient-to-r from-green-400 to-cyan-500 rounded-full text-white text-4xl font-bold shadow-2xl">
-              ✓ ANSWER
-            </div>
-          </div>
-
-          {/* Congratulations/Result Text */}
-          <h1 className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-blue-500 mb-8 drop-shadow-2xl animate-pulse">
-            {isCorrect ? "🎉 Congratulations! 🎉" : "❌ Incorrect"}
-          </h1>
-
-          {/* Answer Display Box with glow effect */}
-          <div className="relative mb-12">
-            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-purple-600 to-yellow-400 rounded-3xl blur opacity-75 animate-pulse"></div>
-            <div className="relative bg-gradient-to-r from-purple-600 to-indigo-700 border-4 border-yellow-400 rounded-3xl px-12 py-10 shadow-2xl">
-              <p className="text-white text-3xl font-bold leading-relaxed">
-                {currentQuestion.answer}
-              </p>
-            </div>
-          </div>
-
-          {/* Decorative Line */}
-          <div className="h-1 w-32 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-12"></div>
-
-          {/* Bottom decorative elements */}
-          <div className="mt-16 flex justify-center gap-8">
-            <div className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce" style={{ animationDelay: "0s" }}></div>
-            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-            <div className="w-2 h-2 rounded-full bg-purple-400 animate-bounce" style={{ animationDelay: "0.2s" }}></div>
-          </div>
-        </div>
-
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            25% { transform: translateY(-20px) translateX(10px); }
-            50% { transform: translateY(-40px) translateX(-10px); }
-            75% { transform: translateY(-20px) translateX(5px); }
-          }
-        `}</style>
-      </div>
-    );
-  }
+  if (!currentQuestion) return null;
+  const hasMedia = !!currentQuestion.media?.src;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 p-6 flex flex-col relative overflow-hidden">
-      {/* Decorative circular patterns */}
-      <div className="absolute top-20 left-10 w-32 h-32 border-2 border-blue-400 rounded-full opacity-20"></div>
-      <div className="absolute top-40 left-20 w-20 h-20 border-2 border-blue-400 rounded-full opacity-20"></div>
-      <div className="absolute bottom-32 right-10 w-40 h-40 border-2 border-yellow-400 rounded-full opacity-20"></div>
-      <div className="absolute bottom-20 right-20 w-24 h-24 border-2 border-yellow-400 rounded-full opacity-20"></div>
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, #4f46e5 1px, transparent 1px)`,
+          backgroundSize: "30px 30px",
+        }}
+      />
 
-      {/* Header Section */}
-      <div className="flex justify-between items-center mb-8 relative z-10">
-        {/* Round Title */}
-        <div className="flex-1">
-          <div className="inline-block px-8 py-3 bg-gradient-to-r from-green-400 to-purple-600 rounded-full text-white text-2xl font-bold shadow-lg">
-            {config.title}
+      {/* TOP HEADER */}
+      <div className="relative z-10 flex justify-center items-center h-14 shrink-0">
+        <div className="px-6 py-1.5 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-xs font-black uppercase tracking-widest shadow-lg">
+          {config.title}
+        </div>
+        <div className="absolute right-0 w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center text-black font-black text-lg transform rotate-3 shadow-lg -translate-x-[105%]">
+          {currentQuestion.id}
+        </div>
+      </div>
+
+      {/* RIGHT CENTERED SKIP/NEXT BUTTON */}
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 z-20">
+        <button
+          onClick={() => {
+            stopAllAudio();
+            nextInRound();
+          }}
+          className="group flex flex-col items-center gap-2 p-4 bg-white/5 hover:bg-yellow-500/20 border border-white/10 hover:border-yellow-500 rounded-2xl transition-all duration-300"
+        >
+          <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+            <ChevronRight size={28} />
           </div>
+          <span className="text-[10px] font-black uppercase text-yellow-500 tracking-tighter">
+            Next / Skip
+          </span>
+        </button>
+      </div>
+
+      {/* MAIN CONTENT AREA */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0 py-4 pr-24">
+        <div
+          className={`w-full max-w-4xl flex flex-col items-center ${hasMedia ? "gap-4" : "gap-8"}`}
+        >
+          <div
+            className={`w-full bg-blue-900/40 backdrop-blur-md border-2 border-blue-400/30 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
+          >
+            <h2
+              className={`text-white font-bold leading-tight text-center ${hasMedia ? "text-xl" : "text-3xl"}`}
+            >
+              {currentQuestion.text}
+            </h2>
+          </div>
+
+          {hasMedia && (
+            <div className="flex-1 min-h-0 flex justify-center items-center w-full max-h-[45vh]">
+              <img
+                src={currentQuestion.media.src}
+                className="h-full w-auto max-w-full rounded-xl border-2 border-white/10 shadow-2xl object-contain"
+                alt="Question"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* FOOTER AREA */}
+      <div className="relative z-10 h-24 shrink-0 flex justify-between items-end">
+        <div className="scale-75 origin-bottom-left -ml-2">
+          <CircularTimer timers={config.timers} paused={showDialog} />
         </div>
 
-        {/* Question Number Badge */}
-        <div className="relative">
-          <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg transform -rotate-12">
-            <span className="text-4xl font-bold text-orange-600">{currentQuestion.id}</span>
+        <div className="flex flex-col items-end gap-1 mb-2">
+          <div className="flex gap-4 text-[10px] font-mono tracking-tighter uppercase">
+            <div className="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 font-black">
+              [C] Correct
+            </div>
+            <div className="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 font-black">
+              [X] Incorrect
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col items-center justify-center relative z-10 py-8">
-        {/* Circular Timer */}
-        <div className="mb-12">
-          <CircularTimer timers={config.timers} />
-        </div>
+      {/* RESULT DIALOG */}
+      {showDialog && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 animate-in fade-in duration-200">
+          <div className="relative w-full max-w-md p-1 bg-linear-to-b from-gray-700 to-gray-900 rounded-[2rem]">
+            <div className="bg-slate-950 rounded-[1.9rem] p-10 text-center border border-white/5">
+              <div className="animate-in zoom-in duration-300 flex flex-col items-center">
+                <div
+                  className={`mb-6 p-4 rounded-full ${isCorrect ? "bg-green-500/20 text-green-500" : "bg-red-500/20 text-red-500"}`}
+                >
+                  {isCorrect ? (
+                    <CheckCircle2 size={64} />
+                  ) : (
+                    <XCircle size={64} />
+                  )}
+                </div>
 
-        {/* Question Display Area */}
-        <div className="bg-gradient-to-r from-indigo-600 to-blue-600 border-4 border-yellow-400 rounded-3xl px-12 py-8 shadow-2xl max-w-4xl text-center mb-12">
-          <p className="text-white text-2xl font-bold leading-relaxed">
-            {currentQuestion.text || "Question content"}
-          </p>
-        </div>
+                <h2
+                  className={`text-5xl font-black uppercase mb-6 tracking-tighter ${isCorrect ? "text-green-400" : "text-red-500"}`}
+                >
+                  {isCorrect ? "Correct!" : "Incorrect!"}
+                </h2>
 
-        {/* Media Display */}
-        {currentQuestion.media?.type === "image" && (
-          <div className="mb-12">
-            <img
-              src={currentQuestion.media.src}
-              alt="question"
-              className="max-h-48 w-auto object-contain rounded-lg shadow-lg"
-            />
+                {isCorrect ? (
+                  <div className="w-full bg-white/5 border-y-4 border-green-500 py-6 mb-8">
+                    <p className="text-blue-300 uppercase text-[10px] tracking-widest mb-1">
+                      Final Answer
+                    </p>
+                    <p className="text-white text-3xl font-bold">
+                      {currentQuestion.answer}
+                    </p>
+                  </div>
+                ) : (
+                  <p className="text-gray-400 uppercase text-xs tracking-[0.2em] mb-8">
+                    Question Passed / Incorrect
+                  </p>
+                )}
+
+                <button
+                  onClick={() => {
+                    stopAllAudio();
+                    if (isCorrect) {
+                      nextInRound();
+                    } else {
+                      setShowDialog(false);
+                    }
+                  }}
+                  className={`w-full py-4 rounded-xl text-sm font-black uppercase tracking-widest transition-all ${
+                    isCorrect
+                      ? "bg-green-600 text-white hover:bg-green-500"
+                      : "bg-white/10 text-white hover:bg-white/20"
+                  }`}
+                >
+                  {isCorrect ? "Proceed to Next" : "Dismiss"}
+                </button>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
-
-      {/* Button Area */}
-      <div className="relative z-10 mt-8 text-center">
-        <p className="text-white text-lg font-semibold">
-          Press <span className="text-green-400 font-bold">C</span> for Correct or <span className="text-red-400 font-bold">X</span> for Incorrect
-        </p>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

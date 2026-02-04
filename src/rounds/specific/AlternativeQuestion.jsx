@@ -1,201 +1,222 @@
-import { useState, useRef, useEffect } from "react";
-import CircularTimer from "../../components/CicrcularTimer";
+import React, { useState, useEffect, useRef } from "react";
+import CircularTimer from "../../components/CircularTimer";
 import { useNavigationStore } from "../../store/useNavigation";
 import { QUESTIONS } from "../../constants/questions";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
+import { ChevronRight, Trophy } from "lucide-react";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
 export const AlternativeQuestion = () => {
-  const { selectedQuestion } = useNavigationStore();
+  const { selectedQuestion, nextInRound } = useNavigationStore();
 
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [hasCorrect, setHasCorrect] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [isLocked, setIsLocked] = useState(false);
+  const [showResult, setShowResult] = useState(false);
   const [wrongOptions, setWrongOptions] = useState([]);
-  const audioRef = useRef(new Audio());
 
-  const data = QUESTIONS.alternative.find(
-    (item) => item.id === selectedQuestion,
+  const currentQuestion = QUESTIONS.alternative.find(
+    (q) => q.id === selectedQuestion,
   );
-
-  if (!data) return null;
-
-  const { media, options, answer, text } = data;
   const config = ROUND_CONFIGS["alternative"];
 
-  const hasImage = media?.type === "image";
-  const hasText = Boolean(text);
+  // Audio Refs
+  const audioRef = useRef({
+    lock: new Audio("/sounds/kbc-lock.mp3"),
+    right: new Audio("/sounds/kbc-right-answer.mp3"),
+    wrong: new Audio("/sounds/kbc-wrong-answer.mp3"),
+  });
 
-  // Initialize audio
-  useEffect(() => {
-    const audio = audioRef.current;
-    audio.src = "/questions/av/kbc-right-answer.mp3";
-    audio.volume = 1;
-    audio.preload = "auto";
-  }, []);
-
-  // Play sound when correct answer is selected
-  useEffect(() => {
-    if (hasCorrect) {
-      const audio = new Audio("/questions/av/kbc-right-answer.mp3");
-      audio.volume = 1;
-      audio.play().catch(err => console.error("Audio playback failed:", err));
-    }
-  }, [hasCorrect]);
-
-  const playCorrectSound = () => {
-    try {
-      const audio = new Audio("/questions/av/kbc-right-answer.mp3");
-      audio.volume = 1;
-      audio.muted = false;
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => console.error("Play error:", error));
-      }
-    } catch (error) {
-      console.error("Error creating audio:", error);
+  // Function to stop specific audio
+  const stopAudio = (key) => {
+    if (audioRef.current[key]) {
+      audioRef.current[key].pause();
+      audioRef.current[key].currentTime = 0;
     }
   };
 
   const handleSelect = (index) => {
-    if (hasCorrect || wrongOptions.includes(index)) return;
+    if (isLocked || showResult || wrongOptions.includes(index)) return;
 
-    if (index === answer) {
-      setHasCorrect(true);
-    } else {
-      setWrongOptions([...wrongOptions, index]);
-    }
+    setSelectedIndex(index);
+    setIsLocked(true);
+
+    // Play Lock-in Sound
+    stopAudio("lock");
+    audioRef.current.lock.play().catch(() => {});
+
+    // Suspense Delay (The "Yellow" Phase)
+    setTimeout(() => {
+      // STOP LOCK SOUND IMMEDIATELY before playing result
+      stopAudio("lock");
+
+      if (index === answer) {
+        audioRef.current.right.play().catch(() => {});
+        setShowResult(true);
+      } else {
+        audioRef.current.wrong.play().catch(() => {});
+        setWrongOptions((prev) => [...prev, index]);
+        // We stay "Locked" briefly so the user sees the Red color on the option
+        setIsLocked(false);
+        setSelectedIndex(null);
+      }
+    }, 2000);
   };
 
   const getOptionClass = (index) => {
     const base =
-      "rounded-2xl p-6 flex gap-4 items-center border-4 text-lg font-semibold transition-all cursor-pointer";
+      "relative overflow-hidden rounded-xl p-4 flex gap-4 items-center border-2 transition-all duration-300 shadow-xl min-h-[80px]";
 
-    if (hasCorrect && index === answer) {
-      return `${base} bg-gradient-to-r from-green-400 to-green-500 border-yellow-400 text-white shadow-lg scale-105`;
+    // 1. Correct Answer Reveal (Green)
+    if (showResult && index === answer) {
+      return `${base} bg-green-600 border-green-400 text-white scale-105 z-10 shadow-green-500/50`;
     }
 
+    // 2. Wrong Answer Selection (Red) - Shown immediately after yellow phase
     if (wrongOptions.includes(index)) {
-      return `${base} bg-gradient-to-r from-red-400 to-red-500 border-yellow-400 text-white shadow-lg`;
+      return `${base} bg-red-600 border-red-400 text-white shadow-red-500/50`;
     }
 
-    if (hasCorrect || wrongOptions.includes(index)) {
-      return `${base} bg-gray-600 border-yellow-400 text-gray-300 opacity-50 cursor-not-allowed`;
+    // 3. Waiting / Lock Phase (Yellow)
+    if (isLocked && index === selectedIndex) {
+      return `${base} bg-yellow-500 border-white text-black animate-pulse scale-105 z-10`;
     }
 
-    return `${base} bg-gradient-to-r from-indigo-600 to-blue-600 border-yellow-400 text-white hover:shadow-xl hover:scale-105`;
+    // 4. Default / Disabled states
+    if (isLocked || showResult) {
+      return `${base} bg-blue-950/20 border-white/5 text-white/20 cursor-not-allowed grayscale`;
+    }
+
+    return `${base} bg-blue-900/40 border-blue-400/30 text-white hover:border-yellow-400 hover:bg-blue-800/60 cursor-pointer group`;
   };
 
+  if (!currentQuestion) return null;
+  const { media, options, answer, text } = currentQuestion;
+  const hasImage = media?.type === "image" && media?.src;
+  const hasText = Boolean(text);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 p-6 flex flex-col relative overflow-hidden">
-      {/* Decorative circular patterns */}
-      <div className="absolute top-20 left-10 w-32 h-32 border-2 border-blue-400 rounded-full opacity-20"></div>
-      <div className="absolute top-40 left-20 w-20 h-20 border-2 border-blue-400 rounded-full opacity-20"></div>
-      <div className="absolute bottom-32 right-10 w-40 h-40 border-2 border-yellow-400 rounded-full opacity-20"></div>
-      <div className="absolute bottom-20 right-20 w-24 h-24 border-2 border-yellow-400 rounded-full opacity-20"></div>
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, #4f46e5 1px, transparent 1px)`,
+          backgroundSize: "30px 30px",
+        }}
+      />
 
-      {/* HEADER */}
-      <div className="flex justify-between items-center mb-8 relative z-10">
-        {/* Round Title */}
-        <div className="flex-1">
-          <div className="inline-block px-8 py-3 bg-gradient-to-r from-green-400 to-purple-600 rounded-full text-white text-2xl font-bold shadow-lg">
-            {config.title}
-          </div>
+      {/* TOP HEADER */}
+      <div className="relative z-10 flex justify-center items-center h-14 shrink-0">
+        <div className="px-8 py-2 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-xs font-black uppercase tracking-widest shadow-lg">
+          {config.title}
         </div>
-
-        {/* Question Number Badge */}
-        <div className="relative">
-          <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg transform -rotate-12">
-            <span className="text-4xl font-bold text-orange-600">{data.id}</span>
-          </div>
+        <div className="absolute right-0 w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center text-black font-black text-xl transform rotate-3 shadow-lg -translate-x-[100%]">
+          {currentQuestion.id}
         </div>
       </div>
 
-      {/* CIRCULAR TIMER */}
-      <div className="flex justify-center mb-8 relative z-10">
-        <CircularTimer timers={config.timers} />
-      </div>
-
-      {/* CONTENT */}
-      <div className="flex-1 flex flex-col justify-center relative z-10 px-6">
-        {/* TEXT */}
+      {/* MAIN CONTENT AREA */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0 py-4 px-12">
         {hasText && (
-          <div className="bg-gradient-to-r from-indigo-600 to-blue-600 border-4 border-yellow-400 rounded-3xl px-12 py-8 shadow-2xl max-w-4xl text-center mb-12 mx-auto">
-            <h2 className="text-2xl font-bold text-white leading-relaxed">
-              {data.id}) {text}
+          <div className="w-full max-w-5xl bg-blue-900/40 backdrop-blur-md border-2 border-blue-400/30 rounded-2xl shadow-2xl p-6 mb-6">
+            <h2 className="text-white font-bold leading-tight text-center text-2xl">
+              {text}
             </h2>
           </div>
         )}
 
-        {/* IMAGE - Above options */}
-        {hasImage && (
-          <div className="flex justify-center mb-12">
-            <img
-              src={media.src}
-              alt="question"
-              className="max-h-64 object-contain rounded-xl shadow-2xl"
-            />
-          </div>
-        )}
-
-        {/* OPTIONS */}
-        <div className="grid grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
-          {options.map((opt, index) => (
-            <button
-              key={index}
-              onClick={() => handleSelect(index)}
-              disabled={hasCorrect || wrongOptions.includes(index)}
-              className={getOptionClass(index)}
+        <div
+          className={`w-full max-w-6xl flex ${hasText && hasImage ? "flex-row" : "flex-col"} items-center gap-8`}
+        >
+          {hasImage && (
+            <div
+              className={`${hasText && hasImage ? "w-1/2" : "w-full"} flex justify-center max-h-[40vh]`}
             >
-              <div className="w-12 h-12 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold text-xl shadow-lg flex-shrink-0">
-                {OPTION_LABELS[index]}
-              </div>
+              <img
+                src={media.src}
+                className="h-full w-auto max-w-full rounded-xl border-2 border-white/10 shadow-2xl object-contain bg-black/20"
+                alt="Question"
+              />
+            </div>
+          )}
 
-              <div className="flex flex-col gap-2 text-left">
-                {opt.text && <span className="font-semibold">{opt.text}</span>}
-                {opt.image && (
-                  <img
-                    src={opt.image}
-                    alt="option"
-                    className="max-h-20 object-contain rounded"
-                  />
-                )}
-              </div>
-            </button>
-          ))}
+          <div
+            className={`${hasText && hasImage ? "w-1/2" : "w-full max-w-4xl"} grid grid-cols-2 gap-4`}
+          >
+            {options.map((opt, index) => (
+              <button
+                key={index}
+                onClick={() => handleSelect(index)}
+                className={getOptionClass(index)}
+              >
+                <div
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center font-black text-xl flex-shrink-0 
+                  ${isLocked && index === selectedIndex ? "bg-black text-yellow-50" : "bg-yellow-500 text-black"}`}
+                >
+                  {OPTION_LABELS[index]}
+                </div>
+                <div className="flex flex-col items-start gap-2">
+                  {opt.text && (
+                    <span className="text-lg font-bold text-left tracking-tight leading-tight">
+                      {opt.text}
+                    </span>
+                  )}
+                  {opt.image && (
+                    <img
+                      src={opt.image}
+                      className="max-h-20 rounded border border-white/20"
+                      alt="Option"
+                    />
+                  )}
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* ANSWER SECTION - Show when correct selected */}
-      {hasCorrect && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-12 max-w-2xl text-center shadow-2xl border-4 border-yellow-400">
-            <div className="px-12 py-3 bg-gradient-to-r from-green-400 to-cyan-500 rounded-full text-white text-3xl font-bold shadow-lg mb-8 inline-block">
-              ANSWER
+      {/* FOOTER */}
+      <div className="relative z-10 h-24 shrink-0 flex justify-between items-end">
+        <div className="scale-90 origin-bottom-left -ml-2 shadow-2xl">
+          <CircularTimer
+            timers={config.timers}
+            paused={isLocked || showResult}
+          />
+        </div>
+
+        <button
+          onClick={() => nextInRound()}
+          className="group flex flex-col items-center gap-2 p-4 bg-white/5 hover:bg-yellow-500/20 border border-white/10 hover:border-yellow-500 rounded-2xl transition-all duration-300 mb-2"
+        >
+          <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-lg">
+            <ChevronRight size={28} />
+          </div>
+          <span className="text-[10px] font-black uppercase text-yellow-500 tracking-tighter">
+            Next Question
+          </span>
+        </button>
+      </div>
+
+      {/* RESULT DIALOG */}
+      {showResult && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 animate-in fade-in duration-200">
+          <div className="bg-slate-950 rounded-[2rem] p-10 text-center border-2 border-yellow-500 shadow-[0_0_50px_rgba(234,179,8,0.3)] animate-in zoom-in duration-300 max-w-md w-full">
+            <div className="mb-6 p-4 rounded-full bg-green-500/20 text-green-500 inline-block">
+              <Trophy size={64} />
             </div>
-
-            <h1 className="text-5xl font-bold text-white mb-8 drop-shadow-lg">
-              Congratulations
-            </h1>
-
-            <div className="bg-gradient-to-r from-purple-600 to-indigo-700 border-4 border-yellow-400 rounded-2xl px-8 py-6 mb-8 shadow-2xl">
-              <p className="text-white text-2xl font-semibold">
-                {data.options[answer].text}
+            <h2 className="text-5xl font-black uppercase mb-6 tracking-tighter text-green-400">
+              Correct!
+            </h2>
+            <div className="w-full bg-white/5 border-y-4 border-green-500 py-6 mb-8">
+              <p className="text-white text-3xl font-bold">
+                {options[answer].text}
               </p>
             </div>
-
-            <button 
-              onClick={playCorrectSound}
-              className="w-16 h-16 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg cursor-pointer hover:bg-yellow-500 transition-all transform hover:scale-110 active:scale-95 mx-auto"
-              type="button"
+            <button
+              onClick={() => nextInRound()}
+              className="w-full py-4 bg-green-600 text-white rounded-xl font-black uppercase tracking-widest"
             >
-              <svg
-                className="w-10 h-10 text-gray-900"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.172a1 1 0 011.414 0A6.972 6.972 0 0118 10a6.972 6.972 0 01-1.929 4.828 1 1 0 01-1.414-1.414A4.972 4.972 0 0016 10a4.972 4.972 0 00-1.343-3.536 1 1 0 010-1.414zm-1.414 1.414a1 1 0 011.414 0A4.972 4.972 0 0116 10a4.972 4.972 0 01-1.343 3.536 1 1 0 11-1.414-1.414A2.972 2.972 0 0014 10a2.972 2.972 0 00-.757-2.024 1 1 0 010-1.414z" />
-              </svg>
+              Proceed
             </button>
           </div>
         </div>

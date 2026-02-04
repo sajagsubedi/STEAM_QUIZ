@@ -4,48 +4,101 @@ import CircularArrowButton from "../components/CircularArrowButton";
 export const RulesPage = () => {
   const goToMenu = useNavigationStore((state) => state.goToMenu);
 
-  // Example rules, replace or update as needed
   const rules = [
     "Each team must consist of 2 participants.",
-    "No use of mobile phones or electronic devices is allowed during the quiz.",
+    "No use of mobile phones or electronic devices.",
     "Each round will have a fixed time limit.",
     "The decision of the quizmaster is final.",
-    "In case of a tie, a tie-breaker round will be conducted.",
+    "Tie-breaker rounds will be conducted if necessary.",
   ];
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f2027] via-[#2c5364] to-[#24243e] p-4"
-      style={{ minHeight: '100vh' }}
-    >
+    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative">
+      {/* Background Decorative Elements (Matching Landing Page) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-yellow-600/10 blur-[120px] rounded-full" />
+      </div>
+
+      {/* Glassmorphic Container */}
       <div
-        className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-2xl px-8 py-10 max-w-lg w-full relative"
-        style={{ boxShadow: '0 8px 40px 0 #00eaff55, 0 1.5px 8px #fffbe7' }}
+        className="relative z-10 backdrop-blur-xl bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-12 max-w-2xl w-[90%] shadow-2xl"
+        style={{
+          boxShadow:
+            "0 0 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.05)",
+        }}
       >
-        {/* Header with icon */}
-        <div className="flex flex-col items-center mb-6">
-          <div className="bg-gradient-to-tr from-[#7c3aed] to-[#00eaff] rounded-full p-3 mb-2 shadow-lg">
-            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="19" cy="19" r="19" fill="#fff" />
-              <path d="M12 26l7-14 7 14" stroke="#7c3aed" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+        {/* Header Section */}
+        <div className="flex flex-col items-center mb-10">
+          <div className="relative mb-4">
+            {/* Glowing Ring around icon */}
+            <div className="absolute inset-0 bg-yellow-400 blur-lg opacity-40 animate-pulse" />
+            <div className="relative bg-gradient-to-b from-yellow-300 to-yellow-600 p-4 rounded-2xl rotate-3 shadow-xl">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </div>
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-wide drop-shadow-lg mb-1">Quiz Rules</h1>
-          <div className="h-1 w-16 bg-gradient-to-r from-[#7c3aed] to-[#00eaff] rounded-full mb-2" />
+
+          <h1 className="text-3xl md:text-4xl font-bold text-white tracking-[0.15em] uppercase text-center">
+            Quiz <span className="text-yellow-400">Rules</span>
+          </h1>
+          <div className="h-1 w-24 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mt-2" />
         </div>
 
         {/* Rules List */}
-        <ul className="text-lg text-white/90 space-y-4 mb-8 list-disc list-inside">
+        <div className="space-y-6">
           {rules.map((rule, idx) => (
-            <li key={idx} className="pl-2">{rule}</li>
+            <div
+              key={idx}
+              className="group flex items-start space-x-4 transition-transform duration-300 hover:translate-x-2"
+            >
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center text-yellow-400 font-bold text-sm">
+                {idx + 1}
+              </div>
+              <p className="text-blue-50 text-base md:text-lg leading-relaxed font-light tracking-wide pt-0.5">
+                {rule}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        {/* Enter Button */}
-        <div className="flex justify-center mt-6">
-          <CircularArrowButton onClick={goToMenu} size={70} />
+        {/* Navigation Button */}
+        <div className="flex flex-col items-center mt-12">
+          <p className="text-xs text-blue-300/60 uppercase tracking-[0.4em] mb-4">
+            Proceed to Menu
+          </p>
+          <CircularArrowButton onClick={goToMenu} size={65} />
         </div>
       </div>
+
+      {/* Global CSS for subtle movement */}
+      <style jsx>{`
+        div {
+          animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };
+
+export default RulesPage;

@@ -1,5 +1,9 @@
-import { ROUND_CONFIGS } from "../../constants/roundConfig";
+import React from "react";
+import { AppWindow, LayoutGrid } from "lucide-react";
 import { useNavigationStore } from "../../store/useNavigation";
+import { ROUND_CONFIGS } from "../../constants/roundConfig";
+
+// Specific Question Components
 import { GeneralQuestion } from "../specific/GeneralQuestion";
 import { RoundBanner } from "./RoundBanner";
 import { RoundRules } from "./RoundRules";
@@ -10,14 +14,11 @@ import { RapidFireQuestion } from "../specific/RapidFireQuestion";
 import { QRQuestion } from "../specific/QRQuestion";
 import { AVQuestion } from "../specific/AVQuestion";
 import { OpenQuestion } from "../specific/OpenQuestion";
-import { AppWindow, LucideArrowRight } from "lucide-react";
 import { EliminationQuestion } from "../specific/EliminationQuestion";
 import { SubjectSelection } from "./SubjectSelection";
 import { GamblingQuestion } from "../specific/GamblingQuestion";
 
-
-// Main Round Container
-export const RoundLayout = () => {
+const RoundLayout = () => {
   const { currentRound, getCurrentStep } = useNavigationStore();
   const currentStep = getCurrentStep();
   const roundConfig = ROUND_CONFIGS[currentRound];
@@ -44,42 +45,80 @@ export const RoundLayout = () => {
       if (currentRound === "rapidFire") return <RapidFireQuestion />;
       if (currentRound === "contempory") return <ContemporyQuestion />;
       if (currentRound === "open") return <OpenQuestion />;
-      break;
+      return null;
     default:
       return null;
   }
 };
 
+/**
+ * RoundContainer serves as the root wrapper for the quiz experience,
+ * providing the background, menu access, and layout constraints.
+ */
 export const RoundContainer = () => {
-  const { goToMenu, nextInRound, getCurrentStep } = useNavigationStore();
-  const currentStep = getCurrentStep()
-  const goNext = () => {
-    nextInRound()
-  }
+  const { goToMenu } = useNavigationStore();
 
   return (
-    <section className="max-h-screen ">
+    <section className="h-screen w-screen overflow-hidden relative bg-black select-none">
+      {/* Main Quiz Content */}
       <RoundLayout />
-      <div className="absolute top-0 right-0 p-2">
+
+      {/* SYSTEM MENU BUTTON (TOP RIGHT) */}
+      <div className="absolute top-4 right-4 z-[60] flex items-center gap-3">
+        {/* Terminal Meta Info */}
+        <div className="hidden md:block text-right">
+          <p className="text-[10px] text-blue-400/60 font-mono uppercase tracking-widest leading-none">
+            System
+          </p>
+          <p className="text-[8px] text-white/20 font-mono uppercase tracking-tighter">
+            Terminal_v2.0
+          </p>
+        </div>
+
         <button
           onClick={goToMenu}
-          className="bg-rose-500 p-2 rounded text-white"
+          title="Return to Main Menu"
+          className="group relative flex items-center justify-center w-12 h-12 bg-white/5 hover:bg-blue-600/20 backdrop-blur-md border border-white/10 hover:border-blue-400/50 rounded-xl transition-all duration-300 shadow-2xl overflow-hidden"
         >
-          <AppWindow />
+          {/* Subtle Background Glow on Hover */}
+          <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+          {/* Menu Icon */}
+          <LayoutGrid
+            className="relative z-10 text-white/70 group-hover:text-blue-400 group-hover:scale-110 transition-all duration-300"
+            size={24}
+          />
+
+          {/* Brackets for "Tech" UI feel */}
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-blue-400 transition-colors" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-blue-400 transition-colors" />
+
+          {/* Scanning Line Animation */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-blue-400/30 -translate-y-full group-hover:animate-scan-line" />
         </button>
       </div>
-      {currentStep != "select" && currentStep != "subselection" && (
 
-        <div className="absolute top-1/2 right-0 p-2 flex justify-end w-full ">
-          <button
-            onClick={goNext}
-            className="bg-white p-2 rounded-full text-rose-500 cursor-pointer"
-          >
-            <LucideArrowRight />
-          </button>
-        </div>
-      )
-      }
+      {/* Global Scoped Styles */}
+      <style jsx>{`
+        @keyframes scan {
+          0% {
+            transform: translateY(-10px);
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(50px);
+            opacity: 0;
+          }
+        }
+        .group:hover .group-hover\:animate-scan-line {
+          animation: scan 2s linear infinite;
+        }
+      `}</style>
     </section>
   );
 };
+
+export default RoundContainer;

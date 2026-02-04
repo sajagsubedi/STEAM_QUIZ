@@ -1,16 +1,15 @@
-import { LucideArrowLeft, LucideArrowRight } from "lucide-react"
-import { ROUND_CONFIGS } from "../../constants/roundConfig"
-import { useNavigationStore } from "../../store/useNavigation"
+import { LucideArrowLeft } from "lucide-react";
+import { ROUND_CONFIGS } from "../../constants/roundConfig";
+import { useNavigationStore } from "../../store/useNavigation";
 
 const getGridConfig = (total) => {
-  if (total <= 4) return { cols: 2, text: "text-4xl", maxWidth: 320 }
-  if (total <= 6) return { cols: 3, text: "text-4xl", maxWidth: 420 }
-  if (total <= 8) return { cols: 4, text: "text-4xl", maxWidth: 520 }
-  if (total <= 12) return { cols: 4, text: "text-3xl", maxWidth: 520 }
-  if (total <= 16) return { cols: 4, text: "text-3xl", maxWidth: 520 }
-  if (total <= 24) return { cols: 6, text: "text-2xl", maxWidth: 760 }
-  return { cols: 8, text: "text-xl", maxWidth: 960 }
-}
+  // Tighter constraints to ensure screen fit
+  if (total <= 4) return { cols: 2, text: "text-5xl", maxWidth: 500 };
+  if (total <= 6) return { cols: 3, text: "text-4xl", maxWidth: 600 };
+  if (total <= 12) return { cols: 4, text: "text-3xl", maxWidth: 750 };
+  if (total <= 24) return { cols: 6, text: "text-2xl", maxWidth: 900 };
+  return { cols: 8, text: "text-xl", maxWidth: 1100 };
+};
 
 export const QuestionSelection = ({ roundConfig }) => {
   const {
@@ -21,97 +20,122 @@ export const QuestionSelection = ({ roundConfig }) => {
     nextInRound,
     currentSubjectId,
     goToSubSelection
-  } = useNavigationStore()
+  } = useNavigationStore();
 
   let currentAnsweredQuestions;
-  if (currentRound == "elimination1" || currentRound == "elimination2") {
-    currentAnsweredQuestions = answeredQuestions[currentRound] ? answeredQuestions[currentRound] : {};
-    currentAnsweredQuestions = currentAnsweredQuestions[currentSubjectId] ? currentAnsweredQuestions[currentSubjectId] : [];
-  }
-  else {
-    currentAnsweredQuestions = answeredQuestions[currentRound] ? answeredQuestions[currentRound] : [];
+  if (currentRound === "elimination1" || currentRound === "elimination2") {
+    currentAnsweredQuestions = answeredQuestions[currentRound]?.[currentSubjectId] || [];
+  } else {
+    currentAnsweredQuestions = answeredQuestions[currentRound] || [];
   }
 
-  const totalItems =
-    typeof roundConfig.sets === "number"
-      ? roundConfig.sets
-      : typeof roundConfig.questionsPerSubject === "number"
-        ? roundConfig.questionsPerSubject : roundConfig.totalQuestions;
+  const totalItems = typeof roundConfig.sets === "number"
+    ? roundConfig.sets
+    : typeof roundConfig.questionsPerSubject === "number"
+      ? roundConfig.questionsPerSubject : roundConfig.totalQuestions;
 
-  const { cols, text, maxWidth } = getGridConfig(totalItems)
-  const config = ROUND_CONFIGS[currentRound]
-  const goBack = () => {
-    goToSubSelection()
-  }
+  const { cols, text, maxWidth } = getGridConfig(totalItems);
+  const config = ROUND_CONFIGS[currentRound];
 
   return (
-    <div className="min-h-screen max-h-screen bg-linear-to-b from-pink-200 via-purple-200 to-sky-400 p-6 flex flex-col">
-      {currentRound.startsWith("elimination") &&
-        <div className="absolute top-1/2 right-0 p-2 flex justify-start w-full ">
-          <button
-            onClick={goBack}
-            className="bg-white p-2 rounded-full text-rose-500 cursor-pointer"
-          >
-            <LucideArrowLeft />
-          </button>
-        </div>
-      }
+    // Changed to h-screen and justify-between to force everything into one view
+    <div className="h-screen w-screen bg-black flex flex-col items-center justify-between overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 pb-8">
+      
+      {/* Background Tech Elements */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none" 
+        style={{ backgroundImage: `radial-gradient(circle, #4f46e5 1px, transparent 1px)`, backgroundSize: '50px 50px' }} 
+      />
 
+      {/* Back Button */}
+      {currentRound.startsWith("elimination") && (
+        <button
+          onClick={goToSubSelection}
+          className="absolute left-6 top-6 z-50 group flex items-center gap-2"
+        >
+          <div className="bg-white/5 p-3 rounded-full border border-white/10 group-hover:border-yellow-500 transition-all">
+            <LucideArrowLeft className="text-white group-hover:text-yellow-400" size={20} />
+          </div>
+        </button>
+      )}
 
-      {/* HEADER */}
-      <div className="flex flex-col items-center gap-4 mb-8">
-        <div className="px-6 py-3 bg-rose-400 rounded-full text-2xl font-bold text-white uppercase shadow-lg">
+      {/* HEADER SECTION - Compacted */}
+      <div className="relative z-10 flex flex-col items-center mt-2 text-center">
+        {/* GOLDISH GRADIENT BADGE - Smaller & Sleek */}
+        <div className="px-8 py-2 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-sm md:text-base font-black uppercase tracking-[0.3em] mb-3 shadow-[0_0_20px_rgba(234,179,8,0.3)] border-b-2 border-yellow-800">
           {config.title}
         </div>
-
-        <h2 className="text-3xl font-bold text-gray-800">
+        
+        <h2 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tighter mb-2">
           {currentRound === "rapidFire" ? "Select a Set" : "Select a Question"}
         </h2>
-
-        <div className="text-lg font-medium text-gray-700">
-          Answered:&nbsp;
-          <span className="font-bold">
-            {currentAnsweredQuestions.length}/{totalItems}
-          </span>
+        
+        <div className="bg-blue-900/30 px-4 py-1 rounded-full border border-blue-400/20 backdrop-blur-sm">
+          <p className="text-blue-300 font-mono tracking-widest uppercase text-[10px] font-bold">
+            PROGRESS: {currentAnsweredQuestions.length} / {totalItems}
+          </p>
         </div>
       </div>
 
-      {/* QUESTION GRID */}
+      {/* QUESTION GRID - Responsive sizing to fit screen */}
       <div
-        className="flex-1 grid gap-6 place-content-center mx-auto"
+        className="relative z-10 flex-1 grid gap-2 md:gap-4 place-content-center mx-auto w-full px-4"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           maxWidth: `${maxWidth}px`,
         }}
       >
         {Array.from({ length: totalItems }, (_, i) => i + 1).map((num) => {
-          const isAnswered = currentAnsweredQuestions.includes(num)
-          const isSelected = selectedQuestion === num
+          const isAnswered = currentAnsweredQuestions.includes(num);
+          const isSelected = selectedQuestion === num;
 
           return (
             <button
               key={num}
-              onClick={() => {
-                selectQuestion(num)
-                nextInRound()
-              }}
+              onClick={() => !isAnswered && (selectQuestion(num), nextInRound())}
               className={`
-                aspect-square rounded-2xl font-bold flex items-center justify-center
-                transition-all duration-200 shadow-lg p-8
-                ${text}
-                ${isAnswered
-                  ? "bg-gray-400 text-gray-700  opacity-70"
-                  : isSelected
-                    ? "bg-yellow-400 text-gray-900 scale-110 ring-4 ring-yellow-300"
-                    : "bg-white text-pink-600 hover:scale-105 hover:bg-pink-100"
-                }
+                relative group flex items-center justify-center transition-all duration-300
+                ${isAnswered ? "opacity-30 grayscale-[0.5]" : "hover:scale-110 active:scale-95"}
               `}
             >
-              {num}
+              {/* STAR CONTAINER - Responsive height based on screen size */}
+              <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center">
+                
+                <svg 
+                  viewBox="0 0 100 100" 
+                  className={`absolute inset-0 w-full h-full drop-shadow-xl transition-all duration-500
+                    ${isSelected ? "fill-yellow-400" : "fill-white/5"}
+                    ${isAnswered 
+                      ? "fill-transparent stroke-white/20 stroke-[1px]" 
+                      : "stroke-blue-400/50 group-hover:stroke-yellow-400 stroke-[2px]"
+                    }
+                  `}
+                >
+                  <path d="M50 2L63 38H100L70 60L81 98L50 75L19 98L30 60L0 38H37L50 2Z" />
+                </svg>
+
+                {/* NUMBERED BADGE */}
+                <div className={`
+                  z-10 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-black transition-all duration-300 border-2
+                  ${text}
+                  ${isAnswered 
+                    ? "bg-transparent border-gray-800 text-gray-700" 
+                    : isSelected
+                      ? "bg-black border-yellow-400 text-yellow-400 shadow-[0_0_15px_rgba(234,179,8,0.4)]"
+                      : "bg-blue-900/40 border-blue-400/60 text-white group-hover:border-yellow-400 group-hover:text-yellow-400"
+                  }
+                `}>
+                  {num}
+                </div>
+              </div>
             </button>
-          )
+          );
         })}
       </div>
+
+      {/* FOOTER - Minimal */}
+      <div className="relative z-10 text-white/10 text-[8px] tracking-[1em] uppercase font-light pointer-events-none mt-2">
+        Steam Quiz Systems
+      </div>
     </div>
-  )
-}
+  );
+};

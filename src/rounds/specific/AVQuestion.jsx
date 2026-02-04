@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CircularTimer from "../../components/CicrcularTimer";
+import CircularTimer from "../../components/CircularTimer";
 import { useNavigationStore } from "../../store/useNavigation";
 import { QUESTIONS } from "../../constants/questions";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
