@@ -40,7 +40,7 @@ export const RapidFireQuestion = () => {
   if (!setData || total === 0) return null;
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative py-6 px-2">
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative py-6 px-2">
       {/* Background Decor */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -55,7 +55,7 @@ export const RapidFireQuestion = () => {
         <div className="px-8 py-2 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-xs font-black uppercase tracking-[0.3em] shadow-lg border-b-2 border-yellow-800 mb-3">
           {config.title}
         </div>
-        <div className="text-blue-400 font-mono text-[10px] tracking-widest bg-blue-900/30 px-4 py-1 rounded-full border border-blue-500/30 uppercase">
+        <div className="text-purple-400 font-mono text-[10px] tracking-widest bg-purple-900/30 px-4 py-1 rounded-full border border-purple-500/30 uppercase">
           Question Matrix: {visibleCount} / {total}
         </div>
       </div>
@@ -73,7 +73,7 @@ export const RapidFireQuestion = () => {
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-500
                     ${
                       isVisible
-                        ? "bg-blue-600/10 border-blue-400/30 opacity-100 shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                        ? "bg-purple-600/10 border-yellow-500/60 opacity-100 shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                         : "bg-white/5 border-white/5 opacity-20"
                     }
                   `}
@@ -87,7 +87,7 @@ export const RapidFireQuestion = () => {
                   </div>
                   <div
                     className={`flex-1 font-bold leading-tight transition-all
-                    ${isVisible ? "text-lg text-blue-50" : "text-base text-transparent select-none"}
+                    ${isVisible ? "text-lg text-purple-50" : "text-base text-transparent select-none"}
                   `}
                   >
                     {isVisible ? item.text : "••••••••••••••••••••"}
@@ -114,7 +114,7 @@ export const RapidFireQuestion = () => {
                   <span className="text-yellow-500 font-black text-[9px] uppercase mb-0.5 tracking-tighter">
                     Ans {index + 1}
                   </span>
-                  <span className="text-blue-100 text-sm font-bold tracking-tight truncate">
+                  <span className="text-purple-100 text-sm font-bold tracking-tight truncate">
                     {item.answer}
                   </span>
                 </div>
@@ -140,7 +140,7 @@ export const RapidFireQuestion = () => {
               ${
                 showAnswers
                   ? "bg-yellow-500 border-yellow-400 text-black"
-                  : "bg-blue-900/40 border-blue-500/30 text-blue-200 hover:bg-blue-800/60"
+                  : "bg-purple-900/40 border-purple-500/30 text-purple-200 hover:bg-purple-800/60"
               }
             `}
           >

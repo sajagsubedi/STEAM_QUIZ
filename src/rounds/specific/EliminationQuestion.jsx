@@ -98,7 +98,7 @@ export function EliminationQuestion() {
   const hasMedia = !!currentQuestion.media?.src;
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative p-4 md:p-6">
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
@@ -136,9 +136,9 @@ export function EliminationQuestion() {
         <div
           className={`w-full max-w-5xl flex flex-col items-center ${hasMedia ? "gap-4" : "gap-8"}`}
         >
-          <div className="w-full bg-blue-900/40 backdrop-blur-md border-2 border-blue-400/50 rounded-2xl shadow-2xl p-6 md:p-10 relative overflow-hidden">
+          <div className="w-full bg-purple-900/40 backdrop-blur-md border-2 border-yellow-500 rounded-2xl shadow-2xl p-6 md:p-10 relative overflow-hidden">
             <h2 className="text-white font-bold leading-tight text-center text-2xl md:text-4xl">
-              {currentQuestion.text || "LOOK AT THE IMAGE"}
+              {currentQuestion.text}
             </h2>
           </div>
           {hasMedia && (

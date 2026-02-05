@@ -14,7 +14,7 @@ const SubjectSelection = () => {
   if (!subjects) return null;
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-6 md:p-12">
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative p-6 md:p-12">
       {/* BACKGROUND DECORATIVE GRID */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -62,7 +62,7 @@ const SubjectSelection = () => {
                 selectEliminationSubject(subject.subjectId);
                 nextInRound();
               }}
-              className="group relative h-40 bg-blue-950/30 backdrop-blur-md border border-white/10 hover:border-yellow-500/80 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between text-left active:scale-[0.98] overflow-hidden"
+              className="group relative h-40 bg-purple-950/30 backdrop-blur-md border border-white/10 hover:border-yellow-500/80 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between text-left active:scale-[0.98] overflow-hidden"
             >
               <span className="absolute top-2 right-6 text-yellow-500/5 font-black text-6xl group-hover:text-yellow-500/10 transition-all">
                 {String(index + 1).padStart(2, "0")}

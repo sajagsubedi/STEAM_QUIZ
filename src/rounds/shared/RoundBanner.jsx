@@ -5,10 +5,10 @@ export const RoundBanner = ({ roundConfig }) => {
   const nextInRound = useNavigationStore((state) => state.nextInRound);
 
   return (
-    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative">
+    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative">
       {/* Cinematic Background Light Beam */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[40%] bg-blue-500/10 rotate-12 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[40%] bg-purple-500/10 rotate-12 blur-[120px]" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center max-w-4xl w-full px-6 text-center">
@@ -33,11 +33,11 @@ export const RoundBanner = ({ roundConfig }) => {
             {roundConfig.title}
           </h1>
           <div className="flex items-center justify-center gap-4">
-            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-blue-400" />
-            <span className="text-blue-300 text-xs tracking-[0.4em] uppercase font-light">
+            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-purple-400" />
+            <span className="text-purple-300 text-xs tracking-[0.4em] uppercase font-light">
               Phase Sequence Active
             </span>
-            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-blue-400" />
+            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-purple-400" />
           </div>
         </div>
 

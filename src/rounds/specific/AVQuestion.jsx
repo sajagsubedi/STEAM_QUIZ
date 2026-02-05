@@ -118,12 +118,12 @@ export const AVQuestion = () => {
   // --- STAGE 1: ENTRY ---
   if (step === "entry") {
     return (
-      <div className="h-screen w-screen bg-black flex flex-col p-6 bg-linear-to-br from-gray-900 via-blue-900 to-black relative">
+      <div className="h-screen w-screen bg-black flex flex-col p-6 bg-linear-to-br from-gray-900 via-purple-900 to-black relative">
         <PageHeader />
         <div className="flex-1 flex items-center justify-center">
           <button
             onClick={() => setStep("observation")}
-            className="group relative flex flex-col items-center gap-6 p-16 bg-blue-900/20 border border-white/10 rounded-3xl backdrop-blur-md hover:border-yellow-500/50 transition-all duration-500"
+            className="group relative flex flex-col items-center gap-6 p-16 bg-purple-900/20 border border-white/10 rounded-3xl backdrop-blur-md hover:border-yellow-500/50 transition-all duration-500"
           >
             <div className="p-8 bg-yellow-500 rounded-2xl shadow-[0_0_30px_rgba(234,179,8,0.3)] group-hover:scale-110 transition-transform">
               <Play size={48} className="text-black fill-black" />
@@ -140,10 +140,10 @@ export const AVQuestion = () => {
   // --- STAGE 2: OBSERVATION ---
   if (step === "observation") {
     return (
-      <div className="h-screen w-screen bg-black flex flex-col p-6 bg-linear-to-br from-gray-900 via-blue-900 to-black relative overflow-hidden">
+      <div className="h-screen w-screen bg-black flex flex-col p-6 bg-linear-to-br from-gray-900 via-purple-900 to-black relative overflow-hidden">
         <PageHeader />
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0">
-          <div className="flex-1 flex items-center justify-center bg-blue-950/30 rounded-3xl border border-white/10 p-6 overflow-hidden w-full max-w-5xl shadow-inner">
+          <div className="flex-1 flex items-center justify-center bg-purple-950/30 rounded-3xl border border-white/10 p-6 overflow-hidden w-full max-w-5xl shadow-inner">
             {renderMedia(true)}
           </div>
           <div className="mt-4 text-yellow-500 font-black uppercase tracking-[0.2em] animate-pulse text-lg bg-black/40 px-6 py-2 rounded-full border border-yellow-500/20">
@@ -168,7 +168,7 @@ export const AVQuestion = () => {
 
   // --- STAGE 3: QUESTION ---
   return (
-    <div className="h-screen w-screen bg-black flex flex-col p-6 bg-linear-to-br from-gray-900 via-blue-900 to-black relative overflow-hidden">
+    <div className="h-screen w-screen bg-black flex flex-col p-6 bg-linear-to-br from-gray-900 via-purple-900 to-black relative overflow-hidden">
       {dialog && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4">
           <div className="relative w-full max-w-md p-1 bg-linear-to-b from-gray-700 to-gray-900 rounded-[2rem]">
@@ -190,7 +190,7 @@ export const AVQuestion = () => {
                 </h2>
                 {dialog.isCorrect && (
                   <div className="w-full bg-white/5 border-y-4 border-green-500 py-6 mb-8">
-                    <p className="text-blue-300 uppercase text-[10px] tracking-widest mb-1">
+                    <p className="text-purple-300 uppercase text-[10px] tracking-widest mb-1">
                       Decrypted Answer
                     </p>
                     <p className="text-white text-3xl font-bold">
@@ -250,7 +250,7 @@ export const AVQuestion = () => {
           <div
             className={`transition-all duration-700 ${showAnswer ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <div className="bg-blue-900/20 border border-yellow-500/30 p-5 rounded-2xl inline-block shadow-2xl backdrop-blur-md">
+            <div className="bg-purple-900/20 border border-yellow-500/30 p-5 rounded-2xl inline-block shadow-2xl backdrop-blur-md">
               <p className="text-yellow-500 font-black text-[9px] uppercase tracking-[0.3em] mb-1">
                 Decrypted Answer
               </p>

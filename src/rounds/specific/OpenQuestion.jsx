@@ -79,7 +79,7 @@ function OpenQuestionPage() {
   const hasMedia = !!currentQuestion.media?.src;
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative p-4 md:p-6">
       {/* BACKGROUND GRID */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -124,7 +124,7 @@ function OpenQuestionPage() {
             className={`w-full backdrop-blur-md border-2 transition-all duration-500 rounded-2xl shadow-2xl relative overflow-hidden ${
               isSuspense
                 ? "border-yellow-400 bg-yellow-400/20 animate-pulse scale-[1.02]"
-                : "border-blue-400/30 bg-blue-900/40"
+                : "border-yellow-500 bg-purple-900/40"
             } ${hasMedia ? "p-6" : "p-10"}`}
           >
             {isSuspense && (

@@ -18,7 +18,7 @@ function WagerQuestionComp() {
   };
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative p-4 md:p-6">
       {/* BACKGROUND DECOR */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -50,7 +50,7 @@ function WagerQuestionComp() {
       {/* MAIN CONTENT AREA */}
       <div className="relative z-10 flex-1 flex flex-row gap-6 py-4 min-h-0">
         {/* LEFT SIDE: TEAM WAGER TABLE */}
-        <div className="w-1/2 bg-blue-900/20 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
+        <div className="w-1/2 bg-purple-900/20 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
           <div className="bg-white/5 p-4 border-b border-white/10 flex items-center gap-2">
             <Trophy className="text-yellow-500" size={18} />
             <h3 className="text-white font-black uppercase tracking-tighter text-sm">
@@ -61,7 +61,7 @@ function WagerQuestionComp() {
           <div className="flex-1 overflow-y-auto p-4 scrollbar-hide">
             <table className="w-full border-separate border-spacing-y-2">
               <thead>
-                <tr className="text-[10px] text-blue-300 uppercase tracking-widest text-left">
+                <tr className="text-[10px] text-purple-300 uppercase tracking-widest text-left">
                   <th className="px-4 pb-2">Team</th>
                   <th className="px-4 pb-2 text-center">Points to Risk</th>
                 </tr>
@@ -83,7 +83,7 @@ function WagerQuestionComp() {
                             className={`px-3 py-1 rounded-md text-[10px] font-black transition-all border ${
                               currentWager === pt
                                 ? "bg-yellow-500 border-yellow-400 text-black shadow-lg scale-105"
-                                : "bg-blue-900/40 border-white/10 text-blue-200 hover:border-yellow-500"
+                                : "bg-purple-900/40 border-white/10 text-purple-200 hover:border-yellow-500"
                             }`}
                           >
                             {pt}
@@ -103,7 +103,7 @@ function WagerQuestionComp() {
           {/* TOP HALF: TIMER */}
           <div className="flex-1 bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center justify-center relative overflow-hidden">
             <div className="absolute top-6 text-center">
-              <p className="text-blue-300 text-[10px] font-black uppercase tracking-[0.3em] mb-2">
+              <p className="text-purple-300 text-[10px] font-black uppercase tracking-[0.3em] mb-2">
                 Round Timer
               </p>
               <div className="h-1 w-12 bg-yellow-500 mx-auto rounded-full" />

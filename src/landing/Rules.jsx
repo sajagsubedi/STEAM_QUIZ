@@ -13,10 +13,10 @@ export const RulesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative">
+    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative">
       {/* Background Decorative Elements (Matching Landing Page) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 blur-[120px] rounded-full" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/20 blur-[120px] rounded-full" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-yellow-600/10 blur-[120px] rounded-full" />
       </div>
 
@@ -65,7 +65,7 @@ export const RulesPage = () => {
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center text-yellow-400 font-bold text-sm">
                 {idx + 1}
               </div>
-              <p className="text-blue-50 text-base md:text-lg leading-relaxed font-light tracking-wide pt-0.5">
+              <p className="text-purple-50 text-base md:text-lg leading-relaxed font-light tracking-wide pt-0.5">
                 {rule}
               </p>
             </div>
@@ -74,7 +74,7 @@ export const RulesPage = () => {
 
         {/* Navigation Button */}
         <div className="flex flex-col items-center mt-12">
-          <p className="text-xs text-blue-300/60 uppercase tracking-[0.4em] mb-4">
+          <p className="text-xs text-purple-300/60 uppercase tracking-[0.4em] mb-4">
             Proceed to Menu
           </p>
           <CircularArrowButton onClick={goToMenu} size={65} />

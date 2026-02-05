@@ -66,7 +66,7 @@ function ContemporyQuestionPage() {
   const hasMedia = !!currentQuestion.media?.src;
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative p-4 md:p-6">
       {/* BACKGROUND GRID - Same as General */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -111,7 +111,7 @@ function ContemporyQuestionPage() {
         >
           {/* Question Box */}
           <div
-            className={`w-full bg-blue-900/40 backdrop-blur-md border-2 border-blue-400/30 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
+            className={`w-full bg-purple-900/40 backdrop-blur-md border-2 border-yellow-500 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
           >
             <h2
               className={`text-white font-bold leading-tight text-center ${hasMedia ? "text-xl" : "text-3xl"}`}
@@ -176,7 +176,7 @@ function ContemporyQuestionPage() {
                 <div
                   className={`w-full bg-white/5 border-y-4 py-6 mb-8 ${isCorrect ? "border-green-500" : "border-red-500"}`}
                 >
-                  <p className="text-blue-300 uppercase text-[10px] tracking-widest mb-1">
+                  <p className="text-purple-300 uppercase text-[10px] tracking-widest mb-1">
                     Final Answer
                   </p>
                   <p className="text-white text-3xl font-bold">

@@ -46,7 +46,7 @@ export const QuestionSelection = ({ roundConfig }) => {
   const isElimination = currentRound.startsWith("elimination");
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col items-center justify-between overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative px-1 py-4 pb-8">
+    <div className="h-screen w-screen bg-black flex flex-col items-center justify-between overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative px-1 py-4 pb-8">
       {/* Background Tech Elements */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -101,7 +101,7 @@ export const QuestionSelection = ({ roundConfig }) => {
             : "Select a Mission Question"}
         </h2>
 
-        <div className="bg-blue-600/20 px-6 py-1.5 rounded-full border border-yellow-500/30 backdrop-blur-md">
+        <div className="bg-purple-600/20 px-6 py-1.5 rounded-full border border-yellow-500/30 backdrop-blur-md">
           <p className="text-yellow-500 font-mono tracking-[0.2em] uppercase text-[10px] font-black">
             COMPLETED: {currentAnsweredQuestions.length} / {totalItems}
           </p>
@@ -136,7 +136,7 @@ export const QuestionSelection = ({ roundConfig }) => {
                     className={`absolute inset-0 w-full h-full drop-shadow-2xl transition-all duration-500
                       ${
                         isAnswered
-                          ? "fill-blue-900/60 stroke-blue-400 stroke-2"
+                          ? "fill-purple-900/60 stroke-purple-400 stroke-2"
                           : isSelected
                             ? "fill-yellow-500 stroke-white stroke-2"
                             : "fill-yellow-500/10 stroke-yellow-500 stroke-2 group-hover:fill-yellow-500/30 group-hover:drop-shadow-[0_0_15px_rgba(234,179,8,0.6)]"
@@ -147,13 +147,13 @@ export const QuestionSelection = ({ roundConfig }) => {
 
                   <div
                     className={`z-10 font-black transition-all duration-300 ${text}
-                    ${isAnswered ? "text-blue-300" : "text-yellow-400"}`}
+                    ${isAnswered ? "text-purple-300" : "text-yellow-400"}`}
                   >
                     {num}
                   </div>
 
                   {isAnswered && (
-                    <div className="absolute -top-1 -right-1 z-20 bg-blue-500 text-white rounded-full p-0.5 shadow-lg border border-white/20">
+                    <div className="absolute -top-1 -right-1 z-20 bg-purple-500 text-white rounded-full p-0.5 shadow-lg border border-white/20">
                       <CheckCircle2 size={16} />
                     </div>
                   )}

@@ -56,7 +56,7 @@ export const FirstInterface = () => {
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black">
+    <div className="h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black">
       <audio ref={audioRef} src="/logos/intro.mp3" autoPlay preload="auto" />
 
       {/* Main Center Stage */}
@@ -92,7 +92,7 @@ export const FirstInterface = () => {
           <h1 className="text-2xl font-bold tracking-[0.2em] uppercase">
             STEAM Quiz Club
           </h1>
-          <p className="text-sm text-blue-300 tracking-[0.3em] font-light italic">
+          <p className="text-sm text-purple-300 tracking-[0.3em] font-light italic">
             Think • Explore • Achieve
           </p>
         </div>

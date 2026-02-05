@@ -77,7 +77,7 @@ export function GeneralQuestion() {
   const hasMedia = !!currentQuestion.media?.src;
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
+    <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative p-4 md:p-6">
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
@@ -120,7 +120,7 @@ export function GeneralQuestion() {
           className={`w-full max-w-4xl flex flex-col items-center ${hasMedia ? "gap-4" : "gap-8"}`}
         >
           <div
-            className={`w-full bg-blue-900/40 backdrop-blur-md border-2 border-yellow-500 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
+            className={`w-full bg-purple-900/40 backdrop-blur-md border-2 border-yellow-500 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
           >
             <h2
               className={`text-white font-bold leading-tight text-center ${hasMedia ? "text-xl" : "text-3xl"}`}
@@ -183,7 +183,7 @@ export function GeneralQuestion() {
 
                 {isCorrect ? (
                   <div className="w-full bg-white/5 border-y-4 border-green-500 py-6 mb-8">
-                    <p className="text-blue-300 uppercase text-[10px] tracking-widest mb-1">
+                    <p className="text-purple-300 uppercase text-[10px] tracking-widest mb-1">
                       Final Answer
                     </p>
                     <p className="text-white text-3xl font-bold">

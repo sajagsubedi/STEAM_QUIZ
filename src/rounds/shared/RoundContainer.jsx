@@ -65,36 +65,26 @@ export const RoundContainer = () => {
 
       {/* SYSTEM MENU BUTTON (TOP RIGHT) */}
       <div className="absolute top-4 right-4 z-[60] flex items-center gap-3">
-        {/* Terminal Meta Info */}
-        <div className="hidden md:block text-right">
-          <p className="text-[10px] text-blue-400/60 font-mono uppercase tracking-widest leading-none">
-            System
-          </p>
-          <p className="text-[8px] text-white/20 font-mono uppercase tracking-tighter">
-            Terminal_v2.0
-          </p>
-        </div>
-
         <button
           onClick={goToMenu}
           title="Return to Main Menu"
-          className="group relative flex items-center justify-center w-12 h-12 bg-white/5 hover:bg-blue-600/20 backdrop-blur-md border border-white/10 hover:border-blue-400/50 rounded-xl transition-all duration-300 shadow-2xl overflow-hidden"
+          className="group relative flex items-center justify-center w-12 h-12 bg-white/5 hover:bg-purple-600/20 backdrop-blur-md border border-white/10 hover:border-purple-400/50 rounded-xl transition-all duration-300 shadow-2xl overflow-hidden"
         >
           {/* Subtle Background Glow on Hover */}
-          <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
 
           {/* Menu Icon */}
           <LayoutGrid
-            className="relative z-10 text-white/70 group-hover:text-blue-400 group-hover:scale-110 transition-all duration-300"
+            className="relative z-10 text-white/70 group-hover:text-purple-400 group-hover:scale-110 transition-all duration-300"
             size={24}
           />
 
           {/* Brackets for "Tech" UI feel */}
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-blue-400 transition-colors" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-blue-400 transition-colors" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-purple-400 transition-colors" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-purple-400 transition-colors" />
 
           {/* Scanning Line Animation */}
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-blue-400/30 -translate-y-full group-hover:animate-scan-line" />
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-purple-400/30 -translate-y-full group-hover:animate-scan-line" />
         </button>
       </div>
 

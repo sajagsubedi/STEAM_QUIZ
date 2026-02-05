@@ -5,14 +5,14 @@ export const MenuPage = () => {
   const startRound = useNavigationStore((state) => state.startRound);
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col items-center justify-between py-6 px-4 overflow-hidden relative bg-linear-to-br from-gray-900 via-blue-900 to-black">
+    <div className="h-screen w-screen bg-black flex flex-col items-center justify-between py-6 px-4 overflow-hidden relative bg-linear-to-br from-gray-900 via-purple-900 to-black">
       {/* Background Ambient Glows */}
-      <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-600/20 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-600/20 blur-[100px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-yellow-500/10 blur-[100px] rounded-full pointer-events-none" />
 
       {/* Header Section */}
       <div className="relative z-10 text-center pt-2">
-        <h2 className="text-blue-400 text-xs tracking-[0.4em] uppercase mb-1 font-semibold">
+        <h2 className="text-purple-400 text-xs tracking-[0.4em] uppercase mb-1 font-semibold">
           Challenge Sequence
         </h2>
         <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">
@@ -52,7 +52,7 @@ export const MenuPage = () => {
               {round.title}
             </h3>
 
-            <p className="relative mt-3 text-[10px] font-bold text-blue-300/50 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-[0.2em]">
+            <p className="relative mt-3 text-[10px] font-bold text-purple-300/50 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-[0.2em]">
               Start Round
             </p>
           </button>
@@ -60,7 +60,7 @@ export const MenuPage = () => {
       </div>
 
       {/* Footer Decoration */}
-      <div className="relative z-10 text-blue-400/20 text-[10px] tracking-[1em] uppercase pointer-events-none pb-2">
+      <div className="relative z-10 text-purple-400/20 text-[10px] tracking-[1em] uppercase pointer-events-none pb-2">
         Steam Quiz Systems 
       </div>
     </div>
