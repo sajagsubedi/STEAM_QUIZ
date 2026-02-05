@@ -70,6 +70,18 @@ export const ROUND_CONFIGS = {
     totalQuestions: 6,
   },
 
+    rapidFire: {
+    key: "rapidFire",
+    title: "Rapid Fire Round",
+    logo: "/logos/rapid.png",
+    flow: ["banner", "rules", "select", "question"],
+    timers: [60],
+    marks: 5, // per correct answer
+    rules: ["6 Questions per team", "1 minute total for the set"],
+    sets: 8,
+  },
+  
+
   av: {
     key: "av",
     title: "Audio / Visual Round",
@@ -80,6 +92,7 @@ export const ROUND_CONFIGS = {
     rules: ["6 Questions total", "1 minute per question", "Observe carefully"],
     totalQuestions: 6,
   },
+  
 
   contemporary: {
     key: "contemporary",
@@ -92,6 +105,19 @@ export const ROUND_CONFIGS = {
     totalQuestions: 12,
   },
 
+  
+  
+  open: {
+    key: "open",
+    title: "Open Round",
+    logo: "/logos/open.png",
+    flow: ["banner", "rules", "question"],
+    timers: [300], // 5 minutes
+    marks: 30,
+    rules: ["1 Question for all teams", "Discussion based"],
+    totalQuestions: 1,
+  },
+  
   gambling: {
     key: "gambling",
     title: "Gambling Round",
@@ -105,27 +131,5 @@ export const ROUND_CONFIGS = {
     ],
     points: [5, 10, 15, 20],
     totalQuestions: 2,
-  },
-
-  rapidFire: {
-    key: "rapidFire",
-    title: "Rapid Fire Round",
-    logo: "/logos/rapid.png",
-    flow: ["banner", "rules", "select", "question"],
-    timers: [60],
-    marks: 5, // per correct answer
-    rules: ["6 Questions per team", "1 minute total for the set"],
-    sets: 8,
-  },
-
-  open: {
-    key: "open",
-    title: "Open Round",
-    logo: "/logos/open.png",
-    flow: ["banner", "rules", "question"],
-    timers: [300], // 5 minutes
-    marks: 30,
-    rules: ["1 Question for all teams", "Discussion based"],
-    totalQuestions: 1,
   },
 };
