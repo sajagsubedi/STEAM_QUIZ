@@ -57,7 +57,7 @@ export const FirstInterface = () => {
 
   return (
     <div className="h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black">
-      <audio ref={audioRef} src="/logos/intro.mp3" autoPlay preload="auto" />
+      <audio ref={audioRef} src="/sounds/intro.mp3" autoPlay preload="auto" />
 
       {/* Main Center Stage */}
       <div className="relative flex flex-col items-center justify-center w-full h-[80vh]">
