@@ -7,7 +7,7 @@ const initialRoundState = {
   currentFlowIndex: 0,
   selectedQuestion: null,
   sequentialCount: 1,
-  currentSubjectId: null
+  currentSubjectId: null,
 };
 
 export const useNavigationStore = create((set, get) => ({
@@ -51,7 +51,6 @@ export const useNavigationStore = create((set, get) => ({
   // Round navigation
   // --------------------
   nextInRound: () => {
-
     const state = get();
 
     const {
@@ -62,7 +61,7 @@ export const useNavigationStore = create((set, get) => ({
       sequentialCount,
       currentSubjectId,
       answeredQuestions,
-      goToMenu
+      goToMenu,
     } = state;
 
     const step = currentRoundFlow[currentFlowIndex];
@@ -77,7 +76,9 @@ export const useNavigationStore = create((set, get) => ({
     // Sequential rounds
     // --------------------
     if (
-      (currentRound === "quickResponse" || currentRound === "open") &&
+      (currentRound === "quickResponse" ||
+        currentRound === "open" ||
+        currentRound == "gambling") &&
       step === "question"
     ) {
       if (sequentialCount < ROUND_CONFIGS[currentRound].totalQuestions) {
@@ -92,10 +93,8 @@ export const useNavigationStore = create((set, get) => ({
     // Save Answered Question
     // --------------------
     if (step === "question" && selectedQuestion) {
-
       // ---------- ELIMINATION ----------
       if (currentRound === "elimination1" || currentRound == "elimination2") {
-
         const subjectAnswers =
           answeredQuestions[currentRound]?.[currentSubjectId] || [];
 
@@ -105,26 +104,23 @@ export const useNavigationStore = create((set, get) => ({
             [currentRound]: {
               ...answeredQuestions[currentRound],
               [currentSubjectId]: [...subjectAnswers, selectedQuestion],
-            }
+            },
           },
-          selectedQuestion: null
+          selectedQuestion: null,
         });
-
       }
 
       // ---------- NORMAL ROUNDS ----------
       else {
-
         const roundAnswers = answeredQuestions[currentRound] || [];
 
         set({
           answeredQuestions: {
             ...answeredQuestions,
-            [currentRound]: [...roundAnswers, selectedQuestion]
+            [currentRound]: [...roundAnswers, selectedQuestion],
           },
-          selectedQuestion: null
+          selectedQuestion: null,
         });
-
       }
     }
 
@@ -134,7 +130,6 @@ export const useNavigationStore = create((set, get) => ({
     if (currentFlowIndex < currentRoundFlow.length - 1) {
       set({ currentFlowIndex: currentFlowIndex + 1 });
     } else {
-
       if (currentRound.startsWith("elimination")) {
         const subSelectIndex = currentRoundFlow.indexOf("subselection");
         set({ currentFlowIndex: subSelectIndex, currentSubjectId: undefined });
@@ -145,8 +140,7 @@ export const useNavigationStore = create((set, get) => ({
       const questionIndex = currentRoundFlow.indexOf("question");
 
       set({
-        currentFlowIndex:
-          selectIndex !== -1 ? selectIndex : questionIndex,
+        currentFlowIndex: selectIndex !== -1 ? selectIndex : questionIndex,
       });
     }
   },
@@ -161,12 +155,10 @@ export const useNavigationStore = create((set, get) => ({
     return currentRoundFlow[currentFlowIndex] ?? null;
   },
   selectEliminationSubject: (subjectId) => {
-    set({ currentSubjectId: subjectId })
-  }
-  ,
+    set({ currentSubjectId: subjectId });
+  },
   goToSubSelection: () => {
-    const { currentRoundFlow
-    } = get()
+    const { currentRoundFlow } = get();
     const subSelectIndex = currentRoundFlow.indexOf("subselection");
     set({ currentFlowIndex: subSelectIndex, currentSubjectId: undefined });
   },
@@ -175,11 +167,11 @@ export const useNavigationStore = create((set, get) => ({
     const { currentRoundFlow, currentRound } = get();
     const selectIndex = currentRoundFlow.indexOf("select");
     if (selectIndex !== -1) {
-      set({ 
-        currentFlowIndex: selectIndex, 
+      set({
+        currentFlowIndex: selectIndex,
         selectedQuestion: null,
-        answeredQuestions: get().answeredQuestions // Preserve answered questions
+        answeredQuestions: get().answeredQuestions, // Preserve answered questions
       });
     }
-  }
+  },
 }));

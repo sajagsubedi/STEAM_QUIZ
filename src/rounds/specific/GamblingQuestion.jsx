@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CircularTimer from "../../components/CircularTimer";
 import { useNavigationStore } from "../../store/useNavigation";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
-import { ChevronRight, Trophy, Coins } from "lucide-react";
+import { ChevronRight, Trophy, Coins, Hash } from "lucide-react";
 
-export function GamblingQuestion() {
-  const { nextInRound } = useNavigationStore();
+function WagerQuestionComp() {
+  const { nextInRound, sequentialCount } = useNavigationStore();
   const config = ROUND_CONFIGS["gambling"];
 
   // Local state for 10 teams
@@ -15,7 +15,6 @@ export function GamblingQuestion() {
     const newWagers = [...teamWagers];
     newWagers[teamIndex] = points;
     setTeamWagers(newWagers);
-    // Sound removed as requested
   };
 
   return (
@@ -29,14 +28,27 @@ export function GamblingQuestion() {
         }}
       />
 
-      {/* HEADER */}
-      <div className="relative z-10 flex justify-center items-center h-14 shrink-0">
+      {/* HEADER SECTION */}
+      <div className="relative z-10 flex justify-between items-center h-16 shrink-0 px-4">
+        {/* Empty space for symmetry */}
+        <div className="w-24 hidden md:block" />
+
+        {/* Title Badge */}
         <div className="px-8 py-2 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-xs font-black uppercase tracking-widest shadow-lg">
           {config.title}
         </div>
+
+        {/* SEQUENTIAL COUNT BADGE */}
+        <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl backdrop-blur-sm -translate-x-2/3">
+          <Hash className="text-yellow-500" size={16} />
+          <span className="text-white font-black text-sm">
+            {sequentialCount}
+          </span>
+        </div>
       </div>
 
-      <div className="relative z-10 flex-1 flex flex-row gap-6 py-4 min-h-0 overflow-hidden">
+      {/* MAIN CONTENT AREA */}
+      <div className="relative z-10 flex-1 flex flex-row gap-6 py-4 min-h-0">
         {/* LEFT SIDE: TEAM WAGER TABLE */}
         <div className="w-1/2 bg-blue-900/20 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
           <div className="bg-white/5 p-4 border-b border-white/10 flex items-center gap-2">
@@ -70,7 +82,7 @@ export function GamblingQuestion() {
                             onClick={() => handleWagerSelect(idx, pt)}
                             className={`px-3 py-1 rounded-md text-[10px] font-black transition-all border ${
                               currentWager === pt
-                                ? "bg-yellow-500 border-yellow-400 text-black shadow-lg"
+                                ? "bg-yellow-500 border-yellow-400 text-black shadow-lg scale-105"
                                 : "bg-blue-900/40 border-white/10 text-blue-200 hover:border-yellow-500"
                             }`}
                           >
@@ -87,51 +99,60 @@ export function GamblingQuestion() {
         </div>
 
         {/* RIGHT SIDE: CENTERED TIMER & STATUS */}
-        <div className="w-1/2 flex flex-col items-center justify-center p-4">
-          <div className="flex-1 flex flex-col items-center justify-center w-full">
-            <div className="text-center mb-6">
+        <div className="w-1/2 flex flex-col gap-6">
+          {/* TOP HALF: TIMER */}
+          <div className="flex-1 bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center justify-center relative overflow-hidden">
+            <div className="absolute top-6 text-center">
               <p className="text-blue-300 text-[10px] font-black uppercase tracking-[0.3em] mb-2">
                 Round Timer
               </p>
-              <div className="h-1 w-16 bg-yellow-500 mx-auto rounded-full shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
+              <div className="h-1 w-12 bg-yellow-500 mx-auto rounded-full" />
             </div>
 
-            {/* TIMER CONTAINER - Fixed centering and size */}
-            <div className="relative flex items-center justify-center p-8 bg-blue-950/30 rounded-full border border-white/5 shadow-inner">
-              <div className="scale-125 origin-center">
-                <CircularTimer timers={config.timers} />
-              </div>
+            {/* Fixed Timer Layout: Uses a square container to prevent distortion */}
+            <div className="w-64 h-64 relative flex items-center justify-center scale-110">
+              <CircularTimer timers={config.timers} />
             </div>
           </div>
 
-          {/* STATUS & ACTIONS */}
-          <div className="w-full max-w-xs space-y-3 mt-auto">
-            <div className="p-3 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-4">
-              <div className="bg-yellow-500 p-2 rounded-lg text-black">
-                <Coins size={20} />
+          {/* BOTTOM HALF: STATUS & ACTIONS */}
+          <div className="h-40 shrink-0 space-y-3">
+            <div className="p-4 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-4">
+              <div className="bg-yellow-500 p-2.5 rounded-xl text-black shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                <Coins size={24} />
               </div>
               <div>
-                <p className="text-[10px] text-yellow-500 font-black uppercase">
+                <p className="text-[10px] text-yellow-500 font-black uppercase tracking-wider">
                   Wagers Locked
                 </p>
-                <p className="text-white font-bold text-lg leading-none">
-                  {teamWagers.filter((w) => w !== null).length} / 10
+                <p className="text-white font-bold text-2xl leading-none mt-1">
+                  {teamWagers.filter((w) => w !== null).length}{" "}
+                  <span className="text-white/30 text-sm font-normal">
+                    / 10
+                  </span>
                 </p>
               </div>
             </div>
 
             <button
               onClick={() => nextInRound()}
-              className="w-full group flex items-center justify-between p-4 bg-yellow-600 hover:bg-yellow-500 rounded-2xl transition-all duration-300 text-black"
+              className="w-full group flex items-center justify-between p-5 bg-yellow-600 hover:bg-yellow-500 rounded-2xl transition-all duration-300 text-black shadow-lg"
             >
               <span className="font-black uppercase tracking-widest text-xs">
                 Finish Wager Round
               </span>
-              <ChevronRight size={20} />
+              <div className="bg-black/10 p-1 rounded-lg group-hover:translate-x-1 transition-transform">
+                <ChevronRight size={24} />
+              </div>
             </button>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+export function GamblingQuestion() {
+  const { sequentialCount } = useNavigationStore();
+  return <WagerQuestionComp key={sequentialCount} />;
 }

@@ -10,10 +10,11 @@ function ContemporyQuestionPage() {
   const [showDialog, setShowDialog] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  const currentQuestion = QUESTIONS.contempory.find(
-    (q) => q.id === selectedQuestion
+  // Data fetching - using 'contempory' to match your constants
+  const currentQuestion = QUESTIONS.contemporary?.find(
+    (q) => q.id === selectedQuestion,
   );
-  const config = ROUND_CONFIGS["contempory"];
+  const config = ROUND_CONFIGS["contemporary"];
 
   // Audio Refs
   const correctAudio = useRef(null);
@@ -66,7 +67,7 @@ function ContemporyQuestionPage() {
 
   return (
     <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-blue-900 to-black relative p-4 md:p-6">
-      {/* BACKGROUND GRID */}
+      {/* BACKGROUND GRID - Same as General */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
@@ -85,7 +86,7 @@ function ContemporyQuestionPage() {
         </div>
       </div>
 
-      {/* SKIP/NEXT BUTTON */}
+      {/* RIGHT SIDE NAVIGATION (SKIP/NEXT) */}
       <div className="absolute right-6 top-1/2 -translate-y-1/2 z-20">
         <button
           onClick={() => {
@@ -105,19 +106,27 @@ function ContemporyQuestionPage() {
 
       {/* MAIN CONTENT AREA */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0 py-4 pr-24">
-        <div className={`w-full max-w-4xl flex flex-col items-center ${hasMedia ? "gap-4" : "gap-8"}`}>
-          <div className={`w-full bg-blue-900/40 backdrop-blur-md border-2 border-blue-400/30 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}>
-            <h2 className={`text-white font-bold leading-tight text-center ${hasMedia ? "text-xl" : "text-3xl"}`}>
+        <div
+          className={`w-full max-w-4xl flex flex-col items-center ${hasMedia ? "gap-4" : "gap-8"}`}
+        >
+          {/* Question Box */}
+          <div
+            className={`w-full bg-blue-900/40 backdrop-blur-md border-2 border-blue-400/30 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
+          >
+            <h2
+              className={`text-white font-bold leading-tight text-center ${hasMedia ? "text-xl" : "text-3xl"}`}
+            >
               {currentQuestion.text}
             </h2>
           </div>
 
+          {/* Media Handling (Images) */}
           {hasMedia && (
             <div className="flex-1 min-h-0 flex justify-center items-center w-full max-h-[45vh]">
               <img
                 src={currentQuestion.media.src}
                 className="h-full w-auto max-w-full rounded-xl border-2 border-white/10 shadow-2xl object-contain"
-                alt="Question"
+                alt="Question Media"
               />
             </div>
           )}
@@ -130,12 +139,14 @@ function ContemporyQuestionPage() {
           <CircularTimer timers={config.timers} paused={showDialog} />
         </div>
 
-        <div className="flex gap-4 text-[10px] font-mono tracking-tighter uppercase mb-2">
-          <div className="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 font-black">
-            [C] Correct
-          </div>
-          <div className="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 font-black">
-            [X] Incorrect
+        <div className="flex flex-col items-end gap-1 mb-2">
+          <div className="flex gap-4 text-[10px] font-mono tracking-tighter uppercase">
+            <div className="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 font-black">
+              [C] Correct
+            </div>
+            <div className="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 font-black">
+              [X] Incorrect
+            </div>
           </div>
         </div>
       </div>
@@ -144,35 +155,53 @@ function ContemporyQuestionPage() {
       {showDialog && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 animate-in fade-in duration-200">
           <div className="relative w-full max-w-md p-1 bg-linear-to-b from-gray-700 to-gray-900 rounded-[2rem]">
-            <div className="bg-slate-950 rounded-[1.9rem] p-10 text-center border border-white/5 animate-in zoom-in duration-300">
-              <div className={`mx-auto mb-6 p-4 w-max rounded-full ${isCorrect ? "bg-green-500/20 text-green-500" : "bg-red-500/20 text-red-500"}`}>
-                {isCorrect ? <CheckCircle2 size={64} /> : <XCircle size={64} />}
+            <div className="bg-slate-950 rounded-[1.9rem] p-10 text-center border border-white/5">
+              <div className="animate-in zoom-in duration-300 flex flex-col items-center">
+                <div
+                  className={`mb-6 p-4 rounded-full ${isCorrect ? "bg-green-500/20 text-green-500" : "bg-red-500/20 text-red-500"}`}
+                >
+                  {isCorrect ? (
+                    <CheckCircle2 size={64} />
+                  ) : (
+                    <XCircle size={64} />
+                  )}
+                </div>
+
+                <h2
+                  className={`text-5xl font-black uppercase mb-6 tracking-tighter ${isCorrect ? "text-green-400" : "text-red-500"}`}
+                >
+                  {isCorrect ? "Correct!" : "Incorrect!"}
+                </h2>
+
+                <div
+                  className={`w-full bg-white/5 border-y-4 py-6 mb-8 ${isCorrect ? "border-green-500" : "border-red-500"}`}
+                >
+                  <p className="text-blue-300 uppercase text-[10px] tracking-widest mb-1">
+                    Final Answer
+                  </p>
+                  <p className="text-white text-3xl font-bold">
+                    {currentQuestion.answer}
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => {
+                    stopAllAudio();
+                    if (isCorrect) {
+                      nextInRound();
+                    } else {
+                      setShowDialog(false);
+                    }
+                  }}
+                  className={`w-full py-4 rounded-xl text-sm font-black uppercase tracking-widest transition-all ${
+                    isCorrect
+                      ? "bg-green-600 text-white hover:bg-green-500"
+                      : "bg-white/10 text-white hover:bg-white/20"
+                  }`}
+                >
+                  {isCorrect ? "Proceed to Next" : "Dismiss"}
+                </button>
               </div>
-
-              <h2 className={`text-5xl font-black uppercase mb-6 tracking-tighter ${isCorrect ? "text-green-400" : "text-red-500"}`}>
-                {isCorrect ? "Correct!" : "Incorrect!"}
-              </h2>
-
-              <div className={`w-full bg-white/5 border-y-4 py-6 mb-8 ${isCorrect ? "border-green-500" : "border-red-500"}`}>
-                <p className="text-blue-300 uppercase text-[10px] tracking-widest mb-1">Answer</p>
-                <p className="text-white text-3xl font-bold">{currentQuestion.answer}</p>
-              </div>
-
-              <button
-                onClick={() => {
-                  stopAllAudio();
-                  if (isCorrect) {
-                    nextInRound();
-                  } else {
-                    setShowDialog(false);
-                  }
-                }}
-                className={`w-full py-4 rounded-xl text-sm font-black uppercase tracking-widest transition-all ${
-                  isCorrect ? "bg-green-600 text-white hover:bg-green-500" : "bg-white/10 text-white hover:bg-white/20"
-                }`}
-              >
-                {isCorrect ? "Proceed to Next" : "Dismiss"}
-              </button>
             </div>
           </div>
         </div>
@@ -181,8 +210,10 @@ function ContemporyQuestionPage() {
   );
 }
 
-// Main Export with key mechanism for full remount/timer reset
-export function ContemporyQuestion() {
+// Wrapper component to handle re-mounting on question change
+export function ContemporaryQuestion() {
   const { selectedQuestion } = useNavigationStore();
+  // return <p className="text-white">Hello</p>;
+
   return <ContemporyQuestionPage key={selectedQuestion} />;
 }

@@ -597,7 +597,7 @@ export const QUESTIONS = {
   ],
 
   /* ───────────── CONTEMPORY ROUND (4) ───────────── */
-  contempory: [
+  contemporary: [
     {
       id: 1,
       text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",

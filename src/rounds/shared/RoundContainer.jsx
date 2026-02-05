@@ -1,5 +1,5 @@
 import React from "react";
-import { AppWindow, LayoutGrid } from "lucide-react";
+import { LayoutGrid } from "lucide-react";
 import { useNavigationStore } from "../../store/useNavigation";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
 
@@ -8,7 +8,7 @@ import { GeneralQuestion } from "../specific/GeneralQuestion";
 import { RoundBanner } from "./RoundBanner";
 import { RoundRules } from "./RoundRules";
 import { QuestionSelection } from "./QuestionSelection";
-import { ContemporyQuestion } from "../specific/ContemporyQuestion";
+import { ContemporaryQuestion } from "../specific/ContemporaryQuestion";
 import { AlternativeQuestion } from "../specific/AlternativeQuestion";
 import { RapidFireQuestion } from "../specific/RapidFireQuestion";
 import { QRQuestion } from "../specific/QRQuestion";
@@ -43,7 +43,7 @@ const RoundLayout = () => {
       if (currentRound === "av") return <AVQuestion />;
       if (currentRound === "gambling") return <GamblingQuestion />;
       if (currentRound === "rapidFire") return <RapidFireQuestion />;
-      if (currentRound === "contempory") return <ContemporyQuestion />;
+      if (currentRound === "contemporary") return <ContemporaryQuestion />;
       if (currentRound === "open") return <OpenQuestion />;
       return null;
     default:

@@ -120,7 +120,7 @@ export function GeneralQuestion() {
           className={`w-full max-w-4xl flex flex-col items-center ${hasMedia ? "gap-4" : "gap-8"}`}
         >
           <div
-            className={`w-full bg-blue-900/40 backdrop-blur-md border-2 border-blue-400/30 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
+            className={`w-full bg-blue-900/40 backdrop-blur-md border-2 border-yellow-500 rounded-2xl shadow-2xl relative overflow-hidden ${hasMedia ? "p-6" : "p-10"}`}
           >
             <h2
               className={`text-white font-bold leading-tight text-center ${hasMedia ? "text-xl" : "text-3xl"}`}
@@ -133,7 +133,7 @@ export function GeneralQuestion() {
             <div className="flex-1 min-h-0 flex justify-center items-center w-full max-h-[45vh]">
               <img
                 src={currentQuestion.media.src}
-                className="h-full w-auto max-w-full rounded-xl border-2 border-white/10 shadow-2xl object-contain"
+                className="h-full w-auto max-w-full rounded-xl border-2 border-yellow-500/70 shadow-2xl object-contain"
                 alt="Question"
               />
             </div>
