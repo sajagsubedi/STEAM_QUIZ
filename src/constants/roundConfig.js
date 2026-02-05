@@ -16,7 +16,7 @@ export const ROUND_CONFIGS = {
   elimination1: {
     key: "elimination1",
     title: "Elimination Round",
-    logo: "/logos/abbr.png",
+    logo: "/logos/elimination.png",
     flow: ["banner", "rules", "subselection", "select", "question"],
     timers: [60],
     rules: [
@@ -44,7 +44,7 @@ export const ROUND_CONFIGS = {
   elimination2: {
     key: "elimination2",
     title: "Elimination Round",
-    logo: "/logos/abbr.png",
+    logo: "/logos/elimination.png",
     flow: ["banner", "rules", "subselection", "select", "question"],
     timers: [60],
     rules: [
@@ -84,7 +84,7 @@ export const ROUND_CONFIGS = {
   contemporary: {
     key: "contemporary",
     title: "Contemporary Round",
-    logo: "/logos/seq.png",
+    logo: "/logos/contemporary.png",
     flow: ["banner", "rules", "select", "question"],
     timers: [45],
     marks: 15,
