@@ -1,9 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react"; // Added useEffect
 import CircularTimer from "../../components/CircularTimer";
 import { useNavigationStore } from "../../store/useNavigation";
 import { QUESTIONS } from "../../constants/questions";
 import { ROUND_CONFIGS } from "../../constants/roundConfig";
-import { ChevronRight, Hash } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -34,6 +34,11 @@ export const AlternativeQuestion = () => {
     });
   };
 
+  // Cleanup audio on component unmount
+  useEffect(() => {
+    return () => stopAllAudio();
+  }, []);
+
   const handleSelect = (index) => {
     if (isLocked || showResult || wrongOptions.includes(index)) return;
 
@@ -57,7 +62,7 @@ export const AlternativeQuestion = () => {
         audioRef.current.wrong.play().catch(() => {});
         setWrongOptions((prev) => [...prev, index]);
 
-        // Reset state so user can try again, but keep the red highlight
+        // Reset state so user can try again
         setTimeout(() => {
           setIsLocked(false);
           setSelectedIndex(null);
@@ -66,36 +71,39 @@ export const AlternativeQuestion = () => {
     }, 2000);
   };
 
+  // New handler for cleaning up audio when moving to the next question
+  const handleNext = () => {
+    stopAllAudio();
+    nextInRound();
+  };
+
   const getOptionClass = (index) => {
     const base =
       "relative overflow-hidden rounded-xl p-4 flex gap-4 items-center border-2 transition-all duration-300 shadow-xl min-h-[80px] w-full";
 
-    // Correct Answer (revealed after lock)
     if (showResult && index === currentQuestion.answer) {
       return `${base} bg-green-600 border-green-300 text-white scale-105 z-10 shadow-green-500/50 ring-4 ring-green-400/20`;
     }
 
-    // Wrong Selection (red)
     if (wrongOptions.includes(index)) {
       return `${base} bg-red-600 border-red-400 text-white shadow-red-500/50 opacity-90`;
     }
 
-    // Currently Locking (Yellow Pulse)
     if (isLocked && index === selectedIndex) {
       return `${base} bg-yellow-500 border-white text-black animate-pulse scale-105 z-10`;
     }
 
-    // Disabled while waiting
     if (isLocked || showResult) {
       return `${base} bg-purple-950/20 border-white/5 text-white/20 cursor-not-allowed grayscale`;
     }
 
-    // Default
     return `${base} bg-purple-900/40 border-purple-400/30 text-white hover:border-yellow-400 hover:bg-purple-800/60 cursor-pointer group hover:scale-[1.02]`;
   };
 
   if (!currentQuestion) return null;
   const { media, options, text } = currentQuestion;
+  const hasImage = media?.type === "image" && media?.src;
+  const hasText = Boolean(text);
 
   return (
     <div className="h-screen w-screen bg-black flex flex-col overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative p-4 md:p-6">
@@ -107,67 +115,59 @@ export const AlternativeQuestion = () => {
         }}
       />
 
-      {/* HEADER WITH BADGES */}
+      {/* HEADER */}
       <div className="relative z-10 flex flex-col items-center shrink-0 mb-4">
         <div className="px-10 py-2 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-sm font-black uppercase tracking-[0.3em] shadow-lg border-b-2 border-yellow-800 mb-2">
           {config.title}
         </div>
-        <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1 rounded-full backdrop-blur-sm">
-          <Hash className="text-yellow-500" size={12} />
+        <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-3 rounded-full backdrop-blur-sm ">
           <span className="text-white font-black text-xs uppercase tracking-tighter">
-            Q_ID_{selectedQuestion}
+            {selectedQuestion}
           </span>
         </div>
       </div>
 
       {/* MAIN CONTENT Area */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0 px-4">
-        {text && (
-          <div className="w-full max-w-5xl bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 mb-8 shadow-2xl">
-            <h2 className="text-white font-black text-center text-2xl leading-tight tracking-tight">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0 py-4 px-12">
+        {hasText && (
+          <div className="w-full max-w-5xl bg-purple-900/40 backdrop-blur-md border-2 border-purple-400/30 rounded-2xl shadow-2xl p-6 mb-6 text-center">
+            <h2 className="text-white font-bold leading-tight text-2xl">
               {text}
             </h2>
           </div>
         )}
 
-        <div
-          className={`w-full max-w-6xl flex flex-col lg:flex-row items-center gap-8`}
-        >
-          {media?.src && (
-            <div className="w-full lg:w-1/2 flex justify-center max-h-[35vh]">
+        <div className={`w-full max-w-6xl flex ${hasText && hasImage ? "flex-row" : "flex-col"} items-center gap-8`}>
+          {hasImage && (
+            <div className={`${hasText && hasImage ? "w-1/2" : "w-full"} flex justify-center max-h-[40vh]`}>
               <img
                 src={media.src}
-                className="h-full w-auto max-w-full rounded-xl border border-white/10 shadow-2xl object-contain bg-black/40 p-2"
+                className="h-full w-auto max-w-full rounded-xl border-2 border-white/10 shadow-2xl object-contain bg-black/20"
                 alt="Question"
               />
             </div>
           )}
 
-          <div
-            className={`w-full ${media?.src ? "lg:w-1/2" : "w-full"} grid grid-cols-1 md:grid-cols-2 gap-4`}
-          >
+          <div className={`${hasText && hasImage ? "w-1/2" : "w-full max-w-4xl"} grid grid-cols-2 gap-4`}>
             {options.map((opt, index) => (
               <button
                 key={index}
                 onClick={() => handleSelect(index)}
                 className={getOptionClass(index)}
               >
-                <div
-                  className={`w-10 h-10 rounded-lg flex items-center justify-center font-black text-xl flex-shrink-0 shadow-inner
-                  ${isLocked && index === selectedIndex ? "bg-black text-yellow-500" : "bg-yellow-500 text-black"}`}
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-black text-xl flex-shrink-0 
+                  ${isLocked && index === selectedIndex ? "bg-black text-yellow-50" : "bg-yellow-500 text-black"}`}
                 >
                   {OPTION_LABELS[index]}
                 </div>
-                <div className="flex flex-col items-start gap-1">
-                  <span className="text-lg font-bold text-left leading-tight">
-                    {opt.text}
-                  </span>
+                <div className="flex flex-col items-start gap-2">
+                  {opt.text && (
+                    <span className="text-lg font-bold text-left tracking-tight leading-tight text-white">
+                      {opt.text}
+                    </span>
+                  )}
                   {opt.image && (
-                    <img
-                      src={opt.image}
-                      className="max-h-20 rounded border border-white/10 mt-1"
-                      alt="Option"
-                    />
+                    <img src={opt.image} className="max-h-20 rounded border border-white/20" alt="Option" />
                   )}
                 </div>
               </button>
@@ -186,7 +186,7 @@ export const AlternativeQuestion = () => {
         </div>
 
         <button
-          onClick={() => nextInRound()}
+          onClick={handleNext} // Calls the updated handleNext function
           className="group flex flex-col items-center gap-2 p-4 bg-white/5 hover:bg-yellow-500/20 border border-white/10 hover:border-yellow-500 rounded-2xl transition-all duration-300"
         >
           <div className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">

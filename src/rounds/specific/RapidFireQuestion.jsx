@@ -144,7 +144,7 @@ export const RapidFireQuestion = () => {
               }
             `}
           >
-            {showAnswers ? "Decryption Loaded" : "Reveal Decryption"}
+            {showAnswers ? "Answers Loaded" : "Reveal Answers"}
           </button>
 
           <button
