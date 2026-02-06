@@ -90,13 +90,13 @@ export const FirstInterface = () => {
       <div className="relative z-10 flex flex-col items-center justify-center h-[20vh] pb-12 w-full">
         <div className="space-y-1 text-center text-white mb-6">
           <h1 className="text-2xl font-bold tracking-[0.2em] uppercase">
-            STEAM Quiz Club
+            STEAM Quiz
           </h1>
           <p className="text-sm text-purple-300 tracking-[0.3em] font-light italic">
             Think • Explore • Achieve
           </p>
         </div>
-        <CircularArrowButton onClick={goToPoster} size={70} />
+        {/* <CircularArrowButton onClick={goToPoster} size={70} /> */}
       </div>
       <style jsx global>{`
         @keyframes logoIntro {

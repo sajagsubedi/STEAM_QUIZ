@@ -95,7 +95,7 @@ export const PosterPage = () => {
             backgroundSize: 'cover',
           }}
         >
-          Science And Math Quiz<br />STEAM Club of SOS, Gandaki
+          General Quiz<br />STEAM Club of SOS, Gandaki
         </div>
 
         {/* Quiz contest image */}
