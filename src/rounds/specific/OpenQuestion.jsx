@@ -7,7 +7,6 @@ import { ChevronRight } from "lucide-react";
 
 function OpenQuestionPage() {
   const { sequentialCount, nextInRound } = useNavigationStore();
-
   const [showAnswer, setShowAnswer] = useState(false);
 
   const currentQuestion = QUESTIONS.open.find((q) => q.id === sequentialCount);
@@ -29,7 +28,6 @@ function OpenQuestionPage() {
         <div className="px-6 py-1.5 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-xs font-black uppercase tracking-widest shadow-lg">
           {config.title}
         </div>
-
         <div className="absolute right-0 w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center text-black font-black text-lg transform rotate-3 shadow-lg -translate-x-[105%]">
           {currentQuestion.id}
         </div>
@@ -50,7 +48,7 @@ function OpenQuestionPage() {
         </button>
       </div>
 
-      {/* MAIN */}
+      {/* MAIN QUESTION */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0 py-4 pr-24">
         <div
           className={`w-full max-w-4xl flex flex-col items-center ${hasMedia ? "gap-4" : "gap-8"}`}
@@ -77,40 +75,36 @@ function OpenQuestionPage() {
         </div>
       </div>
 
-      {/* RIGHT SIDE CONTROLS + ANSWER */}
-      <div className="absolute right-6 bottom-28 z-20 flex items-center gap-4">
-        {/* ANSWER PANEL */}
-        <div
-          className={`w-[320px] transition-all duration-500 overflow-hidden
-      ${showAnswer ? "max-h-40 opacity-100 translate-x-0" : "max-h-0 opacity-0 translate-x-6"}
-    `}
-        >
-          <div className="bg-black/60 border-2 border-green-500 rounded-xl p-4 shadow-xl">
-            <p className="text-green-400 text-xl font-bold text-center">
+      {/* ANSWER DIALOG */}
+      {showAnswer && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex flex-col items-center justify-center p-6">
+          <div className="bg-purple-900/70 border-2 border-yellow-500 rounded-2xl shadow-2xl p-8 w-full text-center">
+            <h2 className="text-yellow-400 text-base  mb-6">
               {currentQuestion.answer}
-            </p>
+            </h2>
+            <button
+              onClick={handleNextAction}
+              className="px-6 py-3 bg-yellow-500 text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-lg"
+            >
+              Proceed to Next
+            </button>
           </div>
         </div>
+      )}
 
-        {/* BUTTON COLUMN */}
-        <div className="flex flex-col gap-4">
-          {/* REVEAL BUTTON */}
+      {/* REVEAL ANSWER BUTTON */}
+      {!showAnswer && (
+        <div className="absolute right-6 bottom-28 z-20">
           <button
             onClick={() => setShowAnswer(true)}
-            className={`px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all border shadow-md active:scale-95
-        ${
-          showAnswer
-            ? "bg-yellow-500 border-yellow-400 text-black"
-            : "bg-purple-900/40 border-purple-500/30 text-purple-200 hover:bg-purple-800/60"
-        }
-      `}
+            className="px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all border shadow-md bg-purple-900/40 border-purple-500/30 text-purple-200 hover:bg-purple-800/60 active:scale-95"
           >
-            {showAnswer ? "Answers Loaded" : "Reveal Answer"}
+            Reveal Answer
           </button>
         </div>
-      </div>
+      )}
 
-      {/* FOOTER */}
+      {/* FOOTER TIMER */}
       <div className="relative z-10 h-24 shrink-0 flex justify-start items-end">
         <div className="scale-75 origin-bottom-left -ml-2">
           <CircularTimer timers={config.timers} paused={false} />

@@ -1,6 +1,6 @@
 import CircularArrowButton from "../components/CircularArrowButton";
 import { useRef, useEffect, useState } from "react";
-import { useNavigationStore } from "../store/useNavigation";
+// import { useNavigationStore } from "../store/useNavigation";
 
 const RippleLines = () => {
   const [mounted, setMounted] = useState(false);
@@ -45,7 +45,7 @@ const RippleLines = () => {
 };
 
 export const FirstInterface = () => {
-  const goToPoster = useNavigationStore((state) => state.goToPoster);
+  // const goToPoster = useNavigationStore((state) => state.goToPoster);
   const audioRef = useRef(null);
 
   useEffect(() => {

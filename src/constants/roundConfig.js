@@ -7,9 +7,12 @@ export const ROUND_CONFIGS = {
     timers: [30, 15, 10, 10, 10, 10, 10, 10, 5, 5],
     marks: [10, 8, 6, 4, 2, 2, 2, 2, 2, 2],
     rules: [
-      "20 Questions total",
-      "Decreasing points and time per pass",
-      "Passing allowed",
+      "There will be altogether 20 questions.",
+      "Questions will be passed to other teams if not answered.",
+      "30, 15, 10, 10, 10, 10, 10, 10, 5, 5 second time will be given for first ,second and other teams",
+      "Correct answers will carry 10, 8, 6, 4 and 2 points.",
+      "Top 4 teams will qualify directly for the next round while the boottom 4 teams must play the elimination round to qualify.",
+      "Time will be displayed on the screen.",
     ],
     totalQuestions: 20,
   },
@@ -20,11 +23,14 @@ export const ROUND_CONFIGS = {
     flow: ["banner", "rules", "subselection", "select", "question"],
     timers: [60],
     rules: [
-      "Choose a subject: Art & Sports, History, PCM, Literature & Geography",
-      "One minute per subject set",
+      "The wheel will be rotated to select the subject.",
+      "Each team will be asked 3 questions.",
+      "Correct answers carry points as per the standard marking.",
+      "No passing of questions is allowed.",
+      "Top two teams will qualify for next round.",
     ],
     subjects: 4,
-    questionsPerSubject: 8,
+    questionsPerSubject: 12,
   },
 
   alternative: {
@@ -35,10 +41,14 @@ export const ROUND_CONFIGS = {
     timers: [45, 15],
     marks: [10, 5],
     rules: [
-      "16 Questions total",
-      "One pass allowed only",
-      "10 points direct, 5 on pass",
+      "There will be altogether 16 questions.",
+      "Questions will be passed to other teams if not answered.",
+      "45 seconds and 15 seconds time will be given for first and other teams.",
+      "Correct answers will carry 10 and 5 points respectively.",
+      "Passing of question is allowed only once.",
+      "Time will be displayed on the screen.",
     ],
+
     totalQuestions: 16,
   },
   elimination2: {
@@ -48,11 +58,13 @@ export const ROUND_CONFIGS = {
     flow: ["banner", "rules", "subselection", "select", "question"],
     timers: [60],
     rules: [
-      "Choose a subject: Art & Sports, History, PCM, Literature & Geography",
-      "One minute per subject set",
+      "The wheel will be rotated to select the subject.",
+      "Each team will be asked 3 questions.",
+      "Top two teams will qualify for next round.",
+      "Team will qualify on the basis of questions answered",
     ],
     subjects: 4,
-    questionsPerSubject: 8,
+    questionsPerSubject: 12,
   },
 
   quickResponse: {
@@ -63,24 +75,32 @@ export const ROUND_CONFIGS = {
     timers: [60],
     marks: { correct: 20, wrong: -10 },
     rules: [
-      "6 Questions total",
-      "1 minute per question",
-      "Negative marking applies",
+      "There will be altogether 6 questions.",
+      "The participants will be given maximum 60 seconds to  answer each question",
+      "The group which raises the hand first will be given the chance to answer.",
+      "Correct answers will carry 20 points.",
+      "10 points will be deducted in case of a wrong answer.",
+      "Questions will not be passed to other teams.",
     ],
     totalQuestions: 6,
   },
 
-    rapidFire: {
+  rapidFire: {
     key: "rapidFire",
     title: "Rapid Fire Round",
     logo: "/logos/rapid.png",
     flow: ["banner", "rules", "select", "question"],
     timers: [60],
     marks: 5, // per correct answer
-    rules: ["6 Questions per team", "1 minute total for the set"],
-    sets: 8,
+    rules: [
+      "Each team will be asked 8 questions",
+      "One minute time will be provided to answer all questions",
+      "Each correct answer worth 5 points.",
+      "The will be no negative marking.",
+      "Students will get chance to answer the pass questions in the remaining time.",
+    ],
+    sets: 6,
   },
-  
 
   av: {
     key: "av",
@@ -89,10 +109,15 @@ export const ROUND_CONFIGS = {
     flow: ["banner", "rules", "select", "question"],
     timers: [60],
     marks: 15,
-    rules: ["6 Questions total", "1 minute per question", "Observe carefully"],
+    rules: [
+      "One media (video/audio/image) will be shown to each team.",
+      "One question will be asked per team based on the media.",
+      "Correct answer will carry 15 points.",
+      "60 second time will be given to answer the question after the showing the media. ",
+      "No passing of questions is allowed.",
+    ],
     totalQuestions: 6,
   },
-  
 
   contemporary: {
     key: "contemporary",
@@ -101,12 +126,16 @@ export const ROUND_CONFIGS = {
     flow: ["banner", "rules", "select", "question"],
     timers: [45],
     marks: 15,
-    rules: ["12 Questions total", "45 seconds per question"],
+    rules: [
+      "A total of 12 questions will be asked in this round.",
+      "Each question must be answered within 45 seconds.",
+      "Questions are based on current affairs and contemporary topics.",
+      "Correct answers will carry 15 points each.",
+      "No passing of questions is allowed.",
+    ],
     totalQuestions: 12,
   },
 
-  
-  
   open: {
     key: "open",
     title: "Open Round",
@@ -114,10 +143,14 @@ export const ROUND_CONFIGS = {
     flow: ["banner", "rules", "question"],
     timers: [300], // 5 minutes
     marks: 30,
-    rules: ["1 Question for all teams", "Discussion based"],
-    totalQuestions: 1,
+    rules: [
+      "1 question that can be answered by any team.",
+      "Correct answer carries 30 points.",
+      "Time given to answer: 5 minutes (300 seconds).",
+    ],
+    totalQuestions: 2,
   },
-  
+
   gambling: {
     key: "gambling",
     title: "Gambling Round",
@@ -125,11 +158,13 @@ export const ROUND_CONFIGS = {
     flow: ["banner", "rules", "question"],
     timers: [60],
     rules: [
-      "2 Rounds (different questions for each team)",
-      "Stake between 5-20 points",
-      "Correct: Double the stake | Wrong: Minus the stake",
+      "Each team will be given a different question on a physical paper and must solve it simultaneously.",
+      "There will be  2 rounds of asking question.",
+      "Teams can gamble between 5 to 20 points on their answer.",
+      "A correct answer will earn double the staked points.",
+      "An incorrect answer will lose the points they staked.",
     ],
-    points: [5, 10, 15, 20],
+    points: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
     totalQuestions: 2,
   },
 };

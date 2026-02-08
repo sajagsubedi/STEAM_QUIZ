@@ -5,11 +5,12 @@ export const RulesPage = () => {
   const goToMenu = useNavigationStore((state) => state.goToMenu);
 
   const rules = [
-    "Each team must consist of 2 participants.",
-    "No use of mobile phones or electronic devices.",
-    "Each round will have a fixed time limit.",
+    "Each team must consist of 3 participants.",
+    "The final round of quiz consists of total 10 rounds.",
+    "Any kind of misconduct will lead to disqualification of team.",
     "The decision of the quizmaster is final.",
-    "Tie-breaker rounds will be conducted if necessary.",
+    "Questions will be displayed on your respective computers. ",
+    "In case of a tie in final round and any phase of the quiz, the team with higher marks in the written round will be qualified.",
   ];
 
   return (

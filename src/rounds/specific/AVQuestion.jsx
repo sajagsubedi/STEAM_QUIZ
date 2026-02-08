@@ -155,7 +155,7 @@ export const AVQuestion = () => {
             onClick={() => setStep("question")}
             className="group flex items-center gap-4 bg-yellow-500 text-black px-12 py-3 rounded-2xl font-black uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-lg active:translate-y-1"
           >
-            Go to Question{" "}
+            Go to Question
             <ArrowRight
               size={20}
               className="group-hover:translate-x-2 transition-transform"
@@ -188,16 +188,17 @@ export const AVQuestion = () => {
                 >
                   {dialog.title}
                 </h2>
-                {dialog.isCorrect && (
-                  <div className="w-full bg-white/5 border-y-4 border-green-500 py-6 mb-8">
-                    <p className="text-purple-300 uppercase text-[10px] tracking-widest mb-1">
-                      Decrypted Answer
-                    </p>
-                    <p className="text-white text-3xl font-bold">
-                      {question.answer}
-                    </p>
-                  </div>
-                )}
+                <div
+                  className={`w-full bg-white/5 border-y-4 border-${dialog.isCorrect ? "green" : "red"}-500 py-6 mb-8`}
+                >
+                  <p className="text-purple-300 uppercase text-[10px] tracking-widest mb-1">
+                    Correct Answer
+                  </p>
+                  <p className="text-white text-3xl font-bold">
+                    {question.answer}
+                  </p>
+                </div>
+
                 <button
                   onClick={() => {
                     stopAllAudio();

@@ -55,12 +55,20 @@ export const AlternativeQuestion = () => {
 
       if (index === currentQuestion.answer) {
         // 3a. Correct Sequence
-        audioRef.current.right.play().catch(() => {});
-        setShowResult(true);
+        audioRef.current.right
+          .play()
+          .then(() => {
+            setShowResult(true);
+          })
+          .catch(() => {});
       } else {
         // 3b. Wrong Sequence
-        audioRef.current.wrong.play().catch(() => {});
-        setWrongOptions((prev) => [...prev, index]);
+        audioRef.current.wrong
+          .play()
+          .then(() => {
+            setWrongOptions((prev) => [...prev, index]);
+          })
+          .catch(() => {});
 
         // Reset state so user can try again
         setTimeout(() => {
@@ -68,7 +76,7 @@ export const AlternativeQuestion = () => {
           setSelectedIndex(null);
         }, 1000);
       }
-    }, 2000);
+    }, 3000);
   };
 
   // New handler for cleaning up audio when moving to the next question
@@ -82,11 +90,11 @@ export const AlternativeQuestion = () => {
       "relative overflow-hidden rounded-xl p-4 flex gap-4 items-center border-2 transition-all duration-300 shadow-xl min-h-[80px] w-full";
 
     if (showResult && index === currentQuestion.answer) {
-      return `${base} bg-green-600 border-green-300 text-white scale-105 z-10 shadow-green-500/50 ring-4 ring-green-400/20`;
+      return `${base} bg-green-600 border-green-300 text-white scale-105 z-10 ring-4 ring-green-400/20`;
     }
 
     if (wrongOptions.includes(index)) {
-      return `${base} bg-red-600 border-red-400 text-white shadow-red-500/50 opacity-90`;
+      return `${base} bg-red-600 border-red-400 text-white opacity-90`;
     }
 
     if (isLocked && index === selectedIndex) {
@@ -137,9 +145,13 @@ export const AlternativeQuestion = () => {
           </div>
         )}
 
-        <div className={`w-full max-w-6xl flex ${hasText && hasImage ? "flex-row" : "flex-col"} items-center gap-8`}>
+        <div
+          className={`w-full max-w-6xl flex ${hasText && hasImage ? "flex-row" : "flex-col"} items-center gap-8`}
+        >
           {hasImage && (
-            <div className={`${hasText && hasImage ? "w-1/2" : "w-full"} flex justify-center max-h-[40vh]`}>
+            <div
+              className={`${hasText && hasImage ? "w-1/2" : "w-full"} flex justify-center max-h-[40vh]`}
+            >
               <img
                 src={media.src}
                 className="h-full w-auto max-w-full rounded-xl border-2 border-white/10 shadow-2xl object-contain bg-black/20"
@@ -148,14 +160,17 @@ export const AlternativeQuestion = () => {
             </div>
           )}
 
-          <div className={`${hasText && hasImage ? "w-1/2" : "w-full max-w-4xl"} grid grid-cols-2 gap-4`}>
+          <div
+            className={`${hasText && hasImage ? "w-1/2" : "w-full max-w-4xl"} grid grid-cols-2 gap-4`}
+          >
             {options.map((opt, index) => (
               <button
                 key={index}
                 onClick={() => handleSelect(index)}
                 className={getOptionClass(index)}
               >
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-black text-xl flex-shrink-0 
+                <div
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center font-black text-xl flex-shrink-0 
                   ${isLocked && index === selectedIndex ? "bg-black text-yellow-50" : "bg-yellow-500 text-black"}`}
                 >
                   {OPTION_LABELS[index]}
@@ -167,7 +182,11 @@ export const AlternativeQuestion = () => {
                     </span>
                   )}
                   {opt.image && (
-                    <img src={opt.image} className="max-h-20 rounded border border-white/20" alt="Option" />
+                    <img
+                      src={opt.image}
+                      className="max-h-20 rounded border border-white/20"
+                      alt="Option"
+                    />
                   )}
                 </div>
               </button>
@@ -193,7 +212,7 @@ export const AlternativeQuestion = () => {
             <ChevronRight size={24} />
           </div>
           <span className="text-[9px] font-black uppercase text-yellow-500 tracking-tighter">
-            Next Mission
+            Next Question
           </span>
         </button>
       </div>

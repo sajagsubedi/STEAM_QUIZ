@@ -3,463 +3,602 @@ export const QUESTIONS = {
   general: [
     {
       id: 1,
-      text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
-      media: {
-        type: "image",
-        src: "/questions/gq1.png",
-      },
-      answer: "4000mm",
+      text: "How much was the price of first postal ticket?",
+      answer: "2 paisa",
     },
     {
       id: 2,
-      text: "Express in percentage how full is the bottle. The second figure is a representation when bottle in the first figure is inverted.",
-      media: {
-        type: "image",
-        src: "/questions/gq2.png",
-      },
-      answer: "66.667m",
+      text: "Which was the first daily newspaper of Nepal?",
+
+      answer: "Aawaj",
     },
     {
       id: 3,
-      text: "An alloy of metals A and B contains atoms in the ratio of 2 : 5 and weighs 36 g. The percentage of metal A in the sample is 22.22% (by mass). If atomic mass of A is 40, the atomic mass of metal B is ?  ",
-      answer: "56 amu",
+      text: "What is the Japanese name of Japan?  ",
+      answer: "Nippon or Nihon",
     },
     {
       id: 4,
-      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
-      answer: "C2H4",
+      text: "Which country is known as the land of thousand lakes?",
+      answer: "Finland",
     },
     {
       id: 5,
-      text: "If the line 2x+y = k passes through the point which divides the line segment joining the points (1, 1) and (2, 4) in the ratio 3 : 2, then k equals? ",
-      answer: "6",
+      text: "Which is the first manmade lake in Nepal?",
+
+      answer: "Indrasarovar",
     },
     {
       id: 6,
-      text: "What is the dimensional formula of resistivity? ",
-      answer: "M¹L³T⁻³A⁻²",
+      text: " Which was the first color film in Nepal?",
+      answer: "Kumari",
     },
     {
       id: 7,
-      text: "The empirical formula of sucrose is",
-      answer: "C₁₂H₂₂O₁₁",
+      text: "Who is known as the prince of the experiment?",
+      answer: "Miachel Faraday",
     },
     {
       id: 8,
-      text: "What is the angle(in circular measure) between the hour hand and the minute hand of a clock when the time is half past 4 ? ",
-      answer: "𝛑/𝟒 RADIAN",
+      text: "Who wrote the famous short story paral ko aago?",
+      answer: "Guruprasad Mainali",
     },
     {
       id: 9,
-      text: "Two ships are 80 km apart on North–South vertical at an instant  The one farther North is streaming south at 40 km/hour and the other is streaming East at 30 km/hr. What is their distance of closest approach?  ",
-      answer: "48 km",
+      text: "Who composed the song 'Rato ra chandra surya'",
+      answer: "Bakhat Bahadur Buddha",
     },
     {
       id: 10,
-      text: "If x2 + y2 = r  and x2 + y2 = kr such that 3k-2> 1 form an annulus having area equal to the smaller circle, find the area of the triangle formed by line 2x + 3y=k with the axes.",
-      answer: "𝟏/𝟔 units",
+      text: "Who started Vikram Samvat?",
+      answer: "King Vikramaditya",
     },
     {
       id: 11,
-      text: "A circle of radius 1 is surrounded by 4 circles of radius r as shown. What is r?",
-      answer: "1 +√𝟐",
-      media: {
-        type: "image",
-        src: "/questions/gq11.png",
-      },
+      text: " How long does the light take to reach the earth from moon?",
+      answer: "1.3 seconds",
     },
     {
       id: 12,
-      media: {
-        type: "image",
-        src: "/questions/gq12.png",
-      },
-      answer: "107",
+      text: "What is hybridization of carbon ethyne?",
+      answer: "sp hybridization",
     },
     {
       id: 13,
-      text: "The least common multiple of a positive integer n and 18 is 180, and the greatest common divisor of n and 45 is 15. What is the sum of the digits of n?",
-      answer: "6",
+      text: "Which is the nation to use VETO the most time?",
+      answer: "Russia",
     },
     {
       id: 14,
-      text: "TThe acute angles of a right triangle are a and b, where a>b and both a and b are prime numbers. What is the least possible value of b?",
-      answer: "7",
+      text: "How many diagonal does a convex polygon with 12 sides have?",
+      answer: "54 diagonal",
     },
     {
       id: 15,
-      text: "A convex polygon is any shape that has all interior angles that measure less than    radians. The degree measures of the angles in a  18-sided convex polygon form an increasing arithmetic sequence with integer values. Find the degree measure of the smallest angle. ",
-      answer: "143",
+      text: " When was Sagarmatha National park included in the World Heritage list in AD?",
+      answer: "1972 AD",
     },
     {
       id: 16,
-      media: {
-        type: "image",
-        src: "/questions/gq16.png",
-      },
-      answer: "3",
+      text: " Which is the mineral most used in Nepal?",
+      answer: "limestone",
     },
     {
       id: 17,
-      text: "Consider two vectors having magnitude v separated by an angle x. Then, a = magnitude of sum of the vectors while b= magnitude of difference of the vectors, then express x in terms of a and b.",
-      answer: "2 cot-1 (a/b) or 2 tan-1(b/a)",
+      text: "Who is the greatest literature of Sanskrit language?",
+      answer: "Kalidas",
     },
     {
       id: 18,
-      text: "A charge Q is placed at each of the two opposite corners of a square. A charge q is placed at each of the other two comers. If the net electric force on Q is zero, then Q/q equals",
-      answer: "-2√𝟐",
+      text: "Which physical quantity remains constant in an elastic collision?",
+      answer: "momentum and kinetic energy",
     },
     {
       id: 19,
-      text: "If a copper wire is stretched to make its radius decrease by 0.1%, the percentage increase or decrease in its resistance is approximately? ",
-      answer: "Increased by 0.4%",
+      text: "Who said this famous quote 'Character is the ornament of life.'",
+      answer: "William Shakesphere",
     },
     {
       id: 20,
-      text: "What is the molecular formula of cryolite?",
-      answer: "Na3AlF6",
+      text: "Where was paper invented?",
+      answer: "China",
     },
   ],
   /* ───────────── ELIMINATION ROUND (6 SUBJECTS × 8 QUESTIONS) ───────────── */
+
   elimination1: [
     {
       subjectId: 1,
-      subjectName: "Arts and Sports",
+      subjectName: "LITERATURE,ART AND SPORT",
       questions: [
-        { id: 1, text: "SI unit of force?", answer: "Newton" },
-        { id: 2, text: "Value of g?", answer: "9.8 m/s²" },
-        { id: 3, text: "Unit of pressure?", answer: "Pascal" },
-        { id: 4, text: "Formula of speed?", answer: "Distance / Time" },
-        { id: 5, text: "Who proposed laws of motion?", answer: "Newton" },
-        { id: 6, text: "Unit of work?", answer: "Joule" },
-        { id: 7, text: "Unit of power?", answer: "Watt" },
-        { id: 8, text: "Formula of density?", answer: "m/V" },
+        {
+          id: 1,
+          text: "Who is known as the ‘modern poet’(Aadhunik kavi)?",
+          answer: "Gopal Prasad Rimal",
+        },
+        {
+          id: 2,
+          text: "Who is the person to receive the Madan Puraskar thrice?",
+          answer: "Satya Mohan Joshi.",
+        },
+        {
+          id: 3,
+          text: "Which famous player set a world record by winning a gold medal; in three consecutive Olympics?",
+          answer: "Usain Bolt.",
+        },
+        {
+          id: 4,
+          text: "Which is the international competition held only in Nepal?",
+          answer: "Elephant polo",
+        },
+        {
+          id: 5,
+          text: "Who is the first person to get the Jagadambashree Puraskar?",
+          answer: "Narayan Gopal.",
+        },
+        {
+          id: 6,
+          text: "Who is the founder of the World Cup?",
+          answer: "Joules Remit(france)",
+        },
+        {
+          id: 7,
+          text: "Who is the person to be awarded the Sajha Puraskar established in 2026BS?",
+          answer: "Bhupi sherchan",
+        },
+        {
+          id: 8,
+          text: "Which is the last play composed by William Shakespeare?",
+          answer: "The tempest",
+        },
+        {
+          id: 9,
+          text: "Which is the oldest sports association of Nepal?",
+          answer: "Cricket Association of Nepal.",
+        },
+        {
+          id: 10,
+          text: "Who is known as the “Natyasamrat” (king of the dramatists)?",
+          answer: "Bal Krishna Sama",
+        },
+        {
+          id: 11,
+          text: "Who is considered the founder of Nepal Football Association?",
+          answer: "Nara shumsher JBR",
+        },
+        {
+          id: 12,
+          text: "Who is known as the “Football Magician”?",
+          answer: "Brazilian Footballer Pele.",
+        },
       ],
     },
 
     {
       subjectId: 2,
-      subjectName: "History",
+      subjectName: "Geography",
       questions: [
-        { id: 1, text: "Atomic number of H?", answer: "1" },
-        { id: 2, text: "Formula of water?", answer: "H₂O" },
-        { id: 3, text: "pH of neutral?", answer: "7" },
-        { id: 4, text: "Chemical symbol of Na?", answer: "Na" },
-        { id: 5, text: "Avogadro number?", answer: "6.022×10²³" },
-        { id: 6, text: "Unit of molarity?", answer: "mol/L" },
-        { id: 7, text: "Gas constant R?", answer: "8.314" },
-        { id: 8, text: "Valency of oxygen?", answer: "2" },
+        {
+          id: 1,
+          text: "Which Himal is known as “ Nepal Himal”?",
+          answer: "Kanchanjunga",
+        },
+        {
+          id: 2,
+          text: "Which place is famous for Leather in nepal?",
+          answer: "Dailekh",
+        },
+        {
+          id: 3,
+          text: "Which country has the most number of Islands?",
+          answer: "indonesia",
+        },
+        {
+          id: 4,
+          text: "What is the other name of Gaurishankar Himal?",
+          answer: "Pathibhara",
+        },
+        {
+          id: 5,
+          text: "What is the hydroelectric potential of the karnali river?",
+          answer: "",
+        },
+
+        {
+          id: 6,
+          text: "Name the country with maximum time zones",
+          answer: "France",
+        },
+        {
+          id: 7,
+          text: "Which national park of Nepal is famous for red panda?",
+          answer: "langtang national park",
+        },
+        {
+          id: 8,
+          text: "What is the Mechi river called in India?",
+          answer: "Mahananda",
+        },
+        {
+          id: 9,
+          text: "Which is the biggest wooden temple of Nepal?",
+          answer: "Kasthmandap",
+        },
+        {
+          id: 10,
+          text: "Into how many types can the soil of Nepal divided?",
+          answer: "5",
+        },
+        {
+          id: 11,
+          text: "Which is the only terai district not touched by Mahendra Highway?",
+          answer: "parsa",
+        },
+        {
+          id: 12,
+          text: "Which country uses the most number of cycles?",
+          answer: "china",
+        },
       ],
     },
 
     {
       subjectId: 3,
-      subjectName: "PCM",
+      subjectName: "History",
       questions: [
-        { id: 1, text: "Value of π?", answer: "3.14" },
-        { id: 2, text: "Derivative of x²?", answer: "2x" },
-        { id: 3, text: "Formula of area of circle?", answer: "πr²" },
-        { id: 4, text: "Square root of 64?", answer: "8" },
-        { id: 5, text: "Value of sin 90°?", answer: "1" },
-        { id: 6, text: "Value of cos 0°?", answer: "1" },
-        { id: 7, text: "2² + 2³ = ?", answer: "12" },
-        { id: 8, text: "Angle of straight line?", answer: "180°" },
+        {
+          id: 1,
+          text: "Who is the rana prime minister saying “ I am servant of the nation”?",
+          answer: "Padma shumsher",
+        },
+        {
+          id: 2,
+          text: "When did prithvi narayan shah pass away, full date?",
+          answer: "1 magh 1831",
+        },
+        {
+          id: 3,
+          text: "Which country introduced the first calendar?",
+          answer: "Egypt",
+        },
+        {
+          id: 4,
+          text: "Among the Shah kings who ruled for the longest time?",
+          answer: "KingTribhuwan",
+        },
+        {
+          id: 5,
+          text: "Which country used the national flag for the first time in the world?",
+          answer: "Denmark",
+        },
+        {
+          id: 6,
+          text: "Which was the first country to be attacked by germany in World War II? ",
+          answer: "Poland?",
+        },
+        {
+          id: 7,
+          text: "Who was the first person to present a budget in Nepal ?",
+          answer: "Matrika Prasad koirala",
+        },
+        {
+          id: 8,
+          text: "Who is the first king of Nepal to adopt the title “maharajadhiraj”? ",
+          answer: "Amshuverma",
+        },
+        {
+          id: 9,
+          text: "Among the four great martyrs who was the youngest?",
+          answer: "gangalal shrestha",
+        },
+        {
+          id: 10,
+          text: "When did America drop atom bomb on Hiroshima of japan, full date?  ",
+          answer: "6 August,1945",
+        },
+        {
+          id: 11,
+          text: "Who is known as the first king of Nepal valley?",
+          answer: "dharmakar",
+        },
+        {
+          id: 12,
+          text: "Who is known by the name “Harittara”? ",
+          answer: "Bhrikuti",
+        },
       ],
     },
 
     {
       subjectId: 4,
-      subjectName: "Literature and Geography",
+      subjectName: "MATHS AND SCIENCE QUESTIONS",
       questions: [
-        { id: 1, text: "Powerhouse of cell?", answer: "Mitochondria" },
-        { id: 2, text: "Unit of life?", answer: "Cell" },
-        { id: 3, text: "Green pigment?", answer: "Chlorophyll" },
-        { id: 4, text: "Blood purification organ?", answer: "Kidney" },
-        { id: 5, text: "Human chromosome number?", answer: "46" },
-        { id: 6, text: "Largest organ?", answer: "Skin" },
-        { id: 7, text: "Plant food making process?", answer: "Photosynthesis" },
-        { id: 8, text: "Brain part for thinking?", answer: "Cerebrum" },
+        {
+          id: 1,
+          text: "Which is the particle with zero rest mass?",
+          answer: "PHOTON",
+        },
+        { id: 2, text: "Geometry of SF6?,", answer: "Octahedral" },
+        { id: 3, text: "Cause of EMF in generator?", answer: "induction" },
+        {
+          id: 4,
+          text: "Locus of a point with constant difference of distances from two fixed points. ",
+          answer: "hyberbola",
+        },
+        { id: 5, text: "What is the hybridization in benzene.", answer: "sp2" },
+        {
+          id: 6,
+          text: "Which Force is always perpendicular to velocity?",
+          answer: "centripetal",
+        },
+        { id: 7, text: "SI unit of angular momentum", answer: "joule-second" },
+        {
+          id: 8,
+          text: "What is the condition of a matrix to be invertible?",
+          answer: "it should be non singular matrix.",
+        },
+        {
+          id: 9,
+          text: "Scientist who proposed wave nature of electrons?",
+          answer: "de brogile",
+        },
+        {
+          id: 10,
+          text: "Can force exist without acceleration? ,",
+          answer: "YES",
+        },
+        {
+          id: 11,
+          text: "What Is the Angle between identical vectors ?,",
+          answer: "zero",
+        },
+        { id: 12, text: "Unit of magnetic flux density?,", answer: "tesla" },
       ],
     },
   ],
-
   /* ───────────── ALTERNATIVE ROUND (8) ───────────── */
   alternative: [
     {
       id: 1,
-      media: {
-        type: "image",
-        src: "/questions/alt1.png",
-      },
+      text: "The compound Butan-2-ol shows which type(s) of isomerism?",
       options: [
-        { text: "Meter" },
-        { text: " m/s" },
-        { text: "m/s2" },
-        { text: "s-1" },
+        { text: "Chain isomerism only" },
+        { text: "Position isomerism only" },
+        { text: "Optical isomerism only" },
+        { text: "Both position and optical isomerism" },
       ],
-      answer: 0,
+      answer: 3,
     },
     {
       id: 2,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      text: "Pablo Picasso was born in which country?",
       options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
+        { text: "France" },
+        { text: "Spain" },
+        { text: "Italy" },
+        { text: "Germany" },
       ],
-      answer: 2,
+      answer: 1,
     },
     {
       id: 3,
-      text: "Four forces of magnitudes P, 2P, 3P and 4P act along the four sides of a square ABCD in cyclic order.  find the resultant force.",
+      text: "What bends light near massive objects?",
       options: [
-        { text: "8P" },
-        { text: "2√2P" },
-        { text: "√2P" },
-        { text: "3√2P" },
+        { text: "Dark matter" },
+        { text: "Gravity" },
+        { text: "Magnetic field" },
+        { text: "Solar wind" },
       ],
       answer: 1,
     },
     {
       id: 4,
-      text: " Find the maximum area of the rectangle that can be inscribed in a circle of ",
+      text: "SOS HGS Gandaki was the first among the seven SOS schools in Nepal to introduce the Higher Secondary (+2) program. In what year did this happen?",
       options: [
-        { text: "2√2R²" },
-        { text: "2R²" },
-        { text: "√2R²" },
-        { text: "√2R²" },
+        { text: "1995 AD" },
+        { text: "1993 AD" },
+        { text: "1997 AD" },
+        { text: "1996 AD" },
       ],
       answer: 0,
     },
     {
       id: 5,
-      text: " A small ball rolls of the top of a stairway horizontally with a velocity of 4.5 m s–1. Each step is 0.2 m high and 0.3 m wide. If g is 10 ms–2, then the ball will strike the nth step where n is equal to (assume ball strike at the edge of the step)",
-      options: [{ text: "9" }, { text: "10" }, { text: "11" }, { text: "12" }],
-      answer: 0,
+      text: "In the Periodic Table, which is the only element that is named after a living person as of 2026?",
+      options: [
+        { text: "Einsteinium" },
+        { text: "Oganesson" },
+        { text: "Seaborgium" },
+        { text: "Fermium" },
+      ],
+      answer: 1,
     },
     {
       id: 6,
-      text: "A stone projected at an angle of 60º from the ground level strikes at an angle of 30º on the roof of a building of height ‘h’. Then the speed of projection of the stone is :",
-      media: {
-        type: "image",
-        src: "/questions/alt6.png",
-      },
+      text: "Identify the option that does NOT belong",
       options: [
-        { text: "√𝟐𝒈𝒉" },
-        { text: "√𝟔𝒈𝒉" },
-        { text: "√𝟑𝒈𝒉" },
-        { text: "√𝒈𝒉" },
+        { text: "Amazon" },
+        { text: "Congo" },
+        { text: "Nile" },
+        { text: "Yangtze" },
       ],
-      answer: 3,
+      answer: 2,
     },
     {
       id: 7,
-      text: "A particle moves along x-axis in positive direction. Its acceleration 'a' is given as a = cx + d, where x denotes the x-coordinate of particle, c and d are positive constants. For velocity-position graph of particle to be of type as shown in figure, find the value of speed (in m/s) of particle at x = 0. Take c = 1 s–2 and d = 3 ms–2",
-      options: [{ text: "3" }, { text: "4" }, { text: "5" }, { text: "6" }],
-      answer: 0,
+      text: "The French Revolution began in:",
+      options: [
+        { text: "1776" },
+        { text: "1789" },
+        { text: "1815" },
+        { text: "1917" },
+      ],
+      answer: 1,
     },
     {
       id: 8,
-      text: "A mass of 10 kg is suspended by a rope of length 4 m, from the ceiling. A force F is applied horizontally at the mid-point of the rope such that the top half of the rope makes an angle of 45° with the vertical. Then F equals : (Take g = 10 ms–2 and the rope to be massless)",
+      text: "Who created the character Sherlock Holmes?",
       options: [
-        { text: "100√2 N" },
-        { text: "100 N" },
-        { text: "100√3 N" },
-        { text: "100√6 N" },
+        { text: "Agatha Christie" },
+        { text: "Arthur Conan Doyle" },
+        { text: "Ian Fleming" },
+        { text: "Edgar Allan Poe" },
       ],
       answer: 1,
     },
     {
       id: 9,
-      text: "Two rods, one of aluminium and the other made of steel, having initial length l1 and ll2 are connected together to form a single rod of length l1 + l2. The coefficients of linear expansion for aluminium and steel are aa and 𝒂𝒔 respectively. If the length of each rod increases by the same amount when their temperature are raised by tºC, then find the ratio l1/(l1+l2)",
+      text: "Which is an epic?",
       options: [
-        { text: "as/aa" },
-        { text: "aa/as" },
-        { text: "as/(aa+as)" },
-        { text: "aa/(aa+as)" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 10,
-      text: " A copper ball of mass 100 gm is at a temperature T. It is dropped in a copper calorimeter of mass 100 gm, filled with 170 gm of water at room temperature. Subsequently, the temperature of the system is found to be 75º C. T is given by : (Given : room temperature = 30ºC, specific heat of copper = 0.1 cal/gmºC)",
-      options: [
-        { text: "825 C" },
-        { text: "750 C" },
-        { text: "885 C" },
-        { text: "675 C" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 11,
-      text: " A biconvex lens of focal length 15 cm is in front of a plane mirror. The distance between the lens and the mirror is 10 cm. A small object is kept at a distance of 30 cm from the lens. The final image is ",
-      options: [
-        { text: "Virtual and at a distance of 16 cm from the mirror" },
-        { text: "Real and at a distance of 16 cm from the mirror" },
-        { text: "Virtual and at a distance of 20 cm from the mirror" },
-        { text: "Real and at a distance of 20 cm from the mirror" },
+        { text: "Hamlet" },
+        { text: "Iliad" },
+        { text: "Animal Farm" },
+        { text: "Oliver Twist" },
       ],
       answer: 1,
     },
     {
-      id: 12,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      id: 10,
+      text: "Which district lies farthest west in Nepal?",
       options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
+        { text: "Bajura" },
+        { text: "Kanchanpur" },
+        { text: "Darchula" },
+        { text: "Humla" },
+      ],
+      answer: 1,
+    },
+    {
+      id: 11,
+      text: "Who issued the “Divya Upadesh”?",
+      options: [
+        { text: "Bhimsen Thapa" },
+        { text: "Girvan Yuddha Bikram Shah" },
+        { text: "Prithvi Narayan Shah" },
+        { text: "King Mahendra" },
       ],
       answer: 2,
+    },
+    {
+      id: 12,
+      text: "The term “Love” is used in which sport?",
+      options: [
+        { text: "Badminton" },
+        { text: "Tennis" },
+        { text: "Table Tennis" },
+        { text: "Squash" },
+      ],
+      answer: 1,
     },
     {
       id: 13,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      text: "Which year did Nepal first participate in the Olympics?",
       options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
+        { text: "1960" },
+        { text: "1964" },
+        { text: "1972" },
+        { text: "1974" },
       ],
-      answer: 2,
+      answer: 1,
     },
     {
       id: 14,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      text: "Who is the first Nepali to summit Mount Everest without supplemental oxygen?",
       options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
+        { text: "Ang Tshering Sherpa" },
+        { text: "Kami Rita Sherpa" },
+        { text: "Phu Dorjee" },
+        { text: "Apa Sherpa" },
       ],
       answer: 2,
     },
     {
       id: 15,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      text: "What is the roof height of Burj Khalifa?",
       options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
+        { text: "829.8 m" },
+        { text: "828 m" },
+        { text: "900 m" },
+        { text: "890 m" },
       ],
-      answer: 2,
+      answer: 1,
     },
     {
       id: 16,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
+      text: "From which American cartoon show is the signature catchphrase 'Wubba Lubba Dub Dub'?",
       options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
+        { text: "Rick and Morty" },
+        { text: "Sesame Street" },
+        { text: "Archer" },
+        { text: "Wizards" },
       ],
-      answer: 2,
-    },
-    {
-      id: 17,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 18,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 19,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 20,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 21,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 22,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 23,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
-    },
-    {
-      id: 24,
-      text: "Two stones are thrown up simultaneously from the edge of a cliff 240 m high with initial speed of 10 m/s and 40 m/s respectively. Which of the following graph best represents the time variation of relative position of the second stone with respect to the first ? (Assume stones do not rebound after hitting the ground and neglect air resistance, take g = 10 m/s2 ) (The figures are schematic and not drawn to scale)  ",
-      options: [
-        { image: "questions/alt2o1.png" },
-        { image: "questions/alt2o2.png" },
-        { image: "questions/alt2o3.png" },
-        { image: "questions/alt2o4.png" },
-      ],
-      answer: 2,
+      answer: 0,
     },
   ],
+  /* ───────────── ELIMINATION ROUND (6 SUBJECTS × 8 QUESTIONS) ───────────── */
+
   elimination2: [
     {
       subjectId: 1,
-      subjectName: "Arts and Sports",
+      subjectName: "LITERATURE, ART AND SPORT",
       questions: [
-        { id: 1, text: "SI unit of force?2", answer: "Newton" },
-        { id: 2, text: "Value of g?2", answer: "9.8 m/s²" },
-        { id: 3, text: "Unit of pressure?2", answer: "Pascal" },
-        { id: 4, text: "Formula of speed?2", answer: "Distance / Time" },
-        { id: 5, text: "Who proposed laws of motion?", answer: "Newton" },
-        { id: 6, text: "Unit of work?2", answer: "Joule" },
-        { id: 7, text: "Unit of power?2", answer: "Watt" },
-        { id: 8, text: "Formula of density?2", answer: "m/V" },
+        {
+          id: 1,
+          text: "What is the motto of Olympics?",
+          answer:
+            "Citius, Altius, Fortius – Communiter (Faster, Higher, Stronger – Together)",
+        },
+        {
+          id: 2,
+          text: "Who wrote Sumnima, a famous novel about indigenous Tharu culture?",
+          answer: "B.P. Koirala",
+        },
+        {
+          id: 3,
+          text: "What are the only two sports to have been played in the moon?",
+          answer: "Golf and Javelin throw.",
+        },
+        {
+          id: 4,
+          text: "“Albatross” is a term for a rare achievement in which game?",
+          answer: "golf",
+        },
+        { id: 5, text: "How many alphabets does Arabic have?", answer: "28." },
+        {
+          id: 6,
+          text: "Who is considered the “Father of Modern Dance”?",
+          answer: "Isadora Duncan",
+        },
+        {
+          id: 7,
+          text: "Which art technique uses tiny dots of color to create an image?",
+          answer: "Pointillism",
+        },
+        {
+          id: 8,
+          text: "Which film is considered the first feature-length animated movie?",
+          answer: "Snow White and the Seven Dwarfs (1937)",
+        },
+        {
+          id: 9,
+          text: "Which literary term refers to a story within a story?",
+          answer: "Frame narrative",
+        },
+        {
+          id: 10,
+          text: "The Odyssey is an epic poem attributed to which author?",
+          answer: "homer",
+        },
+        {
+          id: 11,
+          text: "In the 2026 FIFA World Cup, which three countries will co-host the tournament for the first time in history?",
+          answer: "USA, Canada, and Mexico",
+        },
+        {
+          id: 12,
+          text: "The architectural style of Kathmandu Durbar Square temples is known as?",
+          answer: "Pagoda style",
+        },
       ],
     },
 
@@ -467,86 +606,225 @@ export const QUESTIONS = {
       subjectId: 2,
       subjectName: "History",
       questions: [
-        { id: 1, text: "Atomic number of H?2", answer: "1" },
-        { id: 2, text: "Formula of water?2", answer: "H₂O" },
-        { id: 3, text: "pH of neutral?2", answer: "7" },
-        { id: 4, text: "Chemical symbol of Na?2", answer: "Na" },
-        { id: 5, text: "Avogadro number?2", answer: "6.022×10²³" },
-        { id: 6, text: "Unit of molarity?2", answer: "mol/L" },
-        { id: 7, text: "Gas constant R?2", answer: "8.314" },
-        { id: 8, text: "Valency of oxygen?2", answer: "2" },
+        {
+          id: 1,
+          text: "Which battle is considered the final step in the unification of Nepal?",
+          answer: "Battle of Bhaktapur, 1769",
+        },
+        {
+          id: 2,
+          text: "Who led the first armed revolution against the Ranas?",
+          answer:
+            "Bhimdatta Panta (regional), nationally Nepali Congress led armed campaigns",
+        },
+        {
+          id: 3,
+          text: "The city of Troy is famous due to which war?",
+          answer: "Trojan War",
+        },
+        {
+          id: 4,
+          text: "Who was the founder of the Ottoman Empire?",
+          answer: "Osman I",
+        },
+        {
+          id: 5,
+          text: "The Code of Hammurabi was established in which civilization?",
+          answer: "Babylon",
+        },
+        {
+          id: 6,
+          text: "Who was the first Chancellor of unified Germany in 1871?",
+          answer: "Otto von Bismarck",
+        },
+        {
+          id: 7,
+          text: "How many years did the cold war last?",
+          answer: "About 44 years",
+        },
+        {
+          id: 8,
+          text: "Which ancient text is considered the earliest treatise on political science in India?",
+          answer: "Arthashastra",
+        },
+        {
+          id: 9,
+          text: "When was the Sugauli Treaty officially signed?",
+          answer: "March 4: 1916 AD or Falgun 22, 1872 BS",
+        },
+        {
+          id: 10,
+          text: "How many members of the Nepalese royal family died in Durbar Hatya Kanda?",
+          answer: "10 people",
+        },
+        {
+          id: 11,
+          text: "Which city-state is considered the birthplace of democracy in Ancient Greece?",
+          answer: "Athens",
+        },
+        {
+          id: 12,
+          text: "Which ancient dynasty is known for ushering in the Golden Age of Nepal, marked by great achievements in art and architecture?",
+          answer: "Lichhavi Dynasty",
+        },
       ],
     },
 
     {
       subjectId: 3,
-      subjectName: "PCM",
+      subjectName: "Geography:",
       questions: [
-        { id: 1, text: "Value of π?", answer: "3.14" },
-        { id: 2, text: "Derivative of x²?", answer: "2x" },
-        { id: 3, text: "Formula of area of circle?", answer: "πr²" },
-        { id: 4, text: "Square root of 64?", answer: "8" },
-        { id: 5, text: "Value of sin 90°?", answer: "1" },
-        { id: 6, text: "Value of cos 0°?", answer: "1" },
-        { id: 7, text: "2² + 2³ = ?", answer: "12" },
-        { id: 8, text: "Angle of straight line?", answer: "180°" },
+        {
+          id: 1,
+          text: "1.Which lake of Nepal is called the “Green Lake”?",
+          answer: "Begnas Lake",
+        },
+        {
+          id: 2,
+          text: "Mount Kilimanjaro is located in which country?",
+          answer: "Tanzania",
+        },
+        {
+          id: 3,
+          text: "Which is the largest freshwater lake by volume in the world?",
+          answer: "Lake Baikal, Russia",
+        },
+        {
+          id: 4,
+          text: "The Dead Sea is located between which two countries? ",
+          answer: "Israel and Jordan",
+        },
+        {
+          id: 5,
+          text: "Which is the largest waterfall in Nepal?",
+          answer: "Hyatung Waterfall",
+        },
+        {
+          id: 6,
+          text: "Which country has the most volcanoes?",
+          answer: "Indonesia",
+        },
+        {
+          id: 7,
+          text: "What is the approximate total land area of Nepal?",
+          answer: "approximately 147,516 sq km or 56,956 sq mi",
+        },
+        { id: 8, text: "When is The Everest Day observed?", answer: "May 29" },
+        {
+          id: 9,
+          text: "Which city in Nepal is known as the Gateway to the Himalayas?",
+          answer: "Pokhara",
+        },
+        {
+          id: 10,
+          text: "Which is the deepest ocean trench in the world? ",
+          answer: "Mariana Trench",
+        },
+        {
+          id: 11,
+          text: "The Himalayan mountain system stretches across how many countries?",
+          answer: "Five (Nepal, India, Bhutan, China, Pakistan)",
+        },
+        { id: 12, text: "Unit of magnetic flux density?,", answer: "tesla" },
       ],
     },
-
     {
       subjectId: 4,
-      subjectName: "Literature and Geography",
+      subjectName: "Physics, Chemistry &amp; Math",
       questions: [
-        { id: 1, text: "Powerhouse of cell?", answer: "Mitochondria" },
-        { id: 2, text: "Unit of life?", answer: "Cell" },
-        { id: 3, text: "Green pigment?", answer: "Chlorophyll" },
-        { id: 4, text: "Blood purification organ?", answer: "Kidney" },
-        { id: 5, text: "Human chromosome number?", answer: "46" },
-        { id: 6, text: "Largest organ?", answer: "Skin" },
-        { id: 7, text: "Plant food making process?", answer: "Photosynthesis" },
-        { id: 8, text: "Brain part for thinking?", answer: "Cerebrum" },
+        {
+          id: 1,
+          text: "A ball is thrown vertically upward with speed u. If it returns to the thrower in t seconds, find the maximum height in terms of u and t.",
+          answer: "ut/4",
+        },
+        {
+          id: 2,
+          text: "A wire of length L and resistance R is stretched to twice its length. What is the new resistance?",
+          answer: "4R",
+        },
+        {
+          id: 3,
+          text: "A pendulum clock keeps correct time at 15 °C. How much time does it gain or loose at 25 °C? (α for material of clock=18×10 -6 °C -1 )",
+          answer: "7.78s lose",
+        },
+        {
+          id: 4,
+          text: "Which element has the lowest ionization energy? ",
+          answer: "Cesium",
+        },
+        {
+          id: 5,
+          text: "Which is the element with highest shielding effect?",
+          answer: "Rubidium (Rb)",
+        },
+        {
+          id: 6,
+          text: "If A= { x ∈ Z: ∣x∣ &lt;2} then n(P(P(A))) is:",
+          answer: "256",
+        },
+        { id: 7, text: "If a⃗+b⃗+c⃗=0, show that a⃗⋅(b⃗×c⃗)=?", answer: "0" },
+        {
+          id: 8,
+          text: "Find the general solution of: Cot 2 x-cosecx-1=0",
+          answer: "x=nπ + (-1) 2 or nπ-(-1) n or 2nπ-",
+        },
+        {
+          id: 9,
+          text: "In which cases do Snell’s law fail?",
+          answer: "Total internal reflection and normal incidence",
+        },
+        {
+          id: 10,
+          text: "Which compound is responsible for Prussian blue color in Lassaigne’s test? ",
+          answer: "Ferric ferrocyanide (Fe 4 [Fe(CN) 6 ] 3 )",
+        },
+        {
+          id: 11,
+          text: "A compound contains 40% C, 6.7% H, rest O. What is the compound if molecular weight=180amu.",
+          answer: "glucose",
+        },
+        {
+          id: 12,
+          text: "The solution set of the inequality,",
+          answer: "(-∞,-1)U[0,2]",
+        },
       ],
     },
   ],
-  /* ───────────── QUICK RESPONSE (4 SEQUENTIAL) ───────────── */
+
+  /* ───────────── QUICK RESPONSE (6 SEQUENTIAL) ───────────── */
   quickResponse: [
     {
       id: 1,
-      text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
-      media: {
-        type: "image",
-        src: "/questions/gq1.png",
-      },
-      answer: "4000mm",
+      text: "Speeds of two identical cars are u and 4u at the specific instant. The ratio of the respective distances in which the two cars are stopped from that instant is :",
+
+      answer: "1:16",
     },
     {
       id: 2,
-      text: "Express in percentage how full is the bottle. The second figure is a representation when bottle in the first figure is inverted.",
-      media: {
-        type: "image",
-        src: "/questions/gq2.png",
-      },
-      answer: "66.667m",
+      text: "The kot massacre occurred in which year",
+
+      answer: "Ans: September 14, 1846 AD or Bhadra 31, 1903 BS",
     },
     {
       id: 3,
-      text: "An alloy of metals A and B contains atoms in the ratio of 2 : 5 and weighs 36 g. The percentage of metal A in the sample is 22.22% (by mass). If atomic mass of A is 40, the atomic mass of metal B is ?  ",
-      answer: "56 amu",
+      text: "When is world human rights day celebrated?",
+      answer: "December 10 ",
     },
     {
       id: 4,
-      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
-      answer: "C2H4",
+      text: "n the Harry Potter series, what are the full names of Harry's two best friends?",
+      answer: "Ron Weasley and Hermione Granger.",
     },
     {
       id: 5,
-      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
-      answer: "C2H4",
+      text: "Which two countries share the longest international border in the world? ",
+      answer: "USA and Canada ",
     },
     {
       id: 6,
-      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
-      answer: "C2H4",
+      text: `In your Computer Science class, you learn that a normal bit is either 0 or 1 while a quantum bit (qubit) can be both at the same time. What is the name for this "both-at-once" state?`,
+      answer: "Superposition ",
     },
   ],
 
@@ -554,45 +832,45 @@ export const QUESTIONS = {
   av: [
     {
       id: 1,
-      text: "Name the scientist.",
-      media: { type: "image", src: "/questions/av/avq1.jpeg" },
-      answer: "John joseph thompson",
+      text: "Name the person.",
+      media: { type: "image", src: "/questions/av/av1.jpg" },
+      answer: "Manjushree Thapa",
       msg: "Observe the picture",
     },
     {
       id: 2,
-      text: "Name the phenomenon occuring in this video.",
-      media: { type: "video", src: "/questions/av/avq2.mp4" },
-      answer: "Motor Effect",
-      msg: "Observe the clip",
+      text: "Name the person",
+      media: { type: "image", src: "/questions/av/av2.jpg" },
+      answer: "Upendra Yadav",
+      msg: "Observe the picture",
     },
     {
       id: 3,
-      text: "Who is the speaker is this audio?.",
-      media: { type: "audio", src: "/questions/av/avq3.mp3" },
-      answer: "Albert Einstein",
-      msg: "Listen the audio",
+      text: "Which movie scene is being shown here?",
+      media: { type: "video", src: "/questions/av/av3.mp4" },
+      answer: "The shawshank redemption",
+      msg: "Observe the video.",
     },
     {
       id: 4,
-      text: "Identify the logo.",
-      media: { type: "image", src: "/av/nike.png" },
-      answer: "Nike",
+      text: "Identify the equipment.",
+      media: { type: "image", src: "/questions/av/av4.jpg" },
+      answer: "Burette",
       msg: "Observe the picture",
     },
     {
       id: 5,
-      text: "Identify the animal.",
-      media: { type: "video", src: "/av/cheetah.mp4" },
-      answer: "Cheetah",
+      text: "Which company has their slogan like this?",
+      media: { type: "image", src: "/questions/av/av5.jpg" },
+      answer: "BMW",
       msg: "Observe the picture",
     },
     {
       id: 6,
-      text: "Identify the place.",
-      media: { type: "image", src: "/av/eiffel.jpg" },
-      answer: "Eiffel Tower",
-      msg: "Observe the picture",
+      text: "Who is the speaker here?",
+      media: { type: "audio", src: "/questions/av/av6.mp3" },
+      answer: "Madan Bhandari",
+      msg: "Listen to the audio",
     },
   ],
 
@@ -600,123 +878,157 @@ export const QUESTIONS = {
   contemporary: [
     {
       id: 1,
-      text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
-      media: {
-        type: "image",
-        src: "/questions/gq1.png",
-      },
-      answer: "4000mm",
+      text: "1. राष्ट्रिय जनगणना सञ्चालन कहिले भयो ?",
+      answer: " वि.सं. २०६८ चैत",
     },
     {
       id: 2,
-      text: "Express in percentage how full is the bottle. The second figure is a representation when bottle in the first figure is inverted.",
-      media: {
-        type: "image",
-        src: "/questions/gq2.png",
-      },
-      answer: "66.667m",
+      text: "हाल नेपालका मुख्य निर्वाचन आयुक्त को हुन् ?",
+
+      answer: "दिनेश थपलिया",
     },
     {
       id: 3,
-      text: "An alloy of metals A and B contains atoms in the ratio of 2 : 5 and weighs 36 g. The percentage of metal A in the sample is 22.22% (by mass). If atomic mass of A is 40, the atomic mass of metal B is ?  ",
-      answer: "56 amu",
+      text: "Who is the current Vice chancellor(upakulpati) of Tribhuvan University?  ",
+      answer: "Dipak Aryal",
     },
     {
       id: 4,
-      text: "10 mL of a gaseous hydrocarbon was burnt completely in 80 mL of O2 at NTP. On cooling, the gas occupied 70 ml at N.T.P. This volume became 50 mL on treatment with KOH solution. The formula of the hydrocarbon is?  ",
-      answer: "C2H4",
+      text: "Which country hosted the COP28 Climate summit?",
+      answer: "United Arab Emirates (UAE)",
     },
     {
       id: 5,
-      text: "If the line 2x+y = k passes through the point which divides the line segment joining the points (1, 1) and (2, 4) in the ratio 3 : 2, then k equals? ",
-      answer: "6",
+      text: "Which country has celebrated its 78 th independence day this week?",
+      answer: "Srilanka",
     },
     {
       id: 6,
-      text: "What is the dimensional formula of resistivity? ",
-      answer: "M¹L³T⁻³A⁻²",
+      text: "Below what level did bitcoin fall on February5, 2026? ",
+      answer: "below $70,000",
     },
     {
       id: 7,
-      text: "The empirical formula of sucrose is",
-      answer: "C₁₂H₂₂O₁₁",
+      text: "Which continent is most affected by desertification?",
+      answer: "Africa",
     },
     {
       id: 8,
-      text: "What is the angle(in circular measure) between the hour hand and the minute hand of a clock when the time is half past 4 ? ",
-      answer: "𝛑/𝟒 RADIAN",
+      text: "Which UN goal focuses on ending poverty? ",
+      answer: "sustainable development goal 1",
     },
+
     {
       id: 9,
-      text: "What is the angle(in circular measure) between the hour hand and the minute hand of a clock when the time is half past 4 ? ",
-      answer: "𝛑/𝟒 RADIAN",
+      text: "Which country recently emphasized freedom of navigation of global waters? ",
+      answer: "USA",
     },
     {
       id: 10,
-      text: "What is the angle(in circular measure) between the hour hand and the minute hand of a clock when the time is half past 4 ? ",
-      answer: "𝛑/𝟒 RADIAN",
+      text: "Which Indian city hostes a Nepal tourism roadshow this week? ",
+      answer: "Varanasi",
     },
     {
       id: 11,
-      text: "What is the angle(in circular measure) between the hour hand and the minute hand of a clock when the time is half past 4 ? ",
-      answer: "𝛑/𝟒 RADIAN",
+      text: "This week, Nepals edible oil prices increased by up to how many rupees per litre? ",
+      answer: "40 rupees",
     },
     {
       id: 12,
-      text: "What is the angle(in circular measure) between the hour hand and the minute hand of a clock when the time is half past 4 ? ",
-      answer: "𝛑/𝟒 RADIAN",
+      text: "In football, Nepals U-19 team lost to which country?",
+      answer: "Bangladesh",
     },
   ],
 
-  /* ───────────── RAPID FIRE (8 SETS × 10) ───────────── */
+  /* ───────────── RAPID FIRE (6 SETS × 6) ───────────── */
   rapidFire: [
     {
       setId: 1,
       questions: [
-        { id: 1, text: "SI unit of force?", answer: "Newton" },
-        { id: 2, text: "Dimensional formula of velocity?", answer: "[LT⁻¹]" },
-        { id: 3, text: "What is 1 mole?", answer: "6.022×10²³ particles" },
+        { id: 1, text: "Who discovered Neutron?", answer: "James Chadwick" },
+        {
+          id: 2,
+          text: "Which Japanese art involves folding paper?",
+          answer: "Origami",
+        },
+        {
+          id: 3,
+          text: "Who is the first non-Rana prime minister of Nepal after end of Rana Rule?",
+          answer: "Matrika Prasad Koirala",
+        },
         {
           id: 4,
-          text: "Slope of distance–time graph represents?",
-          answer: "Speed",
+          text: "Which district of Nepal is known by the nickname of Medical City?",
+          answer: "Chitwan",
         },
-        { id: 5, text: "Unit of momentum?", answer: "kg m s⁻¹" },
-        { id: 6, text: "Atomic number of hydrogen?", answer: "1" },
+        {
+          id: 5,
+          text: "What is the phobia of height called?",
+          answer: "Acrophobia",
+        },
+        {
+          id: 6,
+          text: "What is the area of a triangle with side lengths 7, 24, and 25?",
+          answer: "84",
+        },
       ],
     },
     {
       setId: 2,
       questions: [
-        { id: 1, text: "Unit of electric charge?", answer: "Coulomb" },
-        { id: 2, text: "Symbol of Avogadro number?", answer: "NA" },
+        {
+          id: 1,
+          text: "Who discovered electron?",
+          answer: "Joseph John Thomson or J.J Thomsom",
+        },
+        { id: 2, text: "What type of galaxy is Milky way?", answer: "Spiral" },
         {
           id: 3,
-          text: "What is scalar quantity?",
-          answer: "Has magnitude only",
+          text: "The Starry Night is a famous painting by which artist?",
+          answer: "Vincent van Gogh",
         },
-        { id: 4, text: "pH of pure water?", answer: "7" },
-        { id: 5, text: "Unit of density?", answer: "kg/m³" },
-        { id: 6, text: "Number of significant figures in 0.005?", answer: "1" },
+        {
+          id: 4,
+          text: "What is the device to measure earthquake called?",
+          answer: "seismograph or seismometer",
+        },
+        {
+          id: 5,
+          text: "Who invented the World Wide Web?",
+          answer: "Tim Berners Lee",
+        },
+        {
+          id: 6,
+          text: "Which is the greatest epic of the world?",
+          answer: "Mahabharata",
+        },
       ],
     },
     {
       setId: 3,
       questions: [
+        { id: 1, text: "Who discovered proton?", answer: "Ernest Rutherford" },
         {
-          id: 1,
-          text: "What is projectile motion?",
-          answer: "2D motion under gravity",
+          id: 2,
+          text: "Who painted The Last Supper?",
+          answer: "Leonardo da Vinci",
         },
-        { id: 2, text: "Formula of force?", answer: "F = ma" },
-        { id: 3, text: "SI unit of pressure?", answer: "Pascal" },
+        {
+          id: 3,
+          text: "Which planet of the solar system has revolution time shorter than rotation time?",
+          answer: "Venus",
+        },
         {
           id: 4,
-          text: "Atomic mass unit equals?",
-          answer: "1/12 mass of C-12",
+          text: "What is the medical instrument used for listening to the action of someone&#39;s heart or breathing?",
+          answer: "stethoscope",
         },
-        { id: 5, text: "Unit of torque?", answer: "Nm" },
-        { id: 6, text: "Chemical formula of methane?", answer: "CH₄" },
+        {
+          id: 5,
+          text: "Which is the deepest ocean in the world?",
+          answer: "Pacific ocean",
+        },
+        { id: 6, text: "What is the oldest veda?", answer: "Rig veda" },
       ],
     },
     {
@@ -724,14 +1036,26 @@ export const QUESTIONS = {
       questions: [
         {
           id: 1,
-          text: "Equation of motion for velocity?",
-          answer: "v = u + at",
+          text: "What is the value of (sin 15°+ cos 15°)^2?",
+          answer: "1.5",
         },
-        { id: 2, text: "Symbol of Planck’s constant?", answer: "h" },
-        { id: 3, text: "Unit of energy?", answer: "Joule" },
-        { id: 4, text: "Valency of oxygen?", answer: "2" },
-        { id: 5, text: "Speed of light in vacuum?", answer: "3×10⁸ m/s" },
-        { id: 6, text: "Chemical symbol of sodium?", answer: "Na" },
+        { id: 2, text: "Who is known as the Father of History?", answer: "h" },
+        {
+          id: 3,
+          text: "From which country do French Fries actually originate?",
+          answer: "Herodotus",
+        },
+        { id: 4, text: "Which art form uses clay?", answer: "Belgium" },
+        {
+          id: 5,
+          text: "Who is known as the father of electricty?",
+          answer: "Micheal Faraday",
+        },
+        {
+          id: 6,
+          text: "Which sport is known as the “gentleman’s game”?",
+          answer: "Cricket",
+        },
       ],
     },
     {
@@ -739,18 +1063,34 @@ export const QUESTIONS = {
       questions: [
         {
           id: 1,
-          text: "Angle between velocity and acceleration in circular motion?",
-          answer: "90°",
+          text: "What is the greater epic composed by 13 poets?",
+          answer: "Aarohan",
         },
-        { id: 2, text: "Unit of impulse?", answer: "Ns" },
-        { id: 3, text: "pH of acidic solution?", answer: "< 7" },
-        { id: 4, text: "Chemical name of NaCl?", answer: "Sodium chloride" },
+        {
+          id: 2,
+          text: "What percent of carbon dioxide make up the earth&#39;s atmosphere?",
+          answer: "0.03%",
+        },
+        {
+          id: 3,
+          text: "How many prisons are there in Nepal without including Juvenile homes?",
+          answer: "74",
+        },
+        {
+          id: 4,
+          text: "What is the place of a story called?",
+          answer: "Setting",
+        },
         {
           id: 5,
-          text: "What is centripetal force?",
-          answer: "Force toward center",
+          text: "What is the study of relationships on the surface of earth called?",
+          answer: "Geography",
         },
-        { id: 6, text: "Unit of molarity?", answer: "mol/L" },
+        {
+          id: 6,
+          text: "Wimbledon is related to which sport?",
+          answer: "Tennis",
+        },
       ],
     },
     {
@@ -758,40 +1098,30 @@ export const QUESTIONS = {
       questions: [
         {
           id: 1,
-          text: "What is terminal velocity?",
-          answer: "Maximum constant velocity",
+          text: "Which is the animal that sheds tear when it gets its food?",
+          answer: "crocodile",
         },
-        { id: 2, text: "Unit of angular momentum?", answer: "kg m²/s" },
-        { id: 3, text: "Chemical symbol of potassium?", answer: "K" },
-        { id: 4, text: "Number of laws of motion?", answer: "Three" },
-        { id: 5, text: "Unit of temperature?", answer: "Kelvin" },
-        { id: 6, text: "What is oxidation?", answer: "Loss of electrons" },
-      ],
-    },
-    {
-      setId: 7,
-      questions: [
-        { id: 1, text: "What is elastic collision?", answer: "KE conserved" },
-        { id: 2, text: "Unit of gravitational constant?", answer: "Nm²/kg²" },
-        { id: 3, text: "Symbol of entropy?", answer: "S" },
-        { id: 4, text: "Value of π (approx)?", answer: "3.14" },
+        {
+          id: 2,
+          text: "What is the art of writing beautiful handwriting called?",
+          answer: "calligraphy",
+        },
+        {
+          id: 3,
+          text: "what is the study of climate called?",
+          answer: "climatology",
+        },
+        {
+          id: 4,
+          text: "How many articles are there in Sugauli treaty?",
+          answer: "9 articles",
+        },
         {
           id: 5,
-          text: "What is stoichiometry?",
-          answer: "Quantitative chemistry",
+          text: "Which district has the lowest point of Nepal?",
+          answer: "Jhapa or Dhanusha",
         },
-        { id: 6, text: "Unit of magnetic field?", answer: "Tesla" },
-      ],
-    },
-    {
-      setId: 8,
-      questions: [
-        { id: 1, text: "What is uniform motion?", answer: "Constant velocity" },
-        { id: 2, text: "Unit of heat?", answer: "Joule" },
-        { id: 3, text: "What is reduction?", answer: "Gain of electrons" },
-        { id: 4, text: "Unit of spring constant?", answer: "N/m" },
-        { id: 5, text: "What is mole?", answer: "Amount of substance" },
-        { id: 6, text: "Chemical symbol of iron?", answer: "Fe" },
+        { id: 6, text: "Which country started basketball?", answer: "USA" },
       ],
     },
   ],
@@ -800,12 +1130,39 @@ export const QUESTIONS = {
   open: [
     {
       id: 1,
-      text: "A man is standing at the edge of a 1m deep swimming pool, completely filled with a liquid of refractive index 3/2 . The eyes of the man are 3 m above the ground. A coin located at the bottom of the pool appears to be at an angle of depression of 30 degree with reference to the eye of man. Then find horizontal distance in mm (represented by x in the figure) of the coin from the eye of the man.",
-      media: {
-        type: "image",
-        src: "/questions/gq1.png",
-      },
-      answer: "4000mm",
+      text: "There are 12 identical looking coins among which 11 coins weigh the same and one is a counterfeit that is either heavier or lighter than the others. If you are given a balance scale which can only tell you if both side of scale are equal or if one side is heavier than the other. You may use the scale no more than three times and may write/mark on the coins with a marker which doesn't affect their weight. How will you identify the counterfeit?  ",
+      answer: `First of all, you divide the coins in 3 equal piles meaning in groups of 4. Now first, you take one group of coins in one side and weigh them against another group of coins in the balance scale (1st time). There are 3 possibilities -
+ If the balance scale shows weight of both side equal.
+  If so, all 8 coins in the balance scale are real. 
+  You can mark them as "O" so the fake must be among the remaining four.
+   mark the real coins. 
+   Take 3 of them and weigh them against the 3 of the remaining four unmarked coins (2nd time). if they balance again then the remaining last coin must be fake.
+    If they dont:\n
+	i. Draw a plus(+) if the unmarked coins are heavier or minus(-) if 	they are lighter.
+   Now take the two of the newly marked coins and 	weigh them against each other(3rd time).
+    If they are balanced the 	third coin is the fake. 
+    If they dont just look at their marks. 
+    if they are marked plus then the heavier one is fake otherwise if they 	are signed minus the lighter one is fake.
+    b. If the balance scale shows different weight of the piles. If so, the coins not weighed are real so mark them as "O". 
+    mark the heavier side coins plus and lighter side coins minus. Reassemble the piles. One way is to take one plus marked 
+    coin and 3 minus marked coins together in one side against one minus coin and three known real coins together in another 
+    side of the scale(2nd time). Now we have 3 possibilities:
+    i. If the two sides balance then the three remaining plus coins 	contains the fake coin. weigh two of them against each other(3rd 	time), if they are balanced the third coin is counterfeit. if they 	are not then the heavier one is
+    
+    ii. If the side with one plus marked coin is heavier then either 	the plus coin in that side is heavier or the minus coin in another 	side is lighter i.e is fake. choose one of those coins and 	weigh it against a real coin(3rd time) to see which is true.
+iii. If the side with only one minus coin is heavier then the side   	with 3 minus coin contains the fake coin. weigh two of them 	together(3rd time), if they are balanced the third coin is 	counterfeit. if they are not then the lighter one is.
+    `,
+    },
+    {
+      id: 2,
+      text: `There are three people Jeff, Ali and Mohan standing side to side. You meet them but don't know who is who.They play a game with you where you have to find who is who. You may ask three yes or no questions to any of them. They will answer you as "Sunny" or "Rainy" instead of "yes" or "no" but you don't know which one is yes and which one is no. Jeff always tells the truth, Ali always lies and Mohan answers randomly. You can ask multiple questions to same person. How will you find who is who?`,
+
+      answer: `We actually don't need to know what word means yes or no and it doesnt matter. Ask the person in the middle "If I asked you whether the man on your left is Mohan, would you say Sunny?" The question is always true if he says "Sunny" and 
+     always false if he says "Rainy". but there are two possibilities:
+     i. You might be asking question to Mohan. In this case, the answer 	is meaningless.
+	ii. You might be talking to Ali or Jeff. In this case the man on 	left must be Mohan if the answer is "Sunny" and one on the left	must not be Mohan if answer is "Rainy".
+In both cases we know that one on the right is not Mohan if the answer was "sunny" and one on the left is not Mohan if the answer 	was "Rainy". So they must be Jeff or Ali hence they do not answer randomly. Again the question is always 
+true if a truthteller or falseteller says "Sunny" and always false if he says "Rainy". Ask that non Mohan person, "If I ask you 'are you Jeff?' would you answer 'Sunny'?" From this question we know the identity of that person whether he is Jeff or Ali since we dont need to worry about the random answers. Again ask him, "If I ask you, 'is the man on the centre Mohan?' would you say 'Sunny'?" By this we can know the identity of the centre person and the remaining person. `,
     },
   ],
 };

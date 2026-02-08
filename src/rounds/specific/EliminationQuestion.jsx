@@ -130,6 +130,22 @@ export function EliminationQuestion() {
           </div>
         </div>
       </div>
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 z-20">
+        <button
+          onClick={() => {
+            stopAllAudio();
+            nextInRound();
+          }}
+          className="group flex flex-col items-center gap-2 p-4 bg-white/5 hover:bg-yellow-500/20 border border-white/10 hover:border-yellow-500 rounded-2xl transition-all duration-300"
+        >
+          <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+            <ChevronRight size={28} />
+          </div>
+          <span className="text-[10px] font-black uppercase text-yellow-500 tracking-tighter">
+            Next / Skip
+          </span>
+        </button>
+      </div>
 
       {/* CONTENT */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0 py-4">

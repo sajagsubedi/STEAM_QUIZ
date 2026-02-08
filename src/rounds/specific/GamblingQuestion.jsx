@@ -9,7 +9,7 @@ function WagerQuestionComp() {
   const config = ROUND_CONFIGS["gambling"];
 
   // Local state for 10 teams
-  const [teamWagers, setTeamWagers] = useState(Array(10).fill(null));
+  const [teamWagers, setTeamWagers] = useState(Array(6).fill(null));
 
   const handleWagerSelect = (teamIndex, points) => {
     const newWagers = [...teamWagers];
@@ -30,27 +30,26 @@ function WagerQuestionComp() {
 
       {/* HEADER SECTION */}
       <div className="relative z-10 flex justify-between items-center h-16 shrink-0 px-4">
-        {/* Empty space for symmetry */}
-        <div className="w-24 hidden md:block" />
+        {/* SEQUENTIAL COUNT BADGE */}
+        <div className="flex items-center gap-2 bg-yellow-500 border border-white/10 px-4 py-2 rounded-xl backdrop-blur-sm">
+          <Hash className="text-black" size={16} />
+          <span className="text-black font-black text-sm">
+            {sequentialCount}
+          </span>
+        </div>
 
         {/* Title Badge */}
         <div className="px-8 py-2 bg-linear-to-r from-yellow-600 via-yellow-400 to-yellow-600 rounded-full text-black text-xs font-black uppercase tracking-widest shadow-lg">
           {config.title}
         </div>
-
-        {/* SEQUENTIAL COUNT BADGE */}
-        <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl backdrop-blur-sm -translate-x-2/3">
-          <Hash className="text-yellow-500" size={16} />
-          <span className="text-white font-black text-sm">
-            {sequentialCount}
-          </span>
-        </div>
+        {/* Empty space for symmetry */}
+        <div className="w-24 hidden md:block" />
       </div>
 
       {/* MAIN CONTENT AREA */}
       <div className="relative z-10 flex-1 flex flex-row gap-6 py-4 min-h-0">
         {/* LEFT SIDE: TEAM WAGER TABLE */}
-        <div className="w-1/2 bg-purple-900/20 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
+        <div className="w-2/3 bg-purple-900/20 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
           <div className="bg-white/5 p-4 border-b border-white/10 flex items-center gap-2">
             <Trophy className="text-yellow-500" size={18} />
             <h3 className="text-white font-black uppercase tracking-tighter text-sm">
@@ -99,7 +98,7 @@ function WagerQuestionComp() {
         </div>
 
         {/* RIGHT SIDE: CENTERED TIMER & STATUS */}
-        <div className="w-1/2 flex flex-col gap-6">
+        <div className="w-1/3 flex flex-col gap-6">
           {/* TOP HALF: TIMER */}
           <div className="flex-1 bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center justify-center relative overflow-hidden">
             <div className="absolute top-6 text-center">

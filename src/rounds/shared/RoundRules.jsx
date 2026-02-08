@@ -5,8 +5,8 @@ export const RoundRules = ({ roundConfig }) => {
   const nextInRound = useNavigationStore((state) => state.nextInRound);
 
   return (
-    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative px-6">
-      {/* Background Grid Pattern for a 'Technical' feel */}
+    <div className="h-screen w-screen bg-black flex flex-col items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-purple-900 to-black relative px-6">
+      {/* Background Grid Pattern */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
@@ -15,9 +15,9 @@ export const RoundRules = ({ roundConfig }) => {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-3xl">
-        {/* Header with Round Info */}
-        <div className="flex items-center gap-6 mb-8 border-b border-white/10 pb-6">
+      <div className="relative z-10 w-full max-w-3xl flex flex-col max-h-[90vh]">
+        {/* Header - Fixed at top */}
+        <div className="flex items-center gap-6 mb-8 border-b border-white/10 pb-6 flex-shrink-0">
           <img
             src={roundConfig.logo}
             alt="Round Icon"
@@ -33,8 +33,8 @@ export const RoundRules = ({ roundConfig }) => {
           </div>
         </div>
 
-        {/* Rules Container */}
-        <div className="grid gap-4">
+        {/* Rules Container - Scrollable Area */}
+        <div className="grid gap-4 overflow-y-auto pr-4 custom-scrollbar flex-grow py-2">
           {roundConfig.rules.map((rule, index) => (
             <div
               key={index}
@@ -51,8 +51,8 @@ export const RoundRules = ({ roundConfig }) => {
           ))}
         </div>
 
-        {/* Footer / Navigation */}
-        <div className="mt-12 flex flex-col items-center">
+        {/* Footer / Navigation - Fixed at bottom */}
+        <div className="mt-8 flex flex-col items-center flex-shrink-0">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <p className="text-white/40 text-[10px] tracking-[0.3em] uppercase">
@@ -67,6 +67,22 @@ export const RoundRules = ({ roundConfig }) => {
         .group {
           animation: slideIn 0.5s ease-out forwards;
           opacity: 0;
+        }
+
+        /* Custom Scrollbar Styling */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(168, 85, 247, 0.4); /* Purple-500 */
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(234, 179, 8, 0.6); /* Yellow-500 */
         }
 
         @keyframes slideIn {
